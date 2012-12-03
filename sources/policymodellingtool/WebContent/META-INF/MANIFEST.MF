@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Built-By: tomcat6
+Created-By: Leiningen Ring Plugin
+

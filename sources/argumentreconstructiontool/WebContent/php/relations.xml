@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<relations> <!-- See notes in TR2.3b about this document. Note that names must always consist of the type of the element plus a number. -->
+  <!-- Credible source AS parts -->
+  <relation type='domain' label="Domain" />
+  <relation type='source' label="Source" />
+  <relation type='proposition' label='Proposition' />
+  <relation type='premise' label='Premise' />
+  <relation type='concl' label='Conclusion' />
+  <relation type='domain_proposition' arity='1'>
+    <structure version='database'>
+      <element type='domain' name='domain1' arity='1' />
+      <element type='proposition' name='proposition1' arity='1' />
+    </structure>
+    <structure version='interpreted'>
+      <element type='domain' name='domain1' arity='1' />
+      <element type='proposition' name='proposition1' arity='1' />
+    </structure>
+  </relation>
+  <relation type='domain_source' arity='1'>
+    <structure version='database'>
+      <element type='domain' name='domain1' arity='1' />
+      <element type='source' name='source1' arity='1' />
+    </structure>
+    <structure version='interpreted'>
+      <element type='domain' name='domain1' arity='1' />
+      <element type='source' name='source1' arity='1' />
+    </structure>
+  </relation>
+  <relation type='source_proposition'>
+    <structure version='database'>
+      <element type='proposition' name='proposition1' arity='1' />
+      <element type='source' name='source1' arity='1' />
+    </structure>
+    <structure version='interpreted'>
+      <element type='proposition' name='proposition1' arity='1' />
+      <element type='source' name='source1' arity='1' />
+    </structure>
+  </relation>
+  <!-- Credbile source AS actual scheme -->
+  <relation type='credible_source_as' label="Credible Source Argument Scheme">
+    <structure version='database'>
+      <element type='domain_source' arity='1'>
+        <element type='domain' name='domain1' arity='1' />
+        <element type='source' name='source1' arity='1' />
+      </element>
+      <element type='domain_proposition' arity='1'>
+        <element type='domain' name='domain1' arity='1' />
+        <element type='proposition' name='proposition1' arity='1' />
+      </element>
+      <element type='source_proposition' arity='1'>
+        <element type='proposition' name='proposition1' arity='1' />
+        <element type='source' name='source1' arity='1' />
+      </element>
+    </structure>
+    <structure version='interpreted'>
+      <element type="domain" name='domain1' arity='1' label='Domain'/>
+      <element type="proposition" name='proposition1' arity='1' label='Proposition' conclusion='1'/>
+      <element type="source" name='source1' arity='1' label='Source'/>
+    </structure>
+  </relation>
+
+  <!-- Practical reasoning AS parts -->
+  <relation type='action' label="Action">
+    <structure version='database'>
+      <element type='agent' name='agent1' arity='1'/>
+    </structure>
+    <structure version='interpreted'>
+      <element type='agent' name='agent1' arity='1'/>
+    </structure>
+  </relation>
+  <relation type='agent' label="Agent" />
+  <relation type='proposition' label='Proposition' />
+  <relation type='value' label='Value' />
+
+  <!-- Practical reasoning AS actual scheme -->
+  <relation type='practical_reasoning_as' label='Practical Reasoning Argument Scheme'>
+    <structure version='database'>
+      <element type='action' arity='1' name='action1'>
+        <element type='agent' arity='1' name='agent1' />
+      </element>
+      <element type='circumstances' arity='n' conjunctiontable='conjunction'  occurrencetable='prop_occurrence' conjuncttype='proposition' name='circumstances1' label='Circumstances'/>
+      <element type='consequences' arity='n' conjunctiontable='conjunction' occurrencetable='prop_occurrence' conjuncttype='proposition' name='consequences1' label='Consequences'/>
+      <element type='values' arity='n' conjunctiontable='conjunction' occurrencetable='value_occurrence' conjuncttype='value' name='values1' label='Values'/>
+    </structure>
+    <structure version='interpreted'>
+      <element type='action' arity='1' name='action1' conclusion='1'/>
+      <!-- todo: make agent fall under action (for when users can choose already-existing elements, and not only type textSections) -->  
+      <element type='agent' arity='1' name='agent1' />
+      <element type='circumstances' arity='n' conjuncttype='proposition' conjunctiontable='conjunction'  occurrencetable='prop_occurrence' name='circumstances1' label='Circumstances'/>
+      <element type='consequences' arity='n' conjuncttype='proposition' conjunctiontable='conjunction'  occurrencetable='prop_occurrence' name='consequences1' label='Consequences'/>
+      <element type='values' arity='n' conjuncttype='value' conjunctiontable='conjunction' occurrencetable='value_occurrence' name='values1' label='Values'/>
+    </structure>
+  </relation>
+
+  <!-- Value recognition scheme -->
+  <relation type='value_recognition_as' label='Value Recognition Argument Scheme'>
+    <structure version='database'>
+      <element type='source' arity='1' name='source1' />
+      <element type='value' arity='1' name='value1' />
+    </structure>
+    <structure version='interpreted'>
+      <element type='source' arity='1' name='source1' />
+      <element type='value' arity='1' name='value1' />
+    </structure>
+  </relation>
+  
+  <!-- Value credible source argument scheme -->
+  <relation type='value_credible_source_as' label='Value Credible Source Argument Scheme'>
+    <structure version='database'>
+      <element type='domain_source' arity='1'>
+        <element type='domain' name='domain1' arity='1' />
+        <element type='source' name='source1' arity='1' />
+      </element>
+      <element type='action' arity='1' name='action1'>
+        <element type='agent' arity='1' name='agent1' />
+      </element>
+    </structure>
+    <structure version='interpreted'>
+      <element type="domain" name='domain1' arity='1' label='Domain'/>
+      <element type="source" name='source1' arity='1' label='Source'/>
+      <element type="action" name='action1' arity='1' label='Source'/>
+      <element type="agent" name='agent1' arity='1' label='Agent'/>
+    </structure>
+  </relation>
+
+  <!-- General argument scheme -->
+  <relation type='general_as' label="General Argument Scheme">
+    <structure version='database'>
+      <element type='premises' arity='n' conjunctiontable='conjunction'  occurrencetable='premise_occurrence' conjuncttype='premise' name='premise1' label='Premises'/>
+      <element type='concl' arity='1' name='concl1' />
+    </structure>
+    <structure version='interpreted'>
+      <element type='premises' arity='n' conjunctiontable='conjunction'  occurrencetable='premise_occurrence' conjuncttype='premise' name='premise1' label='Premises'/>
+      <element type='concl' arity='1' name='concl1' label='Conclusion' />
+    </structure>
+  </relation>
+</relations>

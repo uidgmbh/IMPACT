@@ -1,0 +1,14 @@
+<p><a href="%s">Cohere</a> is a web tool for making connections between ideas</p>
+<p><b>%s</b> would like to add you to the following Cohere group:</p>
+
+<table>
+<tr>
+<td>%s</td> 
+<td valign="top" style="font-size:80%%"><b><a href="%s">%s</a></b>%s</td>
+</tr>
+</table>
+
+<p>If you would like to join, then <a href="%s">sign up for a Cohere ID</a>.</p>
+
+<p>Please contact <a href="mailto:%s">%s</a> if you have any queries about this group.</p>
+

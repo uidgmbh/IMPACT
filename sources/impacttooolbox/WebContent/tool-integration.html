@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+	<head>
+		<title>IMPACT Toolbox Toolintegration Demo</title>
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		
+		<!-- BEGIN OF DESIGN AND STYLE SPECIFIC INCLUDS -->
+		
+		<!-- Load JQuery -->
+		<script src="http://impact.uid.com:8080/toolbox/js/jquery-1.7.js" type="text/javascript"></script>
+		<script src="http://impact.uid.com:8080/toolbox/js/jquery.rest.js" type="text/javascript"></script>
+		<script src="http://impact.uid.com:8080/toolbox/js/jquery.address-1.4.js" type="text/javascript"></script>
+		
+		<script type="text/javascript" src="http://impact.uid.com:8080/toolbox/js/impact-ui/jquery-ui-1.8.11.custom.min.js"></script>
+		
+		<!-- JQuery Plug-ins -->
+		<!-- the jScrollPane script -->
+		<script type="text/javascript" src="http://impact.uid.com:8080/toolbox/js/impact-ui/jquery.jscrollpane.min.js"></script>
+		<!-- the mousewheel plug-in - to provide mouse wheel support in jScrollPane -->
+		<script type="text/javascript" src="http://impact.uid.com:8080/toolbox/js/impact-ui/jquery.mousewheel.js"></script>
+		<script type="text/javascript" src="http://impact.uid.com:8080/toolbox/js/impact-ui/jquery.mwheelIntent.js"></script>
+		<!-- the custom check box and radio buttons script -->
+		<script type="text/javascript" src="http://impact.uid.com:8080/toolbox/js/impact-ui/ui.checkbox.js"></script>
+		<!-- the custom select box script (for drop down menus) -->
+		<script type="text/javascript" src="http://impact.uid.com:8080/toolbox/js/impact-ui/jquery.selectbox-0.5.js"></script>
+		<!-- the progress indicator script -->
+		<script type="text/javascript" src="http://impact.uid.com:8080/toolbox/js/impact-ui/jquery.busy.min.js"></script>
+		<!-- the time picker script -->
+		<script type="text/javascript" src="http://impact.uid.com:8080/toolbox/js/impact-ui/jquery.ui.timepicker.js"></script>
+		<!-- styles needed by the time picker script -->
+		<link rel="stylesheet" type="text/css" media="all" href="http://impact.uid.com:8080/toolbox/css/impact-ui/plugins/jquery-ui-timepicker.css" />
+		
+		<!-- END OF DESIGN AND STYLE SPECIFIC INCLUDS -->
+		
+		
+		<!-- PARTNER PLUGINS START -->
+		
+        <!-- ART -->
+        <script type="text/javascript" src="http://impact.uid.com:8080//argumentreconstructiontool/js/init.js"></script>
+        <link href="http://impact.uid.com:8080/argumentreconstructiontool/css/jquery-ui-1.8.20.custom.css" rel="stylesheet" type="text/css" />
+        <link href="http://impact.uid.com:8080/argumentreconstructiontool/css/art.css" rel="stylesheet" type="text/css" />
+
+		<!-- AVT -->
+		<script type="text/javascript" src="http://impact.uid.com:8080/argumentvisualisationtool/includes/js/AVT.js"></script>
+	
+		<!-- SCT -->
+		<script type="text/javascript" src="http://impact.uid.com:8080/structuredconsultationtool/SCT.js"></script>
+	
+		<!-- PARTNER PLUGINS END -->
+		
+		
+	</head>
+	<body style="margin:10px;">
+		<div style="width: 1000px; margin:0px auto;" id="impact-tool-container">
+		<h1>Tool integration demo</h1>
+		<p>This demo shows how to integrate an impact tool</p>
+		<p>Click <a href='#' id='loadArt'>here</a> to load the ART.</p>
+		<p>Click <a href='#' id='loadAvt'>here</a> to load the AVT (May need some time to load...).</p>
+		<p>Click <a href='#' id='loadSct'>here</a> to load the SCT.</p>
+		<div id='tool'></div>
+		</div>
+		
+		
+		
+		<script type="text/javascript">
+	    
+		var toolboxState =
+		{
+		    userToken : "05199deca16614131327f2c3fea9031c",
+		    language : 'en',
+		    currentDebateId : "19482142130992902001326731219",
+		    currentTool : null,
+		    art :
+		    {
+		        path : "http://impact.uid.com:8080/argumentreconstructiontool",
+		        div : "art",
+		    },
+		    avt :
+		    {
+		        path : "http://impact.uid.com:8080/argumentvisualisationtool",
+		        div : "avt",
+		    },
+		    pmt :
+		    {
+		        path : "http://impact.uid.com:8080/policymodellingtool",
+		        div : "pm",
+		    },
+		    sct :
+		    {
+		        path : "http://impact.uid.com:8080/structuredconsultationtool",
+		        div : "sct",
+		    },
+		    toolbox :
+		    {
+		        path : "http://impact.uid.com:8080/toolbox",
+		    }
+		};
+		
+		/**
+		 * JQuery ready function, called if jquery has been loaded.
+		 */
+		$(document).ready(function()
+		{
+		    ART.init(toolboxState);
+		    AVT.init(toolboxState);
+		    SCT.init(toolboxState);
+		
+		    $("#loadArt").click(function()
+		    {
+		        $("#tool")[0].innerHTML = "<div id='" + toolboxState.art.div + "'></div>";
+		        toolboxState = ART.start(toolboxState);
+		    });
+		
+		    $("#loadAvt").click(function()
+		    {
+		        $("#tool")[0].innerHTML = "<div id='" + toolboxState.avt.div + "'></div>";
+		        toolboxState = AVT.start(toolboxState);
+		    });
+		
+		    $("#loadSct").click(function()
+		    {
+		        $("#tool")[0].innerHTML = "<div id='" + toolboxState.sct.div + "'></div>";
+		        toolboxState = SCT.start(toolboxState);
+		    });
+		
+		});
+
+	</script>
+		
+		
+	</body>
+</html>
+

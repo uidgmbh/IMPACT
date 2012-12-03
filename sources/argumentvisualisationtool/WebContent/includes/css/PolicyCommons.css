@@ -1,0 +1,8 @@
+span.download-link {
+    font: normal 11px sans-serif;
+}
+
+span.download-link a {
+    color: blue;
+    text-decoration: underline;
+}

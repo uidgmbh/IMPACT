@@ -1,0 +1,573 @@
+body {
+	font-family: Arial, Helvetica, sans-serif; 
+	margin: 0px;
+	font-size: 80%;
+	color: #308D88;
+}
+
+a {
+ 	color: #e80074;
+ 	text-decoration: none;
+}
+
+a.form {
+	font-size:90%;
+}
+
+.hrline {
+	border: 0;
+	color: #d3e8e8;
+	background-color: #d3e8e8;
+	height: 2px;
+}
+
+h1 {
+	margin-top:5px;
+	margin-bottom: 10px;
+	font-size: 150%;	
+}
+
+h2 {
+	margin: 0px;
+	font-size: 140%;	
+	margin-bottom:10px;
+}
+
+.active {
+	color: #e80074;
+	cursor:pointer;		
+}
+
+.inactive{
+	cursor:	default;
+	color: #ccc;
+}
+
+#header {
+	width:98%;
+	margin: 0px;
+	padding: 0px;
+}
+
+#logo {
+	float: left;
+	padding: 10px;
+	margin-bottom:10px;
+}
+
+#logo .accesslink {
+	color:#FFFFFF;
+}
+
+#logo .hourglass {
+	padding-bottom: 5px;
+}
+#menu {
+	float:right;
+	margin-right: 10px;
+}
+
+#main {
+	clear:both;
+	width:100%
+	margin: 0px;
+}
+
+#content {
+	margin-left: 5px;
+	float:left;
+}
+
+
+#footer {
+	clear: both;
+	float: right;
+	margin-right: 10px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+/* popup sidepanel pageing */
+
+img.toolbar {
+	vertical-align:middle;
+	border: 0px;
+	margin: 0px;
+	padding-bottom:1px;
+	padding-right:5px;
+}
+span.nav {
+	background: white;
+	padding-left:2px;
+	padding-top:2px;
+	padding-right:20px;
+	margin: 0px;
+	font-weight: bold;
+}
+span.toolbar {
+	float:left;
+	border-radius: 8px; 
+	-o-border-radius: 8px; 
+	-icab-border-radius: 8px; 
+	-khtml-border-radius: 8px; 
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;		
+	border: 1px solid #FACEE3;
+	background: #FFF5FF;
+	height: 29px;
+	margin-right: 5px;
+	padding-right: 5px;
+	padding-left: 5px;
+	font-weight: bold;
+	position:relative
+}
+
+div.toolbarrow {
+	float:left;
+	clear: both;
+	padding:6px;
+	padding-top:0px;
+	margin: 0px;
+	width: 99%;
+}
+
+/*end popop side panel paging*/
+
+/* form */
+div.formrow {
+	padding: 5px;
+	clear: both;
+	
+}
+
+.formlabelbig {
+	float: left;
+	margin-left:0px;
+	width: 170px;
+	padding:0px;
+	text-align: right;
+	font-weight: bold;
+}
+
+.formlabel {
+	float: left;
+	margin-left:0px;
+	width: 100px;
+	padding:0px;
+	text-align: right;
+	font-weight: bold;
+}
+
+.formlabelshort {
+	float: left;
+	margin-left:0px;
+	width: 70px;
+	padding:0px;
+	text-align: right;
+	font-weight: bold;
+}
+
+.formlabelconn {
+	float: left;
+	margin-left:0px;
+	width: 70px;
+	padding:0px;
+	text-align: right;
+	font-weight: bold;
+} 
+
+
+.roleicon {
+	text-align: right;
+}
+
+.forminput {
+	margin-left: 5px;
+}
+
+.forminputmust {
+	margin-left: 5px;
+	background-color: lightyellow;
+}
+ 
+.formsubmit {
+	margin-top:0px;
+	margin-left: 105px;	
+}
+
+.formhelp {
+ 	margin-left:10px;	
+}
+.input {
+	width: 400px;	
+}
+
+.inputshort {
+	width: 360px;	
+}
+
+/* form */
+
+.urlinput {
+	width: 250px;
+		
+}
+
+.labelinput {
+	border: none;
+	color: #40B5B2;
+}
+
+.linktypeneutral {
+	background: #B2B2B2;
+	color: black;
+}
+
+.linktypepositive {
+	background: #00BD53;
+	color: black;
+}
+
+.linktypenegative {
+	background: #C10031;
+	color: black;
+}
+
+
+.dateinput {
+	width: 130px;
+	font-size:90%;	
+}
+/* sub-form */
+.subform {
+	margin-left: 3px;
+	padding: 5px;
+	float:left; 
+	width: 405px;
+	border: 1px solid #40B5B2;
+}
+
+.subform2 {
+	padding: 5px;
+	float:left; 
+	width: 300px;
+	border: 1px solid #40B5B2;
+}
+div.subformrow {
+	padding: 0px 3px 3px 3px;
+	clear: both;
+	text-align:left;
+}
+
+.subformlabel {
+	float: left;
+	margin-left:0px;
+	width: 70px;
+	padding:0px;
+	text-align: right;
+	font-weight: bold;
+	font-size: 90%;
+} 
+ 
+.subforminput {
+	margin-left: 5px;
+	font-size: 90%;
+}
+ 
+.subformsubmit {
+	margin-left: 75px;
+	font-size: 90%;	
+}
+
+.subformbutton {
+	font-size: 90%;	
+}
+
+hr.urldivider {
+	background: #40B5B2;
+	border:0px;
+	padding:0px;
+	height: 1px;
+	width: 100%;
+} 
+/* for sort options */
+
+.errors {
+	color:red;
+	clear:both;	
+}
+
+#contextimage {
+	float: left;
+	margin-left:0px;
+	width: 70px;
+	padding:5px;
+	margin-bottom:10px;
+}
+
+#contextinfo {
+	float: left;
+	margin-bottom:10px;
+}
+
+.required {
+	color: red;
+	font-weight: bold;
+}
+
+.help {
+	color: #001;
+	font-weight: bold;
+}
+
+.ideadiv {
+	float: left;
+	/*background-color:#E9F3F3;	*/
+	background-color:white;
+	border: 3px solid white;	
+	width: 250px;			
+}
+
+.ideadivselected {
+	float: left;
+	/*background-color:#E9F3F3;	*/
+	background-color:white;
+	border: 3px solid yellow;				
+	width: 250px;			
+}
+
+.ideadivspacer {
+	clear: both;
+	width:391px;
+}
+
+/* for the scriptaculous auto complete box */
+ div.autocomplete {
+   position:absolute;
+   width:250px;
+   background-color:white;
+   border:1px solid #888;
+   margin:0px;
+   padding:0px;
+ }
+ div.autocomplete ul {
+   list-style-type:none;
+   margin:0px;
+   padding:0px;
+ }
+ div.autocomplete ul li.selected { background-color: #ffb;}
+ div.autocomplete ul li {
+   list-style-type:none;
+   display:block;
+   margin:0;
+   padding:2px;
+   /*height:32px;*/
+   cursor:pointer;
+ }
+
+.connwrapper {
+	font-size: 8pt;
+	padding: 2px;
+	background: #E7F1F1;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-o-border-radius: 10px; 
+	-icab-border-radius: 10px; 
+	-khtml-border-radius: 10px; 
+}
+
+#link {
+	width:387px;
+	text-align:left;	
+	border-left:2px solid #B2B2B2;
+	border-right:2px solid #B2B2B2;
+	padding-left: 4px;
+}
+
+#linktype {
+	background:lightyellow; 
+	width: 250px;
+}
+
+#link-top {
+	background-image: url("../images/connection/edit/link-neutral-top2.png");
+	background-repeat:no-repeat;
+	background-position:top left;
+	height: 40px;
+	width: 395px;
+}
+
+#link-bottom {
+	background-image: url("../images/connection/edit/link-neutral-bottom2.png");
+	background-repeat:no-repeat;
+	background-position:bottom left;
+	height: 39px;
+	width: 395px;
+}
+
+.link-top-plain {
+	background-image: url("../images/connection/edit/link-neutral-top2.png");
+	background-repeat:no-repeat;
+	background-position:top left;
+	height: 40px;
+	width: 395px;
+}
+
+.link-bottom-arrow {
+	background-image: url("../images/connection/edit/link-neutral-bottom2.png");
+	background-repeat:no-repeat;
+	background-position:bottom left;
+	height: 39px;
+	width: 395px;
+}
+
+.link-top-arrow {
+	background-image: url("../images/connection/edit/link-neutral-top-arrow.png");
+	background-repeat:no-repeat;
+	background-position:top left;
+	height: 40px;
+	width: 395px;
+}
+
+.link-bottom-plain {
+	background-image: url("../images/connection/edit/link-neutral-bottom-plain.png");
+	background-repeat:no-repeat;
+	background-position:bottom left;
+	height: 39px;
+	width: 395px;
+}
+
+#newlinktypeform {
+	clear:both; 
+	margin-left:auto;
+	margin-right:auto;
+	width:300px;
+	margin-top:10px;
+	border:1px solid #AFD8D7;
+	padding:5px;
+}
+
+/* for tables */
+.table {
+    border-color : #ccc;
+    border-style : solid;
+    border-width : 1px 1px 0px 1px;
+}
+.table .c1, fieldset .c1 {
+    width : 30%;
+}
+.table TH, .table TD, .option-table TH, .option-table TD {
+    padding : 6px;
+}
+.table TH TH, .table TD TD {
+    padding : 0px;
+}
+.table TD.icon {
+    padding : 0 5px 0 3px;
+}
+.table TH {
+    background-color : #f3f7fa;
+    border-bottom : 1px #ccc solid;
+    text-align : left;
+    font-family : verdana, arial, helvetica, sans-serif;
+    font-size : 8pt;
+    font-weight : bold;
+}
+.table TH TABLE TH {
+    border-right : none;
+    border-bottom : none;
+}
+.table TH TABLE TH a {
+    text-decoration : none;
+    color: #000;
+}
+
+.table TR TD {
+    border-bottom : 1px #e3e3e3 solid;
+}
+.table TD {
+    font-family : arial, helvetica, sans-serif;
+    font-size : 10pt;
+}
+.table .odd TD {
+    background-color : #fff;
+}
+.table .even TD {
+    background-color : #fbfbfb;
+}
+.table TFOOT TD {
+    background-color : #eee;
+    font-family : verdana;
+    border-bottom: 1px solid #ccc;
+    font-size : 8pt;
+}
+.table TD TD {
+    border-width : 0px;
+}
+.table INPUT, .table SELECT, .option-table INPUT, .option-table SELECT {
+    font-family : verdana;
+    font-size : 8pt;
+}
+th.table-th-center {
+    text-align: center;
+}
+
+/**** HGR Form style ****/
+div.hgrformrow {
+	padding: 5px;
+	clear: both;
+	padding-top: 15px;
+}
+
+div.hgrsubformrow {
+	padding: 5px 3px 3px 3px;
+	clear: both;
+	text-align:left;
+}
+
+.hgrinput {
+	width: 350px;
+		
+}
+.hgrinputbig {
+	width: 500px;	
+}
+
+.hgrsubform {
+	margin-left: 3px;
+	padding: 5px;
+	float:left; 
+	width: 495px;
+	border: 1px solid #40B5B2;
+}
+
+.hgrsubform2 {
+	margin-left: 8px;
+	float:left; 
+	width: 495px;
+}
+
+.hgrselect {
+	float: left; 
+	width:190px; 
+	margin-left: 5px;
+	height: 23px;
+	font-size: 100%;
+}
+
+.hgrother {
+	float: left; 
+	display: none; 
+	width: 220px;
+}
+
+.hgrsubformlabel {
+	float: left;
+	margin-left:0px;
+	width: 75px;
+	padding:0px;
+	text-align: right;
+	font-weight: bold;
+	font-size: 90%;
+}

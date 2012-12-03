@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns="http://cohere.open.ac.uk/ontology/cohere.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xml:base="http://cohere.open.ac.uk/ontology/cohere.owl">
+  <owl:Ontology rdf:about=""/>
+  <owl:Class rdf:ID="set">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This class serves as the basic mean to create abstractions within Cohere. By creating a set it is possible to have any arbitrary aggregation of connections, nodes or sets themselves into a new abstract_idea. In other words, the resulting set is itself an idea that can be connected into a new argument.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="abstract_idea"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="role">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="abstract_object"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Abstract class grouping things representing the role of nodes within a connection and the roles of label connecting ideas in. (it was previously named 'type')</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="connection_label"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#abstract_idea"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="node">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Instances of nodes (previously called also 'simple' ideas) are the nodes of a connection  without the 'context' information. Basically, they are the isolated bubbles we can see in Cohere.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#abstract_idea"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="document">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="cohere_thing"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="cohere_user"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#abstract_object"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >We do not (currently) distinguish precisely between physical and electronic documents, or between copies of a work and the abstraction those copies embody. The has_url property is defined at this level, even if it would apply to web-documents only. The hierarchy can be refined in the future.
+This class maps to FOAF:DOCUMENT</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="connection_label_role">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The roles (or types) used for organizing the labels between ideas: e.g. supports, contrasts, is-example-of etc... It is important to remember that its subclasses must be disjoint - this is one of the reasons why we decided to use OWL, as RDFS would not let us specify this feature.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#role"/>
+  </owl:Class>
+  <owl:Class rdf:ID="image">
+    <rdfs:subClassOf rdf:resource="#document"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An image we can associate to an idea, or to a person</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="website">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Self explanatory</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#document"/>
+  </owl:Class>
+  <owl:Class rdf:about="#abstract_object">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#cohere_thing"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#cohere_user"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#document"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Non-material entities we create and discuss about in Cohere</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#abstract_idea">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#connection_label"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#role"/>
+    <rdfs:subClassOf rdf:resource="#abstract_object"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Ideas can exist independently or in connection to other ideas, and are what we use to make connections. Notice that 'abstract_idea' here can also include composite ideas, i.e. sets of connections or one single connection used as a node in an argument. By doing so we can support, for example, Dung's abstract argumentation framework.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#cohere_thing">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Metaclass to group all the entities in the Cohere world. We decided to include it in the ontology for being able to specify some properties at this 'meta' level (i.e. properties that apply to all Cohere entities: has_description and has_name).</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="connection_node_role">
+    <rdfs:subClassOf rdf:resource="#role"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >It is the contextual information associated with the idea in a connection: we can also refer to it as the 'role' of the idea in that connection. For example, it can be an 'answer', a 'conclusion', an 'idea', an 'experiment' etc. Cohere suggests some predefined roles, but users can also create new roles for their ideas.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#connection_label">
+    <rdfs:subClassOf rdf:resource="#abstract_object"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The link that connects two nodes in a connection object. Notice that links or labels can be classified by means of 'roles' of labels (see Connection_label_role class). For example, a label could be 'supports' and its role could be a 'positive_label_role'.</rdfs:comment>
+    <owl:disjointWith rdf:resource="#role"/>
+    <owl:disjointWith rdf:resource="#abstract_idea"/>
+  </owl:Class>
+  <owl:Class rdf:ID="connection">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A connection of two abstract_ideas through a relation. Since a connection is itself an abstract_ideas, the connection can also link two connections, or one connection with a node (= a simple idea) . in other words, a connection can be used as a node in a new connection. At the moment, we only provide support for representing binary connections only (two nodes only). Moreover, when a connection is instantiated, it is also possible to define the node_types of the two ideas which are connected. The node_types are also called the 'roles' or 'contexts' of the ideas.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#abstract_idea"/>
+  </owl:Class>
+  <owl:Class rdf:about="#cohere_user">
+    <owl:disjointWith rdf:resource="#document"/>
+    <owl:disjointWith rdf:resource="#abstract_object"/>
+    <rdfs:subClassOf rdf:resource="#cohere_thing"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A person. In the future, we can describe also other kinds of agents, such as groups or organizations.
+Maps to FOAF:PERSON</rdfs:comment>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="has_depiction">
+    <rdfs:domain rdf:resource="#cohere_user"/>
+    <rdfs:range rdf:resource="#image"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has_screenshot">
+    <rdfs:range rdf:resource="#image"/>
+    <rdfs:domain rdf:resource="#website"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="includes_idea">
+    <rdfs:domain rdf:resource="#set"/>
+    <rdfs:range rdf:resource="#abstract_idea"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has_thumbnail">
+    <rdfs:domain rdf:resource="#cohere_user"/>
+    <rdfs:range rdf:resource="#image"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has_website">
+    <rdfs:domain rdf:resource="#abstract_idea"/>
+    <rdfs:range rdf:resource="#website"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has_homepage">
+    <rdfs:domain rdf:resource="#cohere_user"/>
+    <rdfs:range rdf:resource="#website"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has_to_node_role">
+    <rdfs:domain rdf:resource="#connection"/>
+    <rdfs:range rdf:resource="#connection_node_role"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has_thumbnail_image">
+    <rdfs:range rdf:resource="#image"/>
+    <rdfs:domain rdf:resource="#abstract_idea"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has_image">
+    <rdfs:domain rdf:resource="#abstract_idea"/>
+    <rdfs:range rdf:resource="#image"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has_from_node_role">
+    <rdfs:domain rdf:resource="#connection"/>
+    <rdfs:range rdf:resource="#connection_node_role"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="has_email_address">
+    <rdfs:domain rdf:resource="#cohere_user"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="has_modification_date">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:domain rdf:resource="#abstract_object"/>
+  </owl:DatatypeProperty>
+  <owl:FunctionalProperty rdf:ID="has_creator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#cohere_user"/>
+    <rdfs:domain rdf:resource="#abstract_object"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="has_label_role">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="#connection_label"/>
+    <rdfs:range rdf:resource="#connection_label_role"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="has_url">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#document"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="has_label">
+    <rdfs:range rdf:resource="#connection_label"/>
+    <rdfs:domain rdf:resource="#connection"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="uses_aif_scheme_type">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This property is specified at this level only for documentation purposes: in a more precise implementation, there would be specific properties for each subclass of AIF-scheme_node, linking them respectively and exclusively to one AIF-scheme_type</rdfs:comment>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="has_from_node">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#abstract_idea"/>
+    <rdfs:domain rdf:resource="#connection"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="has_creation_date">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#abstract_object"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="has_description">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#cohere_thing"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="has_to_node">
+    <rdfs:domain rdf:resource="#connection"/>
+    <rdfs:range rdf:resource="#abstract_idea"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="has_name">
+    <rdfs:domain rdf:resource="#cohere_thing"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:FunctionalProperty>
+  <connection_label_role rdf:ID="positive_label_role">
+    <has_creation_date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"
+    >2008-03-13T00:00:00</has_creation_date>
+  </connection_label_role>
+  <connection_label_role rdf:ID="neutral_label_role"/>
+  <connection_label_role rdf:ID="negative_label_role"/>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.4, Build 125)  http://protege.stanford.edu -->

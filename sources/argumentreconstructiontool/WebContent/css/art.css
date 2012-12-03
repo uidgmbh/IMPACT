@@ -1,0 +1,409 @@
+body {
+  min-width:357px;
+  overflow-x:hidden;
+  font-size: 12px;
+  font-family: verdana;
+}
+
+#form-scheme-parts label{
+	display: block;
+	width: 100%;
+	float: left;
+}
+
+/* partially from http://www.longren.org/wrapping-text-inside-pre-tags/ */
+pre {
+	white-space: pre-wrap;       /* css-3 */
+	white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+	white-space: -pre-wrap;      /* Opera 4-6 */
+	white-space: -o-pre-wrap;    /* Opera 7 */
+	word-wrap: break-word;       /* Internet Explorer 5.5+ */
+	font-size: 12px;
+	font-family: verdana;
+}
+
+/*******************
+ * Draw primitives *
+ *******************/
+#canvastable {
+	border: 0px;
+	padding: 0px;
+	border-spacing: 0px;
+	width: 800px;
+}
+
+#canvasleft {
+	float: left;
+	margin-right: 3px;
+	padding: 0;
+	background: #fff;
+	color: #000;
+	width: 400px;
+}
+
+#canvasright {
+	float:left;
+	margin-left: 10px;
+	padding: 0;
+	background: #fff;
+	color: #000;
+	width: 400px;
+}
+
+#canvasright p {
+	padding: 0 10px;
+}
+
+#canvasright .art-section {
+	padding: 10px;
+}
+
+#canvasright .art-section p {
+	padding: 0;
+}
+
+#view div.art-section#topbar{
+	padding: 0;
+}
+
+.art-title {
+	font-size: 14px;
+	font-weight: bold;
+	color: #000;
+	
+	margin: 0;
+	padding: 0px;
+}
+
+.art-desc {
+	display: block;
+	margin: 0px;
+	padding: 0px;
+	font-size: small;
+}
+
+#documenttext {
+	margin-top: 25px;
+	border-top: 1px solid #878787;
+	padding-top: 15px;
+}
+
+div#view div.art-section span.art-title {
+	margin-bottom: 20px;
+	margin-top: 0px;
+	display: block;
+}
+
+.art-button {
+/*	display: block;*/
+	display: inline;
+	
+	padding: 5px;
+	margin: 5px 0;
+	margin-left: 0;
+
+	border: thin solid #333;
+	background: #fff;
+	color: #000;
+	
+	cursor: pointer;
+}
+
+.art-button:hover {
+	/*background: #7AB817;
+	color: #fff;
+	font-family: calibri;*/
+}
+
+.art-button-group .art-button {
+	float: left;
+	margin: 5px;
+}
+
+.art-list {
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+
+}
+
+.art-list li {
+	display: block;
+	list-style: none;
+	
+	padding: 5px;
+	margin: 5px 0;
+	
+	border: thin solid #333;
+	background: #fff;
+	color: #000;
+	width: 325px;
+	cursor: pointer;
+}
+
+.art-list li:hover {
+	background: #333;
+	color: #fff;
+}
+
+/***************
+ * TABULAR SET *
+ ***************/
+
+.art-tabular.table {
+	border-spacing: 0;
+	border: 0;
+}
+
+.art-tabular.table .bordered{
+	border: thin solid #333;
+}
+
+.art-tabular.row {
+	height: 25px;
+	background: #fff;
+	padding: 5px;
+}
+
+.art-tabular.row.first {
+	background: #d0dafd;
+}
+
+.art-tabular.row.alternate {
+	background: #e8edff;
+}
+
+.art-tabular.column {
+	padding: 5px 10px;
+	text-align: left;
+	border: 0;
+	border-left: 2px solid #b9c9fe;
+}
+
+.art-tabular.column .art-title {
+	position: relative;
+	top: 0;
+	left: 0;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+
+	font-size: 16px;
+}
+
+.art-tabular.column .art-button {
+	text-align: right;
+}
+
+.art-tabular.column.first {
+	border: 0;
+}
+
+.art-tabular.row.first .art-tabular.column {
+	text-align: center;
+	font-weight: bold;
+}
+
+.art-closebox{
+	float: right;
+	top: 5px;
+	right: 8px;
+	position: relative;
+	z-index: 1000;
+}
+
+/************
+ * FORM SET *
+ ************/
+.art-form.form-item {
+
+}
+
+form.art-form.form-item {
+	margin: 15px 0;
+}
+
+form.art-form.form-item fieldset{
+	padding: 0;
+	margin-bottom: 15px;
+}
+
+.art-form.label-item {
+	font-weight: bold;
+	font-size: 14px;
+	margin: 1px 0;
+	display: block;
+	float: left;
+	width: 25px;
+	padding: 2px 10px 2px 0;
+}
+
+.art-form.text-item {
+	display: block;
+	width: 247px;
+	margin-bottom: 10px;
+}
+
+.art-form.submit-item {
+	margin: 10px 0;
+}
+
+.art-form.textarea-item {
+	display: block;
+	font-size: 11px;
+	margin: 0;
+}
+
+.art-form.smalllocked-item{
+	display: inline;
+	font-size: 9px;
+}
+
+.art-form.smalllabel-item{
+	display: inline;
+	font-size: 11px;
+}	
+
+.art-section {
+	/*display: block;*/
+
+	width: 100%;
+
+	padding: 5px 0;
+	margin: 0;
+
+	border: 0px;
+}
+
+.art-section .art-title {
+	display: block; 
+	/*
+	position: relative;
+	top: -4px;
+	left: -4px;
+	width: 100%;
+	padding: 2px;
+	border: 0;
+	border-top: thin solid #000;
+	border-left: thin solid #000;
+	*/
+	/* h2 */
+	font-size: 1.2em;
+	margin-bottom: 10px;
+	font-weight: bold;
+	color: 58595B;
+}
+
+#topbar {
+	padding: 3px 0;
+	/*
+	margin:0;
+	margin-bottom: 5px;
+	height: 24px;
+	border: 0px;
+	border-bottom: thin solid #000;
+	background : #b9c9fe;
+	*/
+}
+
+#topbar .art-back-button {
+	margin: 0 10px 0 0;
+	position: relative;
+	top: -2px;
+	left: 2px;
+	color: black;
+	font-weight: bold;
+}
+
+#topbar .art-title {
+	display: inline;
+/*	position: relative;
+	top: 0;
+	left: 0;
+	width: auto;
+	padding: 4px;
+	border: 0;
+	float: left;
+	font-size: 18px;
+	font-weight: normal;
+	*/
+	color: #7AB817;
+	font-size: 1.4em;
+	font-weight: bold;
+	line-height: 1.0em;
+	margin-bottom: 15px;
+	margin-top: 10px;
+}
+
+.art-list li {
+	outline-offset: 0px;
+	border-radius: 1px;
+	border: 1px solid #97999A;
+	box-shadow: 0px 1px 1px 0px #D5D5D5 inset, 1px 0px 1px 0px #D5D5D5 inset,
+		1px 0px 1px 0px #DDDDDD;
+	outline-style: none;
+	margin-bottom: 4px;
+	margin-top: 2px;
+	/*height: 22px;*/
+	padding: 4px 7px;
+	background: #F4F3F3;
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#F4F3F3), to(#DADADB));
+	background: -webkit-linear-gradient(#F4F3F3, #DADADB);
+	background: -moz-linear-gradient(#F4F3F3, #DADADB);
+	background: -ms-linear-gradient(#F4F3F3, #DADADB);
+	background: -o-linear-gradient(#F4F3F3, #DADADB);
+	background: linear-gradient(#F4F3F3, #DADADB);
+	/* IE fix for borders an gradients*/
+	-pie-background: linear-gradient(#F4F3F3, #DADADB);
+	behavior: url(toolbox/css/PIE.htc);
+	/* old way but with the round corner bug
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F9F9F9',
+		endColorstr='#ECECED' );*/
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+	cursor: pointer;
+	font-size: 14px;
+	margin-left:0;
+}
+
+.art-list li:hover {
+	background: #ECF5E1;
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#ECF5E1), to(#D4DDCA));
+	background: -webkit-linear-gradient(#ECF5E1, #D4DDCA);
+	background: -moz-linear-gradient(#ECF5E1, #D4DDCA);
+	background: -ms-linear-gradient(#ECF5E1, #D4DDCA);
+	background: -o-linear-gradient(#ECF5E1, #D4DDCA);
+	background: linear-gradient(#ECF5E1, #D4DDCA);
+	/* IE fix for borders an gradients*/
+	-pie-background: linear-gradient(#ECF5E1, #D4DDCA);
+	behavior: url(toolbox/css/PIE.htc);
+	color: #000;
+}
+
+.art-list li:active {
+	background: #D4DDCA;
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#D4DDCA), to(#ECF5E1));
+	background: -webkit-linear-gradient(#D4DDCA, #ECF5E1);
+	background: -moz-linear-gradient(#D4DDCA, #ECF5E1);
+	background: -ms-linear-gradient(#D4DDCA, #ECF5E1);
+	background: -o-linear-gradient(#D4DDCA, #ECF5E1);
+	background: linear-gradient(#D4DDCA, #ECF5E1);
+	/* IE fix for borders and gradients*/
+	-pie-background: linear-gradient(#D4DDCA, #ECF5E1);
+	behavior: url(toolbox/css/PIE.htc);
+}
+
+.art-list li:focus {
+	box-shadow: 0px 0px 1px 1px #7AB817 inset, 1px 0px 1px 0px #DDDDDD;
+}
+
+.art-message {
+  font-size: 12px;
+  color: #cc5555;
+}
+
+

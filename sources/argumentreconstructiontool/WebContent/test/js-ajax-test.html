@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>IMPACT ART test page for AJAX requests</title>
+<link rel="shortcut icon" type="image/x-icon" href="../impact.ico"/>
+
+<link type="text/css" href="../css/jquery-ui-1.8.20.custom.css" rel="stylesheet" />	
+<link type="text/css" href="../css/popup.css" rel="stylesheet" />	
+
+<script type='text/javascript' src='../js/jquery-1.7.2.js'></script>
+<script type='text/javascript' src='../js/jquery-ui-1.8.20.custom.js'></script>
+
+</head>
+
+<body>
+<noscript><span style='color:red'>JavaScript is turned off. Turn it on to use this application, as it is fully built on JavaScript.</span></noscript>
+<pre id="art">
+<h2>Test page for AJAX requests</h2>
+</pre>
+
+<script type='text/javascript' src='../js/init.js'></script>
+<script type='text/javascript'>
+
+$(function(){
+  var root = "http://localhost:8888/art";
+  $("#art").append("Starting test with adding a discussion...<br>");
+  var payload = 
+  array (
+    'title' : 'Discussion ',
+    'intro' : 'abouta bourtion',
+  );
+  var request = $.ajax({
+    "type": "POST",
+    "url": root+"/php/api.php?/discussions",
+    "data": payload
+  });
+  request.done(function(msg) {
+    $("#art").append("Done...<br>");
+    $("#art").append(msg+"<br>");
+  });
+  request.fail(function(jqXHR, textStatus){
+    $("#art").append("Add discussion test failed:\n");
+    $("#art").append(jqXHR.responseText+"\n");
+  });
+
+  //make a new relation. The payload contains the data that have to be sent out.
+  var payload = {
+    "relation": {
+      "elements": [
+        {
+          "type": "domain",
+          "name": "domain1",
+          "arity": "1",
+          "text_sections": [
+            {
+              "text": "a",
+              "document_id": "",
+              "start_offset": "",
+              "end_offset": ""
+            }
+          ]
+        },
+        {
+          "type": "proposition",
+          "name": "proposition1",
+          "arity": "1",
+          "conclusion": "1",
+          "text_sections": [
+            {
+              "text": "v",
+              "document_id": "",
+              "start_offset": "",
+              "end_offset": ""
+            }
+          ]
+        },
+        {
+          "type": "source",
+          "name": "source1",
+          "arity": "1",
+          "text_sections": [
+            {
+              "text": "d",
+              "document_id": "",
+              "start_offset": "",
+              "end_offset": ""
+            }
+          ]
+        }
+      ],
+      "type": "credible_source_as",
+      "discussionIDs": [
+        "28"
+      ],
+      "text_sections": [
+        {
+          "text": "",
+          "document_id": "",
+          "start_offset": "",
+          "end_offset": ""
+        }
+      ]
+    },
+    "skeletonMade": true
+  }
+});
+
+function concatObject(obj) {
+  str='';
+  for(prop in obj)
+  {
+    str+=prop + " value :"+ obj[prop]+"\n";
+  }
+  return(str);
+}
+
+</script>
+<br style='clear: both' />
+<!--<br/><br/><br/><br/><br/><br/><br/><br/>-->
+<a href='../resetdb1.php'>Reset the database to it's original state</a><br/>
+</body>
+</html>

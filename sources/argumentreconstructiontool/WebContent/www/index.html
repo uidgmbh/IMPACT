@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>IMPACT ART</title>
+<!-- ALL scripts/function calls/external documens that are loaded in this file, are present in the toolbox. -->
+<link rel="shortcut icon" type="image/x-icon" href="impact.ico"/>
+
+<link type="text/css" href="../css/jquery-ui-1.8.20.custom.css" rel="stylesheet" />	
+<link type="text/css" href="../css/jquery-ui-1.8.11.custom.css" rel="stylesheet" />	
+<link type="text/css" href="../css/art.css" rel="stylesheet" />	
+<link type="text/css" href="../css/main.css" rel="stylesheet" />
+<link type="text/css" href="../css/impact-green.css" rel="stylesheet" />
+
+<script type='text/javascript' src='jquery-1.7.2.js'></script>
+<script type='text/javascript' src='jquery-ui-1.8.20.custom.js'></script>
+<script type='text/javascript' src='jquery.jscrollpane.min.js'></script>
+
+<!--<script type='text/javascript' src='js/store.js'></script>
+<script type='text/javascript' src='js/inheritance.js'></script>
+
+<script type='text/javascript' src='js/draw.js'></script>
+<script type='text/javascript' src='js/selector.js'></script>
+
+<script type='text/javascript' src='js/views/Render.js'></script>
+<script type='text/javascript' src='js/views/DiscussionRender.js'></script>
+<script type='text/javascript' src='js/views/ArgumentRender.js'></script>
+<script type='text/javascript' src='js/views/DocumentRender.js'></script>
+
+<script type='text/javascript' src='js/models/DbItem.js'></script>
+<script type='text/javascript' src='js/models/TextSection.js'></script>
+<script type='text/javascript' src='js/models/Annotation.js'></script>
+<script type='text/javascript' src='js/models/Relation.js'></script>
+<script type='text/javascript' src='js/models/Discussion.js'></script>
+<script type='text/javascript' src='js/models/Argument.js'></script>
+<script type='text/javascript' src='js/models/Premise.js'></script>
+<script type='text/javascript' src='js/models/Conclusion.js'></script>
+<script type='text/javascript' src='js/models/Document.js'></script>
+
+<script type='text/javascript' src='js/pages.js'></script>
+
+<script type='text/javascript' src='js/misc.js'></script>-->
+</head>
+
+<body>
+<noscript><span style='color:red'>JavaScript is turned off. Turn it on to use this application, as it is fully built on JavaScript.</span></noscript>
+<div id='stagebg'style="height: 600px;">
+<div id='stage' style="height: 600px; display: block;">
+<div id="art">
+<!--<table border='0' style='canvastable'>
+<tr><td valign='top' colspan='2'></td></tr>
+<tr><td valign='top'>
+<div id='canvasleft'></div>
+</td><td valign='top'>
+<div id='canvasright'><p style='font-size: 30px; color: #AAAAAA'>No document selected.</p>
+</div>
+</td></tr>
+</table>-->
+</div> <!-- end of art -->
+</div> <!-- end of stage -->
+</div> <!-- end of stagebg -->
+
+<script type='text/javascript' src='../js/init.js'></script>
+<script type='text/javascript'>
+
+/**
+* Replace the normal jQuery getScript function with one that supports
+* debugging and which references the script files as external resources
+* rather than inline.
+* source: http://www.lockencreations.com/2011/07/02/cant-debug-imported-js-files-when-using-jquery-getscript/
+
+function dynamicallyLoadJSFile(url, callback){
+	var head = document.getElementsByTagName("head")[0];
+	var script = document.createElement("script");
+	script.src = url;
+	
+	// Handle Script loading
+	var done = false;
+	
+	// Attach handlers for all browsers
+	script.onload = script.onreadystatechange = function(){
+		if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
+			done = true;
+			if (callback){
+				callback();
+			}
+			// Handle memory leak in IE
+			script.onload = script.onreadystatechange = null;
+		}
+	};
+	head.appendChild(script);
+	
+	// We handle everything using the script element injection
+	return undefined;
+}*/
+
+//actual call of the init() function whenever the document is ready to run.
+$(function(){
+  toolboxState = {};
+  toolboxState.art = {};
+  toolboxState.art.path = "..";
+  ART.init(toolboxState);
+});
+
+
+</script>
+<br style='clear: both' />
+<br/><br/><br/>
+<a href='resetdb1.php'>Reset the database to it's original state</a><br/>
+</body>
+</html>

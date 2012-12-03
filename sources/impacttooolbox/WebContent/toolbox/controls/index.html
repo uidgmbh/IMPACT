@@ -1,0 +1,1517 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>jQuery IMPACT UI Showcase</title>
+			
+		<!-- Include the JQuery Library and the JQuery Theme. Never change the content of this files manually -->
+		<link type="text/css" href="css/jquery/jquery-ui-1.8.11.custom.css" rel="stylesheet" />	
+		<script type="text/javascript" src="js/jquery/jquery-1.5.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery/jquery-ui-1.8.11.custom.min.js"></script>
+
+		<!-- the impact UI specific jQuery initialization script -->
+		<script type="text/javascript" src="js/jquery/custom/impact-init.js"></script>	
+
+		<!-- Include the green Impact theme, never change this file manually -->
+		<link type="text/css" href="css/custom-theme/impact-green.css" rel="stylesheet" />
+		
+		<!-- Include your optional additional CSS styles, if necessary create this file (you may even rename it) and uncomment the following line -->
+		<!-- <link type="text/css" href="css/additional-styles/custom-named.css" rel="stylesheet" /> -->
+
+		<!-- JQuery Plug-ins -->
+		
+		<!-- the jScrollPane script -->
+		<script type="text/javascript" src="js/jquery/plugins/jquery.jscrollpane.min.js"></script>	
+		<!-- the mousewheel plug-in - to provide mouse wheel support in jScrollPane -->
+		<script type="text/javascript" src="js/jquery/plugins/jquery.mousewheel.js"></script>
+		
+		<!-- the custom check box and radio buttons script -->
+		<script type="text/javascript" src="js/jquery/plugins/ui.checkbox.js"></script>
+
+		<!-- the custom select box script (for drop down menus) -->
+		<script type="text/javascript" src="js/jquery/plugins/jquery.selectbox-0.5.js"></script>
+		<!-- styles needed by the custom select box script -->
+		<link rel="stylesheet" type="text/css" media="all" href="css/jquery/plugins/jquery.selectbox.css" />
+		
+		<!-- the progress indicator script -->
+		<script type="text/javascript" src="js/jquery/plugins/jquery.busy.min.js"></script>
+
+		<!-- the time picker script -->
+		<script type="text/javascript" src="js/jquery/plugins/jquery.ui.timepicker.js"></script>
+		<!-- styles needed by the time picker script -->
+		<link rel="stylesheet" type="text/css" media="all" href="css/jquery/plugins/jquery-ui-timepicker.css" />
+		
+		
+		<!--  this is just the demo page CSS, not needed by the widgets*/  -->
+		<style type="text/css">
+			div#page-container{font: 12pt Calibri, Arial, sans-serif; margin: 50px;}
+			.demoHeaders { margin-top: 20px; }
+			#dialog_link {padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
+			#dialog_link span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
+			ul#icons {margin: 0; padding: 0;}
+			ul#icons li {margin: 2px; position: relative; padding: 4px 0; cursor: pointer; float: left;  list-style: none;}
+			ul#icons span.ui-icon {float: left; margin: 0 4px;}
+			p,ul,ul li,ul li ul,ul li ul li{font-size: 12pt;}
+			h1{font-size: 18pt; line-height:56pt; font-weight: bold; color:#000;}
+			h2{font-size: 15pt; line-height:28pt; font-weight: bold; color:#222; border-bottom: 1px solid #222}
+			h3{font-size: 14pt; line-height:42pt; font-weight: bold; color:#444;}
+			h4{font-size: 13pt; line-height:38pt; font-weight: bold; color:#666;}
+			p{width:75%;padding:10px 0;}
+			p i{font-style: italic; font-weight:bold; color:#333;}
+			ul{padding:0 0 10px 10px;}
+			ul li{padding:0 10px; list-style: disc inside;}
+			ul li ul li{list-style: circle inside;}
+			ul li ul li ul li{list-style: square inside;}
+			body .syntaxhighlighter {overflow:hidden!important;}
+			body .syntaxhighlighter .toolbar{display:none!important;}
+			body .syntaxhighlighter a, body .syntaxhighlighter div, body .syntaxhighlighter code, body .syntaxhighlighter table, 
+			body .syntaxhighlighter table td, body .syntaxhighlighter table tr, body .syntaxhighlighter table tbody, 
+			body .syntaxhighlighter table thead, body .syntaxhighlighter table caption, body .syntaxhighlighter textarea{font-size:12px!important;}
+		</style>
+		<!-- End Demo Page CSS -->
+		
+		<!-- this is just the demo page Syntax Higlighting! This is not needed by the widgets !!! -->
+		<link href="http://alexgorbatchev.com/pub/sh/current/styles/shThemeEclipse.css" rel="stylesheet" type="text/css" />
+		<link href="http://alexgorbatchev.com/pub/sh/current/styles/shCore.css" rel="stylesheet" type="text/css" />
+		<script src="http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js" type="text/javascript"></script>
+		<script src="http://alexgorbatchev.com/pub/sh/current/scripts/shBrushJScript.js" type="text/javascript"></script>
+		<script src="http://alexgorbatchev.com/pub/sh/current/scripts/shBrushXml.js" type="text/javascript"></script>
+		<script type="text/javascript">
+     		SyntaxHighlighter.all()
+		</script>
+		<!-- End Syntax Higlighting -->
+		
+	</head>
+
+	<body><div id="page-container">
+
+	<h1>Welcome to jQuery IMPACT UI Showcase!</h1>
+	<h2>This page demonstrates the available widgets using the green IMPACT UI theme.</h2>
+	<h3>PREFACE:</h3>
+	<h4>JQuery</h4>
+	<ul>
+		<li>The JavaScript Framework used to build the RIA components</li>
+		<li>Version: 1.5.1</li>
+		<li>Standard widgets and UI components: <a href="http://jqueryui.com/demos/">http://jqueryui.com/demos/</a></li>
+		<li>API documentation: <a href="http://api.jquery.com/">http://api.jquery.com/</a></li>
+		<li>Dual licensed under the MIT and GPL licenses.</li>
+		<li>Required files:
+			<ul>
+				<li>js/jquery/jquery-1.5.1.min.js</li>
+				<li>js/jquery/jquery-ui-1.8.11.custom.min.js</li>
+				<li>css/jquery/jquery-ui-1.8.11.custom.css</li>
+				<li>css/jquery/images/*.*</li>				
+			</ul>
+		</li>
+	</ul>
+	
+	<h4>IMPACT UI</h4>
+	<ul>
+		<li>The CSS, js and image files used to style the RIA components.</li>
+		<li>Version: n.A.</li>
+		<li>Required files:
+			<ul>
+				<li>css/custom-theme/impact-green.css</li>
+				<li>css/custom-theme/images/*.*</li>
+				<li>css/jquery/custom/impact-init.js</li>
+			</ul>
+		</li>
+	</ul>
+	
+	
+	<h4>Used plug-ins</h4>
+	<ul>
+		<li>jScrollPane
+			<ul>
+				<li>Provides custom styled scroll bars</li>
+				<li>Version: 2.0.0</li>
+				<li>New versions available from: <a href="https://github.com/vitch/jScrollPane/archives/master">https://github.com/vitch/jScrollPane/archives/master</a></li>
+				<li>Documentation: <a href="http://jscrollpane.kelvinluck.com/">http://jscrollpane.kelvinluck.com/</a></li>
+				<li>Tutorial: <a href="http://www.protofunc.com/2008/09/06/tutorial-barrierearme-checkbox-und-radio-button-ersetzung-mit-jquery-ui-und-der-ui-reflecting-technik">www.protofunc.com</a></li>
+				<li>Dual licensed under the MIT and GPL licenses.</li>
+				<li>Required files:
+					<ul>
+						<li>js/jquery/plugins/jquery.jscrollpane.min.js</li>
+						<li>js/jquery/plugins/jquery.mousewheel.js</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li>Radiobutton- und Checkbox-Replacement
+			<ul>
+				<li>Provides custom styled check boxes and radio buttons</li>
+				<li>Version: 1.4.1</li>
+				<li>New versions available from: <a href="https://github.com/aFarkas/accessible--stylable-Radiobuttons-and-Checkboxes">https://github.com/aFarkas/accessible--stylable-Radiobuttons-and-Checkboxes</a></li>
+				<li>Documentation: <a href="http://www.protofunc.com/scripts/jquery/checkbox-radiobutton/">http://www.protofunc.com/scripts/jquery/checkbox-radiobutton//</a></li>
+				<li>Dual licensed under the MIT and GPL licenses.</li>
+				<li>Required files:
+					<ul>
+						<li>js/jquery/plugins/ui.checkbox.js</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li>jQuery selectbox plugin
+			<ul>
+				<li>Provides custom styled drop down menus and combo boxes (select boxes)</li>
+				<li>Version: 0.5</li>
+				<li>Documentation available from: <a href="http://www.devirtuoso.com/2009/08/styling-drop-down-boxes-with-jquery/">http://www.devirtuoso.com/2009/08/styling-drop-down-boxes-with-jquery/</a></li>
+				<li>Dual licensed under the MIT and GPL licenses.</li>
+				<li>Required files:
+					<ul>
+						<li>js/jquery/plugins/jquery.selectbox-0.5.js</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li>jQuery-busy 
+			<ul>
+				<li>Allows to effortlessy show or hide animated activity / busyness indicator.</li>
+				<li>Version: 1.0.3</li>
+				<li>New versions and documentation available from: <a href="http://kammerer.boo.pl/code/jquery-busy/">http://kammerer.boo.pl/code/jquery-busy/</a></li>
+				<li>Dual licensed under the MIT and GPL licenses.</li>
+				<li>Required files:
+					<ul>
+						<li>js/jquery/plugins/jquery.busy.min.js</li>
+						<li>css/jquery/plugins/images/busy.gif</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li>Timepicker 
+			<ul>
+				<li>A time picker (hour/minutes) similiar with other official jQuery UI widgets like the date picker. </li>
+				<li>Version: 0.1.0</li>
+				<li>New versions and documentation available from: <a href="http://fgelinas.com/code/timepicker/">http://fgelinas.com/code/timepicker/</a></li>
+				<li>Dual licensed under the MIT or GPL Version 2 licenses.</li>
+				<li>Required files:
+					<ul>
+						<li>js/jquery/plugins/jquery.ui.timepicker.js</li>
+						<li>css/jquery/plugins/jquery-ui-timepicker.css</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+	<hr/><hr/>
+	
+	<h3 style="margin-top:30px">AVAILABLE COMPONENTS:</h3>
+
+		<!-- Text Input Field -->
+		
+		<h2 class="demoHeaders">Text Input Fields</h2>
+		<p>Text input fields are editable by users. They are illustrated as
+		rectangular areas in which users can enter text or modify existing text.
+		Text input fields can be active or disabled. Keyboard focus is
+		supported.</p>
+		<form action="#">
+			<fieldset>
+				<div class="text-input"><label for="enabled-text-field1">enabled (100px)</label><input type="text" id="enabled-text-field1" value="Lorem ipsum" /></div>
+				<div class="text-input"><label for="enabled-text-field2">enabled (200px)</label><input style="width:200px" type="text" id="enabled-text-field2" value="Lorem ipsum" /></div>
+				<div class="text-input"><label for="enabled-text-field3">enabled (20px)</label><input style="width:20px" type="text" id="enabled-text-field3" value="Lor" /></div>
+				<div class="text-input"><label for="readonly-text-field">read only</label><input type="text" id="readonly-text-field" value="Lorem ipsum" readonly="readonly" /></div>
+			</fieldset>
+		</form>
+		
+		<h4>Code snippet</h4>
+		<pre class="brush: xml">
+&lt;!-- This code snippet shows how to create Text Input Fields like above: --&gt;
+&lt;form action=&quot;#&quot;&gt;
+
+	&lt;fieldset&gt;
+		&lt;!-- Text Field Input needs a wrapping &lt;div&gt; with class &quot;text-input&quot; like this: --&gt;
+		&lt;div class=&quot;text-input&quot;&gt;
+			&lt;label for=&quot;enabled-text-field1&quot;&gt;enabled (default size)&lt;/label&gt;
+			&lt;input type=&quot;text&quot; id=&quot;enabled-text-field1&quot; value=&quot;Lorem ipsum&quot; /&gt;
+		&lt;/div&gt;
+		
+		&lt;!-- The size of the Text Field Input can be changed by CSS (stlye=&quot;width:200px&quot;)--&gt;
+		&lt;div class=&quot;text-input&quot;&gt;
+			&lt;label for=&quot;enabled-text-field2&quot;&gt;enabled (200px)&lt;/label&gt;
+			&lt;input style=&quot;width:200px&quot; type=&quot;text&quot; id=&quot;enabled-text-field2&quot; value=&quot;Lorem ipsum&quot; /&gt;
+		&lt;/div&gt;
+		
+		&lt;!-- To mark a Text Field Input as readonly the attribute readonly=&quot;readonly&quot; has to be added to the &lt;input&gt; --&gt;
+		&lt;div class=&quot;text-input&quot;&gt;
+			&lt;label for=&quot;readonly-text-field&quot;&gt;read only&lt;/label&gt;
+			&lt;input type=&quot;text&quot; id=&quot;readonly-text-field&quot; value=&quot;Lorem ipsum&quot; readonly=&quot;readonly&quot; /&gt;
+		&lt;/div&gt;
+	&lt;/fieldset&gt;
+&lt;/form&gt;</pre>
+ 
+		<h4>Drawbacks</h4>
+		<ul>
+			<li>There is no disabled state, only the readonly.</li>
+			<li>Selected text in the input is highlighted blue, this color can not be modified.</li>
+		</ul>
+		
+		<h4>Dependencies (to be included in HTML file header)</h4>
+		<ul>
+			<li>JQuery UI Core</li>
+			<li>JQuery UI Widget</li>
+			<li>impact-green.css</li>
+			<li>impact-init.js</li>
+		</ul>
+		
+		<!-- Buttons -->
+
+		<script type="text/javascript"><!--
+		$(function(){
+			$("#demo-button").click(function() {
+				//This must be the source code that is executed when clicking the buttons:
+				alert("You clicked the button...");
+				return false;
+			});
+		});
+		--></script>
+
+		<h2 class="demoHeaders">Buttons</h2>
+		<p>Users can initiate an immediate action with a button, e.g. submit
+		or confirm information. By default, the button in focus is invoked when
+		Enter is pressed. Button labels can be either text, an icon or a
+		combination of both. Buttons can be used singly or in groups (when
+		actions are closely related). Groups of buttons can have a label to
+		easily identify the group.</p>
+		
+		<h3>Single Buttons</h3>
+		<form action="#">
+			<fieldset>
+				<span>Buttons:</span>
+				<button id="demo-button">A button element</button>
+				<button disabled="disabled">A disabled button element</button>
+				<span>Input submit buttons</span>
+				<input type="submit" value="A submit button" /> 
+				<input type="submit" value="A disabled submit button" disabled="disabled" />
+			</fieldset>
+		</form>
+		
+		<h3>Grouped Buttons</h3>
+		<form action="#">
+			<fieldset class="button-group">
+				<button>A button element</button>
+				<button>Another button element</button>
+			</fieldset >
+		</form>
+
+		<h4>Code snippet</h4>
+		<pre class="brush: js">
+//This java script code snippet shows how to attach a special action to a button:
+$(function(){
+
+	//jQuery code to access the button with id &quot;demo-button&quot;
+	$(&quot;#demo-button&quot;).click(function() {
+
+		//Code which is to be executed when the button is clicked.
+		alert(&quot;You clicked the button...&quot;);
+		return false;
+	});
+});</pre>
+		<pre class="brush: xml">
+&lt;!-- This HTML code snippet shows how to create buttons like them above. --&gt;
+&lt;form action=&quot;#&quot;&gt;
+    &lt;fieldset&gt;
+    
+        &lt;!-- a button can just be a &lt;button&gt; or a &lt;input type=&quot;submit&quot;&gt;.
+             There is no special class to set and nothing special to be considered.--&gt;
+        &lt;button id=&quot;demo-button&quot;&gt;A button element&lt;/button&gt;
+        &lt;button disabled=&quot;disabled&quot;&gt;A disabled button element&lt;/button&gt;
+        &lt;input type=&quot;submit&quot; value=&quot;A submit button&quot; /&gt;
+        &lt;input type=&quot;submit&quot; value=&quot;A disabled submit button&quot; disabled=&quot;disabled&quot; /&gt;
+    &lt;/fieldset&gt;
+    
+    &lt;!-- For grouped buttons, the sourrounding &lt;fieldset&gt; or &lt;div&gt; must have the class &quot;button-group&quot; --&gt;
+    &lt;fieldset class=&quot;button-group&quot;&gt;
+        &lt;button&gt;A button element&lt;/button&gt;
+        &lt;button&gt;Another button element&lt;/button&gt;
+    &lt;/fieldset &gt;
+&lt;/form&gt;</pre>
+
+		<h4>Drawbacks</h4>
+		<ul>
+			<li>There is no selector fot the state "focused and hover" or "focused and clicked", because the hover state includes the focus state.</li>
+		</ul>
+
+		<h4>Dependencies (to be included in HTML file header)</h4>
+		<ul>
+			<li>JQuery UI Core</li>
+			<li>JQuery UI Widget</li>
+			<li>impact-green.css</li>
+			<li>impact-init.js</li>
+		</ul>
+		
+		<!-- Toggle Buttons -->
+
+		<h2 class="demoHeaders">Toggle Buttons</h2>		
+		
+		<p>Toggle buttons represent a setting with two states: on and off. 
+		Users can use toggle buttons to choose between these two states. 
+		Like all buttons, the icon and/or text remains the same whether the 
+		button is in the on or off state. Toggle buttons can be placed as
+		single buttons or grouped.<br/> 
+		Variation a – multiple choice possible:<br/> 
+		more than one toggle button in a group can have the state on 
+		(as with check boxes). <br/>
+		Variation b – single choice possible: <br/>
+		only one toggle button in a group can have the state on (as with radio buttons).<br/> 
+		Although check boxes/radio buttons and toggle buttons have the same 
+		function, they differ in the way they are integrated within the 
+		IMPACT toolbox: check boxes and radio buttons are used in dialogue 
+		boxes and menus, toggle buttons are used within toolbars or visualisations. 
+		Toggle buttons are also used in dialogue boxes if consistency with a 
+		toolbar is necessary.<br/>
+		Groups of toggle buttons can have a label to easily identify the group.</p>
+		
+		<h3>Single Toggle Button</h3>
+		<div class="demo">
+			<input type="checkbox" class="toggle-button" id="button-as-toggle-button" /><label for="button-as-toggle-button">Toggle Me!</label>
+			<input type="checkbox" class="toggle-button" id="small-button-as-toggle-button" /><label for="small-button-as-toggle-button">Togl</label>
+			<input type="checkbox" class="toggle-button" id="big-button-as-toggle-button" /><label for="big-button-as-toggle-button">Toggle this very big button!</label>
+		</div>
+		
+		
+		<h3>Variation a (like checkboxes)</h3>
+		<div class="demo">
+			<form action="#">
+				<fieldset class="checkbox-toggle-buttons toggle-button-group">
+					<input type="checkbox" id="check1" /><label for="check1">Check 1</label>
+					<input type="checkbox" id="check2" /><label for="check2">Check 2</label>
+					<input type="checkbox" id="check3" /><label for="check3">Check 3</label>
+				</fieldset>
+			</form>
+		</div>
+		
+		<h3>Variation b (like radio buttons)</h3>
+		<div class="demo">
+			<form action="#">
+				<fieldset class="checkbox-toggle-buttons toggle-button-group">
+					<input type="radio" id="radio1" name="radio" /><label for="radio1">Choice 1</label>
+					<input type="radio" id="radio2" name="radio" checked="checked" /><label for="radio2">Choice 2</label>
+					<input type="radio" id="radio3" name="radio" /><label for="radio3">Choice 3</label>
+				</fieldset>
+			</form>
+		</div>
+		
+		<h3>Disabled Toggle Button</h3>
+		<div class="demo">
+			<input disabled="disabled" type="checkbox" class="toggle-button" id="disabled-toggle-button" /><label for="disabled-toggle-button">Toggle</label>
+			<input disabled="disabled" type="checkbox" class="toggle-button" id="disabled-active-toggle-button" checked="checked"/><label for="disabled-active-toggle-button">Toggle</label>
+		</div>
+
+		<h4>Code snippet</h4>
+		<pre class="brush: xml">
+&lt;!-- This HTML code snippet shows how to create toggle buttons like them above. --&gt;
+&lt;form action=&quot;#&quot;&gt;
+	&lt;fieldset&gt;
+		&lt;!-- A simple Toggel  Button ist just a &lt;input&gt; with type=&quot;checkbox&quot; and class=&quot;toggle-button&quot; --&gt;
+		&lt;!-- To mark a Toggle Button as checked the attribute checked=&quot;checked&quot; must be set to the &lt;input&gt;.--&gt;
+		&lt;input type=&quot;checkbox&quot; class=&quot;toggle-button&quot; id=&quot;button-as-toggle-button&quot; /&gt;
+		&lt;label for=&quot;button-as-toggle-button&quot;&gt;Toggle Me!&lt;/label&gt;
+	&lt;/fieldset&gt;
+	
+	&lt;!-- For grouped toggle buttons, the sourrounding &lt;fieldset&gt; or &lt;div&gt; must have the class &quot;toggle-button-group&quot; --&gt;
+	&lt;!-- To act like check-boxes, the sourrounding &lt;fieldset&gt; must have the class &quot;checkbox-toggle-buttons&quot; --&gt;
+	&lt;fieldset class=&quot;checkbox-toggle-buttons toggle-button-group&quot;&gt;
+		&lt;input type=&quot;checkbox&quot; id=&quot;check1&quot; /&gt;&lt;label for=&quot;check1&quot;&gt;Check 1&lt;/label&gt;
+		&lt;input type=&quot;checkbox&quot; id=&quot;check2&quot; checked=&quot;checked&quot; /&gt;&lt;label for=&quot;check2&quot;&gt;Check 2&lt;/label&gt;
+		&lt;input type=&quot;checkbox&quot; id=&quot;check3&quot; /&gt;&lt;label for=&quot;check3&quot;&gt;Check 3&lt;/label&gt;
+	&lt;/fieldset&gt;
+	
+	&lt;!-- For Toggel Buttons that act like radio buttons, the sourrounding &lt;fieldset&gt; or &lt;div&gt; must 
+	have class &quot;checkbox-toggle-buttons&quot; and in addition the type hast to be &quot;radio&quot; instead of &quot;checkbox&quot; --&gt;
+	&lt;fieldset class=&quot;checkbox-toggle-buttons toggle-button-group&quot;&gt;
+		&lt;input type=&quot;radio&quot; id=&quot;radio1&quot; name=&quot;radio&quot; /&gt;&lt;label for=&quot;radio1&quot;&gt;Choice 1&lt;/label&gt;
+		&lt;input type=&quot;radio&quot; id=&quot;radio2&quot; name=&quot;radio&quot; checked=&quot;checked&quot; /&gt;&lt;label for=&quot;radio2&quot;&gt;Choice 2&lt;/label&gt;
+		&lt;input type=&quot;radio&quot; id=&quot;radio3&quot; name=&quot;radio&quot; /&gt;&lt;label for=&quot;radio3&quot;&gt;Choice 3&lt;/label&gt;
+	&lt;/fieldset&gt;
+	
+	&lt;fieldset&gt;
+		&lt;!-- To disable a Toggel Button add the attribute disabled=&quot;disabled&quot; to the input --&gt;
+		&lt;input disabled=&quot;disabled&quot; type=&quot;checkbox&quot; class=&quot;toggle-button&quot; id=&quot;disabled-toggle-button&quot; /&gt;
+		&lt;label for=&quot;disabled-toggle-button&quot;&gt;Toggle&lt;/label&gt;
+		&lt;input disabled=&quot;disabled&quot; type=&quot;checkbox&quot; class=&quot;toggle-button&quot; id=&quot;disabled-active&quot; checked=&quot;checked&quot;/&gt;
+		&lt;label for=&quot;disabled-active&quot;&gt;Toggle&lt;/label&gt;
+	&lt;/fieldset&gt;
+&lt;/form&gt;</pre>
+
+		<h4>Drawbacks</h4>
+		<ul>
+			<li>Again, there is no selector fot the state "focused and hover" or "focused and clicked", because the hover state includes the focus state.</li>
+		</ul>
+
+
+		<h4>Dependencies (to be included in HTML file header)</h4>
+		<ul>
+			<li>JQuery UI Core</li>
+			<li>JQuery UI Widget</li>
+			<li>impact-green.css</li>
+			<li>impact-init.js</li>
+		</ul>
+
+		<h2 class="demoHeaders">Scroll Bars</h2>		
+		<p>Scroll bars are used to move through
+		content. Content can be continuous text,
+		pictures, a film, visualisations etc.</p>
+
+		<h3>Scroll bars vertical</h3>
+		<div class="scroll-pane" style="width: 250px; height: 100px; overflow: auto">
+			<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+			tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+			voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+			<p>Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+			amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+			nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+			sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+			rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+			ipsum dolor sit amet.</p>
+		</div>
+		<h3>Scroll bars vertical (long)</h3>
+		<div class="scroll-pane" style="width: 100px; height: 300px; overflow: auto">
+			<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+			tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+			voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+			<p>Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+			amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+			nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+			sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+			rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+			ipsum dolor sit amet.</p>
+		</div>
+		<h3>Scroll bars horizontal</h3>
+		<div class="scroll-pane" style="width: 350px; height: 100px; overflow: auto">
+			<p style="width:450px">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+			tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+			voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+		</div>
+
+		<h4>Code snippet</h4>
+		<pre class="brush: xml">	
+&lt;!-- This HTML code snippet shows how to make something scrollable with custom Scrollbars --&gt;
+&lt;!-- To add the custom styled scroll bars, just wrap the scrollable area with a &lt;div&gt; with class=&quot;scroll-pane&quot; --&gt;
+&lt;!-- ! If the Text is to short, there will be no scroll bars ! --&gt;
+&lt;!-- ! If the wrapping &lt;div&gt; has no fixed width and height, it will grow automatically and no scrollbars appear ! --&gt;
+&lt;div class=&quot;scroll-pane&quot; style=&quot;widht:100px;height:50px;&quot;&gt;
+	&lt;p&gt;Lorem ipsum dolor...&lt;/p&gt;
+&lt;/div&gt;
+		</pre>
+
+		<h4>Drawbacks</h4>
+		<ul>
+			<li>Deactivating the scrollbar seams not to be possible</li>
+		</ul>
+
+		<h4>Dependencies (to be included in HTML file header)</h4>
+		<ul>
+			<li>JQuery UI Core</li>
+			<li>JQuery UI Widget</li>
+			<li>impact-green.css</li>
+			<li>impact-init.js</li>
+			<li>jquery.jscrollpane.min.js</li>
+			<li>jquery.mousewheel.js</li>
+			<li>jquery.jscrollpane.css</li>
+		</ul>
+
+		<h2 class="demoHeaders">Check Boxes</h2>		
+			
+		<p>Check boxes are used when users are supposed to choose an option, e.g. yes/no. 
+		The option is put as a statement (rather than a question), the label indicates 
+		the selected state. Check boxes are used only to toggle an option on or off or 
+		to select or deselect an item. In contrary to radio buttons, check boxes can 
+		be used to choose more than than one option, e.g. in a list of options the 
+		selection of more than one options is possible.</p> 
+		
+		<h3>Enabled</h3>
+		<form action="#">
+			<fieldset>
+				<ul class="list-no-bullets">
+					<li><input type="checkbox" class="checkbox" id="checkbox1_1"/><label for="checkbox1_1">Check 1</label></li>
+					<li><input type="checkbox" class="checkbox" id="checkbox1_2" checked="checked"/><label for="checkbox1_2">Check 2</label></li>
+					<li><input type="checkbox" class="checkbox" id="checkbox1_3" checked="checked"/><label for="checkbox1_3">Check 3</label></li>
+				</ul>
+			</fieldset>
+		</form>
+		
+		<h3>Disabled</h3>
+		<form action="#">
+			<fieldset>
+				<ul class="list-no-bullets">
+					<li><input type="checkbox" class="checkbox" id="checkbox2_1" disabled="disabled" /><label for="checkbox2_1">Check 1</label></li>
+					<li><input type="checkbox" class="checkbox" id="checkbox2_2" disabled="disabled" checked="checked"/><label for="checkbox2_2">Check 2</label></li>
+					<li><input type="checkbox" class="checkbox" id="checkbox2_3" disabled="disabled" checked="checked"/><label for="checkbox2_3">Check 3</label></li>
+				</ul>
+			</fieldset>
+		</form>
+		
+		<h4>Code snippet</h4>
+		<pre class="brush: xml">	
+&lt;!-- This HTML code snippet shows how to make select boxes like them above --&gt;
+&lt;form&gt;
+	&lt;fieldset&gt;
+		
+		&lt;!-- A checkbox must be a &lt;input&gt; with type=&quot;checkbox&quot; AND class=&quot;checkbox&quot; --&gt;
+		&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; id=&quot;checkbox1&quot;/&gt;&lt;label for=&quot;checkbox1&quot;&gt;Check 1&lt;/label&gt;
+		
+		&lt;!-- A checkbox can be disabled with attribute disabled=&quot;disabled&quot; --&gt;
+		&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; id=&quot;checkbox2&quot; disabled=&quot;disabled&quot;/&gt;&lt;label for=&quot;checkbox1&quot;&gt;Check 2&lt;/label&gt;
+		
+		&lt;!-- A checkbox can be selected by default with checked=&quot;checked&quot; --&gt;
+		&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; id=&quot;checkbox3&quot; checked=&quot;checked&quot; /&gt;&lt;label for=&quot;checkbox1&quot;&gt;Check 3&lt;/label&gt;
+	&lt;/fieldset&gt;
+&lt;/form&gt;</pre>
+
+		<h4>Drawbacks</h4>
+		<ul>
+			<li>Again, there is no selector fot the state "focused and hover" or "focused and clicked", because the hover state includes the focus state.</li>
+		</ul>
+
+		<h4>Dependencies (to be included in HTML file header)</h4>
+		<ul>
+			<li>JQuery UI Core</li>
+			<li>JQuery UI Widget</li>
+			<li>impact-green.css</li>
+			<li>impact-init.js</li>
+			<li>ui.checkbox.js</li>
+		</ul>
+
+		<h2 class="demoHeaders">Radio Buttons</h2>		
+
+		<p>Radio buttons allow to choose one option only out of a set of mutually 
+		exclusive, yet related options. They work as the channel presets on radios do. 
+		All options are visible and can be selected with one click only, with many 
+		options possible this requires quite some space.</p> 
+		
+		<h3>Enabled</h3>
+		<form action="#">
+			<fieldset>
+				<ul class="list-no-bullets">
+					<li><input type="radio" class="radiobutton" id="radiobutton1_1" name="radiobutton-group1"/><label for="radiobutton1_1">Radio 1</label></li>
+					<li><input type="radio" class="radiobutton" id="radiobutton1_2" name="radiobutton-group1" checked="checked"/><label for="radiobutton1_2">Radio 2</label></li>
+					<li><input type="radio" class="radiobutton" id="radiobutton1_3" name="radiobutton-group1"/><label for="radiobutton1_3">Radio 3</label></li>
+				</ul>
+			</fieldset>
+		</form>
+		
+		<h3>Disabled</h3>
+		<form action="#">
+			<fieldset>
+				<ul class="list-no-bullets">
+					<li><input type="radio" class="radiobutton" id="radiobutton2_1" name="radiobutton-group2" disabled="disabled"/><label for="radiobutton2_1">Radio 1</label></li>
+		 			<li><input type="radio" class="radiobutton" id="radiobutton2_2" name="radiobutton-group2" disabled="disabled" checked="checked"/><label for="radiobutton2_2">Radio 2</label></li>
+					<li><input type="radio" class="radiobutton" id="radiobutton2_3" name="radiobutton-group2" disabled="disabled"/><label for="radiobutton2_3">Radio 3</label></li>
+				</ul>
+			</fieldset>
+		</form>
+		
+		<h4>Code snippet</h4>
+		<pre class="brush: xml">
+&lt;!-- This HTML code snippet shows how to make radio buttons like them above --&gt;
+&lt;form&gt;
+	&lt;fieldset&gt;
+		
+		&lt;!-- A radio button must be a &lt;input&gt; with type=&quot;radio&quot; AND class=&quot;radiobutton&quot; --&gt;
+		&lt;!-- Radio buttons of one group must all have the same name attribute --&gt;
+		&lt;input type=&quot;radio&quot; class=&quot;radiobutton&quot; id=&quot;radio1&quot; name=&quot;radiogroup1&quot;/&gt;&lt;label for=&quot;radio1&quot;&gt;Radio 1&lt;/label&gt;
+		
+		&lt;!-- A radio button can be disabled with attribute disabled=&quot;disabled&quot; --&gt;
+		&lt;input type=&quot;radio&quot; class=&quot;radiobutton&quot; id=&quot;radio2&quot; disabled=&quot;disabled&quot; name=&quot;radiogroup1&quot;/&gt;&lt;label for=&quot;radio2&quot;&gt;Radio 2&lt;/label&gt;
+		
+		&lt;!-- A radio button can be selected by default with checked=&quot;checked&quot; --&gt;
+		&lt;input type=&quot;radio&quot; class=&quot;radiobutton&quot; id=&quot;radio3&quot; checked=&quot;checked&quot; name=&quot;radiogroup1&quot;/&gt;&lt;label for=&quot;radio3&quot;&gt;Radio 3&lt;/label&gt;
+	&lt;/fieldset&gt;
+&lt;/form&gt;</pre>
+		
+		<h4>Drawbacks</h4>
+		<ul>
+			<li>Again, there is no selector fot the state "focused and hover" or "focused and clicked", because the hover state includes the focus state.</li>
+		</ul>
+
+		<h4>Dependencies (to be included in HTML file header)</h4>
+		<ul>
+			<li>JQuery UI Core</li>
+			<li>JQuery UI Widget</li>
+			<li>impact-green.css</li>
+			<li>impact-init.js</li>
+			<li>ui.checkbox.js</li>
+		</ul>
+		
+		
+		<h2 class="demoHeaders">Drop Down Menu (Select boxes)</h2>		
+
+		<p>Users can choose only one entry from a list of mutually exclusive options.
+		Users are limited to choices in the list. The options are hidden in the menu 
+		and therefore require very little space. Users can click (and scroll) to view 
+		the options.</p> 
+		
+		<h3>Enabled</h3>
+		<div>
+			<select id="select-demo" class="dropdown-menu">
+				<option value="--">Select a color</option>
+				<option value="01">Red</option>
+				<option value="02">Orange</option>
+				<option value="03">Yellow</option>
+				<option value="04">Green</option>
+				<option value="05">Blue</option>
+				<option value="06">Magenta</option>
+				<option value="07">Violet</option>
+				<option value="08">Ultra-violet</option>
+			</select>
+		</div>
+		<div>
+			<select id="select-demo2" class="dropdown-menu">
+				<option value="--">Select a color</option>
+				<option value="01">Red</option>
+				<option value="03">Yellow</option>
+				<option value="04">Green</option>
+				<option value="05">Blue</option>
+			</select>
+		</div>
+		
+		<h3>Disabled</h3>
+		<div>
+			<select id="select-demo3" class="dropdown-menu" disabled="disabled">
+				<option value="--">Please select your favorite color</option>
+				<option value="01">Red</option>
+				<option value="02">Orange</option>
+				<option value="03">Yellow</option>
+				<option value="04">Green</option>
+				<option value="05">Blue</option>
+				<option value="06">Magenta</option>
+				<option value="07">Violet</option>
+				<option value="08">Ultra-violet</option>
+			</select>
+		</div>
+		
+		<h3>Different sizes</h3>
+		<div>
+			<select id="select-demo4" class="dropdown-menu default-size">
+				<option value="--">Default size</option>
+				<option value="01">Red</option>
+				<option value="04">Green</option>
+				<option value="05">Blue</option>
+			</select>
+			<select id="select-demo5" class="dropdown-menu">
+				<option value="--">Dynamic size (menu will stretch...)</option>
+				<option value="01">Red</option>
+				<option value="02">Orange</option>
+				<option value="03">Yellow</option>
+				<option value="04">Green</option>
+				<option value="05">Blue</option>
+				<option value="06">Magenta</option>
+				<option value="07">Violet</option>
+				<option value="08">Ultra-violet</option>
+			</select>
+			<select id="select-demo6" class="dropdown-menu"  style="width: 150px;">
+				<option value="--">Fixed with (menu will not stretch...)</option>
+				<option value="01">Red</option>
+				<option value="04">Green</option>
+				<option value="05">Blue</option>
+			</select>
+			<select id="select-demo7" class="dropdown-menu" style="width: 225px;">
+				<option value="--">Fixed Width 225px</option>
+				<option value="01">Red</option>
+				<option value="04">Green</option>
+				<option value="05">Blue</option>
+			</select>
+		</div>
+		
+		<h4>Code snippet</h4>
+		<pre class="brush: xml">	
+&lt;!-- This HTML code snippet shows how to make dropdown menus like them above --&gt;
+&lt;form&gt;
+	&lt;fieldset&gt;
+	
+		&lt;!-- A dropdown can be build with a &lt;select&gt; with some &lt;option&gt;. --&gt;
+		&lt;!-- The &lt;select&gt; MUST have class=&quot;dropdown-menu&quot; --&gt;
+		&lt;!-- The select will stretch to fit the text or can have a fixed size like style=&quot;width: 150px;&quot; --&gt;
+		&lt;select class=&quot;dropdown-menu&quot;  style=&quot;width: 150px;&quot;&gt;
+			&lt;option value=&quot;--&quot;&gt;Fixed with (menu will not stretch...)&lt;/option&gt;
+			&lt;option value=&quot;01&quot;&gt;Red&lt;/option&gt;
+			&lt;option value=&quot;02&quot;&gt;Orange&lt;/option&gt;
+			&lt;option value=&quot;03&quot;&gt;Yellow&lt;/option&gt;
+			&lt;option value=&quot;04&quot;&gt;Green&lt;/option&gt;
+			&lt;option value=&quot;05&quot;&gt;Blue&lt;/option&gt;
+			&lt;option value=&quot;06&quot;&gt;Magenta&lt;/option&gt;
+		&lt;/select&gt;
+		
+		&lt;!-- To disable a dropdown the attribute disabled=&quot;disabled&quot; has to be set --&gt;
+		&lt;select class=&quot;dropdown-menu&quot; disabled=&quot;disabled&quot;&gt;
+			&lt;option value=&quot;01&quot;&gt;Red&lt;/option&gt;
+			&lt;option value=&quot;02&quot;&gt;Orange&lt;/option&gt;
+			&lt;option value=&quot;03&quot;&gt;Yellow&lt;/option&gt;
+		&lt;/select&gt;
+	&lt;/fieldset&gt;
+&lt;/form&gt;</pre>
+		
+		<h4>Drawbacks</h4>
+		<ul>
+			<li>The focus via tabulator key automatically opens the menu.</li>
+		</ul>
+		
+		<h4>Dependencies (to be included in HTML file header)</h4>
+		<ul>
+			<li>JQuery UI Core</li>
+			<li>JQuery UI Widget</li>
+			<li>impact-green.css</li>
+			<li>impact-init.js</li>
+			<li>jquery.selectbox-0.5.js</li>
+		</ul>
+		
+		
+		<h2 class="demoHeaders">Combo Boxes</h2>		
+
+		<p>Combo Boxes are very similar to the drop down box: <br/>
+		Users can choose only one entry from a list of mutually 
+		exclusive options – but users are not limited to choices 
+		in the list as they can also enter a choice that is not in the list.</p>
+		
+		<h3>Enabled</h3>
+		<div>
+			<select id="combo-box-demo1" class="combobox">
+				<option value="--">Please select your favorite color</option>
+				<option value="01">Red</option>
+				<option value="02">Orange</option>
+				<option value="03">Yellow</option>
+				<option value="04">Green</option>
+				<option value="05">Blue</option>
+				<option value="06">Magenta</option>
+				<option value="07">Violet</option>
+				<option value="08">Ultra-violet</option>
+			</select>
+			<br style="clear:both;"/>
+		</div>
+		
+		<h3>Disabled</h3>
+		<div>
+			<select id="combo-box-demo2" class="combobox" disabled="disabled">
+				<option value="--">Please select your favorite color</option>
+				<option value="01">Red</option>
+				<option value="02">Orange</option>
+			</select>
+			<br style="clear:both;"/>
+		</div>
+		
+		
+		
+		<h4>Code snippet</h4>
+		<pre class="brush: xml">
+&lt;!-- This HTML code snippet shows how to make comboboxes like them above --&gt;
+&lt;form&gt;
+	&lt;fieldset&gt;
+	
+		&lt;!-- A combobox is analogous to a dropdown and can be build with a &lt;select&gt; with some &lt;option&gt;.  --&gt;
+		&lt;!-- The &lt;select&gt; MUST have class=&quot;combobox&quot; --&gt;
+		&lt;!-- The &lt;select&gt; will stretch to fit the text or can have a fixed size like style=&quot;width: 150px;&quot; --&gt;
+		&lt;select class=&quot;combobox&quot;  style=&quot;width: 150px;&quot;&gt;
+			&lt;option value=&quot;--&quot;&gt;Fixed with (menu will not stretch...)&lt;/option&gt;
+			&lt;option value=&quot;01&quot;&gt;Red&lt;/option&gt;
+			&lt;option value=&quot;02&quot;&gt;Orange&lt;/option&gt;
+			&lt;option value=&quot;03&quot;&gt;Yellow&lt;/option&gt;
+			&lt;option value=&quot;04&quot;&gt;Green&lt;/option&gt;
+			&lt;option value=&quot;05&quot;&gt;Blue&lt;/option&gt;
+			&lt;option value=&quot;06&quot;&gt;Magenta&lt;/option&gt;
+		&lt;/select&gt;
+		
+		&lt;!-- To disable a dropdown the attribute disabled=&quot;disabled&quot; has to be set --&gt;
+		&lt;select class=&quot;combobox&quot; disabled=&quot;disabled&quot;&gt;
+			&lt;option value=&quot;01&quot;&gt;Red&lt;/option&gt;
+			&lt;option value=&quot;02&quot;&gt;Orange&lt;/option&gt;
+			&lt;option value=&quot;03&quot;&gt;Yellow&lt;/option&gt;
+		&lt;/select&gt;
+	&lt;/fieldset&gt;
+&lt;/form&gt;
+		</pre>
+
+
+		
+		<h4>Drawbacks</h4>
+		<ul>
+			<li>The focus via tabulator key automatically opens the menu.</li>
+		</ul>
+		
+		<h4>Dependencies (to be included in HTML file header)</h4>
+		<ul>
+			<li>JQuery UI Core</li>
+			<li>JQuery UI Widget</li>
+			<li>impact-green.css</li>
+			<li>impact-init.js</li>
+			<li>jquery.selectbox-0.5.js</li>
+		</ul>
+
+		
+		<!-- Progressbar -->
+
+		<script type="text/javascript"><!--
+		$(function(){
+				$(".progressbar1").progressbar( {
+					value : 30
+				});
+				$(".progressbar2").progressbar( {
+					value : 100
+				});
+				$(".progressbar3").progressbar( {
+					value : 75
+				});
+			});
+		--></script>
+		
+		<h2 class="demoHeaders">Progress Bar (determinate)</h2>		
+		<p>A progress bar visualises the progress of a lengthy operation. 
+		It shows an approximate percentage of completion of the operation 
+		and also visualises that it is ongoing.<br/>
+		Progress feedback should be given when operations take longer than 1 second.</p>
+		
+		<h4>Default size</h4>
+		<div class="progressbar progressbar1"></div><p></p>
+		<div class="progressbar progressbar2"></div><p></p>
+		<div class="progressbar progressbar3"></div><p></p>
+
+		<h4>100px size</h4>
+		<div class="progressbar progressbar1" style="width: 100px"></div><p></p>
+		<div class="progressbar progressbar2" style="width: 100px"></div><p></p>
+		<div class="progressbar progressbar3" style="width: 100px"></div><p></p>
+
+		<h4>300px size</h4>
+		<div class="progressbar progressbar1" style="width: 300px"></div><p></p>
+		<div class="progressbar progressbar2" style="width: 300px"></div><p></p>
+		<div class="progressbar progressbar3" style="width: 300px"></div><p></p>
+		<p><br/></p>
+		
+		<h4>Code snippet</h4>
+		<pre class="brush: xml">
+&lt;!-- This HTML code snippet shows how to make progress bars like them above --&gt;
+&lt;!-- A Progresspar ist just an empty &lt;div&gt; with class=&quot;progressbar&quot; --&gt;
+&lt;div class=&quot;progressbar&quot; id=&quot;progressbar1&quot; style=&quot;width: 100px&quot;&gt;&lt;/div&gt;</pre>
+
+		<pre class="brush: js">
+// This Java Script code snippet shows how to manipulate a progress bar
+$(function(){
+	$(&quot;#progressbar1&quot;).progressbar( {
+		value : 30
+	});
+});</pre>
+		
+		<h4>Dependencies (to be included in HTML file header)</h4>
+		<ul>
+			<li>JQuery UI Core</li>
+			<li>JQuery UI Widget</li>
+			<li>impact-green.css</li>
+			<li>impact-init.js</li>
+		</ul>
+
+		<!-- Progress indicator-->
+		
+		<script type="text/javascript"><!--
+
+			$(function(){
+
+				//Progress indicator
+				$('.progress-indicator-demo').click(function() {
+					var that = $(this).parent().busy({img : "css/jquery/plugins/images/busy.gif"});
+					setTimeout(function() {
+						that.busy("hide");
+					}, 2000);
+				});
+				
+			});
+		
+		--></script>
+		
+		
+		<h2 class="demoHeaders">Progress Indicator (indeterminate)</h2>		
+		<p>A progress indicator visualises the progress of a lengthy operation.
+		It shows that an operation is ongoing. Progress feedback should be given when
+		operations take longer than 1 second.</p>
+		<p>
+			<button class="progress-indicator-demo">Click me to show the indicator!</button>
+		</p>
+		
+		<h4>Code snippet</h4>
+		<pre class="brush: xml">
+&lt;!-- This HTML code snippet shows how to make a progress indicator like that above --&gt;
+&lt;!-- Something like a button to react is needed... the main thing is done by Java Script --&gt;
+&lt;p&gt;&lt;button class=&quot;progress-indicator-demo&quot;&gt;Click me to show the indicator!&lt;/button&gt;&lt;/p&gt;</pre>
+
+		<pre class="brush: js">
+&lt;!-- This Java Script code snippet shows how to create a progress indicator --&gt;
+$(function(){
+
+	//Attach progress indicator creation to the buttion (just for example)
+	$('.progress-indicator-demo').click(function() {
+		
+		//Call busy() on the buttons parent with parameter 'img' pointing to the image to use
+		var that = $(this).parent().busy({img : &quot;css/jquery/plugins/images/busy.gif&quot;});
+		
+		//Do something while display the indicator (for example sleep 2 seconds)
+		setTimeout(function() {
+		
+			//hide the indicator after 2 seconds
+			that.busy(&quot;hide&quot;);
+		
+		}, 2000);
+	});
+	
+});</pre>
+		
+		<h4>Dependencies (to be included in HTML file header)</h4>
+		<ul>
+			<li>JQuery UI Core</li>
+			<li>JQuery UI Widget</li>
+			<li>impact-green.css</li>
+			<li>jquery.busy.min.js</li>
+		</ul>
+
+		<!-- Links -->
+		
+		<h2 class="demoHeaders">Links</h2>		
+		<p>Users can use links to navigate to another page, window, or any other item 
+		(e.g. definition). A link is text or a graphic that indicates that it can be clicked. 
+		Different states indicate if a link has already been visited or not.
+		These states are indicated by colour – an unobtrusive way to reduce visual clutter. 
+		When users hover over a link, the colour changes and the pointer shape (arrow) changes 
+		to the a hand shape. Text links are the lightest weight clickable controls and can be 
+		used to reduce visual complexity. </p>		
+		
+		<p><a href="#" title="Just linking to currents page">Example Link</a></p>
+				
+				
+		<h4>Code snippet</h4>
+		<pre class="brush: xml">
+&lt;!-- This HTML code snippet shows how to make a link like that above --&gt;
+&lt;!-- Links are normal HTML links without a special class or something else --&gt;
+&lt;p&gt;&lt;a href=&quot;#&quot; title=&quot;Just linking to currents page&quot;&gt;Example Link&lt;/a&gt;&lt;/p&gt;</pre>
+				
+		<h4>Dependencies (to be included in HTML file header)</h4>
+		<ul>
+			<li>impact-green.css</li>
+		</ul>
+
+		<!-- Tabs -->
+
+		<script type="text/javascript"><!--
+
+			$(function(){
+
+				//Disable the third tab
+				$( "#tabs2" ).tabs({ disabled: [2] });
+				
+			});
+		
+		--></script>
+				
+		
+		<h2 class="demoHeaders">Tabs</h2>	
+		<p>Tabs visualise related information on separate labelled pages. 
+		Tabs are a good way to cluster and separate information. Tabs within the IMPACT 
+		toolbox are displayed horizontally and left-aligned at the top edge of a content area. 
+		Users click a tab to see the content associated with it.</p> 
+
+		<h3>Standard</h3>
+		<div class="tabs" id="tabs1" style="width:280px">
+			<ul>
+				<li><a href="#tabs-1">First</a></li>
+				<li><a href="#tabs-2">Second</a></li>
+				<li><a href="#tabs-3">Third</a></li>
+			</ul>
+			<div id="tabs-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+			<div id="tabs-2">Phasellus mattis tincidunt nibh. Cras orci urna, blandit id, pretium vel, aliquet ornare, felis. Maecenas scelerisque sem non nisl. Fusce sed lorem in enim dictum bibendum.</div>
+			<div id="tabs-3">Nam dui erat, auctor a, dignissim quis, sollicitudin eu, felis. Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.</div>
+		</div>
+		
+		<h3>Third Tab Disabled</h3>
+		<div class="tabs" id="tabs2" style="width:280px">
+			<ul>
+				<li><a href="#tabs2-1">First</a></li>
+				<li><a href="#tabs2-2">Second</a></li>
+				<li><a href="#tabs2-3">Third</a></li>
+			</ul>
+			<div id="tabs2-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+			<div id="tabs2-2">Phasellus mattis tincidunt nibh. Cras orci urna, blandit id, pretium vel, aliquet ornare, felis. Maecenas scelerisque sem non nisl. Fusce sed lorem in enim dictum bibendum.</div>
+			<div id="tabs2-3">Nam dui erat, auctor a, dignissim quis, sollicitudin eu, felis. Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.</div>
+		</div>
+
+
+		<h4>Code snippet</h4>
+		<pre class="brush: xml">
+&lt;!-- This HTML code snippet shows how to make tabs like them above --&gt;
+&lt;!-- Tabs need the following skeleton: 
+		a wrapping &lt;div&gt; with class=&quot;tabs&quot;
+		a list of tab titles (&lt;ul&gt; with some &lt;li&gt;)
+		the &lt;li&gt; must have the title text wrapped by a &lt;a&gt; with href=&quot;#tab-ID&quot;
+		the list must be followed by some &lt;div&gt; with id that correspond to them in the &lt;a&gt;
+		the content of the &lt;div&gt; with id=&quot;tabs-3&quot; will then be shown if clicked on the &lt;li&gt; with &lt;a href=&quot;tabs-3&quot;&gt;.
+--&gt;
+&lt;div class=&quot;tabs&quot; id=&quot;tabs1&quot; style=&quot;width:280px&quot;&gt;
+	&lt;ul&gt;
+		&lt;!-- This are the tab titles --&gt;
+		&lt;li&gt;&lt;a href=&quot;#tabs-1&quot;&gt;First&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href=&quot;#tabs-2&quot;&gt;Second&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href=&quot;#tabs-3&quot;&gt;Third&lt;/a&gt;&lt;/li&gt;
+	&lt;/ul&gt;
+	&lt;!-- This are the contents, div#tabs-1 is displayed, if &quot;First&quot; tab is active, tabs-2 if the &quot;Second&quot;... --&gt;
+	&lt;div id=&quot;tabs-1&quot;&gt;Lorem ipsum dolor sit amet,...&lt;/div&gt;
+	&lt;div id=&quot;tabs-2&quot;&gt;Phasellus mattis tincidunt nibh...&lt;/div&gt;
+	&lt;div id=&quot;tabs-3&quot;&gt;Nam dui erat, auctor a, dignissim quis...&lt;/div&gt;
+&lt;/div&gt;</pre>
+
+		<h4>Code snippet</h4>
+		<pre class="brush: js">
+&lt;!-- This Java Script code snippet shows how to disable a tab --&gt;
+$(function(){
+
+	//Disable the third tab (the first tab has index 0)
+	$( &quot;#tabs1&quot; ).tabs({ disabled: [2] });
+
+});</pre>
+
+		<h4>Dependencies (to be included in HTML file header)</h4>
+		<ul>
+			<li>JQuery UI Core</li>
+			<li>JQuery UI Widget</li>
+			<li>impact-green.css</li>
+		</ul>
+		
+		<!-- Breadcrumb -->
+				
+		<h2 class="demoHeaders">Breadcrumb</h2>	
+		<p>A breadcrumb displays the path of the currently selected page or item. Users
+		can navigate back to the previous pages using the breadcrumb. The breadcrumb
+		visualises the hierarchical path of the system rather than the path a user took
+		to get to the item or page.</p> 
+
+		<div class="breadcrumb">
+			<ul>
+				<li><a href="#">Lorem</a></li>
+				<li><a href="#">Ipsum</a></li>
+				<li><a href="#">Dolor</a></li>
+			</ul>
+		</div>
+		
+		<h4>Code snippet</h4>
+		<pre class="brush: xml">
+&lt;!-- This HTML code snippet shows how to make breadcrumbs like them above --&gt;
+&lt;!-- the whole breadcrumb MUST be wrapped by a &lt;div&gt; with class=&quot;breadcrumb&quot; --&gt;
+&lt;div class=&quot;breadcrumb&quot;&gt;
+	&lt;!-- in this &lt;div&gt; there MUST be a list of links like this: --&gt;
+	&lt;ul&gt;
+		&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Lorem&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Ipsum&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Dolor&lt;/a&gt;&lt;/li&gt;
+	&lt;/ul&gt;
+&lt;/div&gt;</pre>
+
+		<h4>Dependencies (to be included in HTML file header)</h4>
+		<ul>
+			<li>impact-green.css</li>
+		</ul>
+
+		<!-- Group Box -->
+				
+		<h2 class="demoHeaders">Group Box</h2>	
+		<p>A group box clusters a set of related elements and at the same separates it
+		from others. It is an easy way to label and visualise relationships: It breaks
+		information into distinct logical areas. Group boxes have a heavier look than
+		separators and therefore provide a more pronounced differentiation of content.</p> 
+
+		<div class="group-box" style="width:200px;height:50px;">
+			<p>
+				Lorem ipsum...
+			</p>
+		</div>
+		
+		<h4>Code snippet</h4>
+		<pre class="brush: xml">
+&lt;!-- This HTML code snippet shows how to make a box like that above --&gt;
+&lt;!-- the whole box MUST be wrapped by a &lt;div&gt; with class=&quot;group-box&quot;  --&gt;
+&lt;!-- and a dimension like style=&quot;width:200px; height:50px;&quot; --&gt;
+&lt;div class=&quot;group-box&quot; style=&quot;width:200px; height:50px;&quot;&gt;
+	&lt;p&gt;
+		Lorem ipsum...
+	&lt;/p&gt;
+&lt;/div&gt;
+		</pre>
+
+
+		<h4>Dependencies (to be included in HTML file header)</h4>
+		<ul>
+			<li>impact-green.css</li>
+		</ul>
+		
+		<!-- Separator -->
+				
+		<h2 class="demoHeaders">Separator</h2>	
+		<p>Separators are used to visually separate items from each other to clearly cluster
+		item categories or subgroups of related functionality. Separators are thin lines 
+		with a lightweight appearance. They are placed either vertically or horizontally.
+		Separators have a similar purpose to group boxes but they do not contain a
+		label and the grouping is not emphasized as strongly as it is with group boxes.</p> 
+		
+		<h3>Vertically</h3>
+		<p>
+			<span class="separator-right">Lorem</span> ipsum
+		</p>
+		
+		<h3>Horizontally</h3>
+		<div style="width:180px">
+			<p class="separator-bottom">Lorem ipsum dolor sit amet</p>
+			<p>Consectetur adipisicing elit</p>
+		</div>
+		
+		
+		<h4>Code snippet</h4>
+		<pre class="brush: xml">
+&lt;!-- This HTML code snippet shows how to make separators like them above --&gt;
+&lt;p&gt;
+	&lt;!-- to give something a separator to the right, add class=&quot;separator-right&quot; to a wrapping &lt;span&gt; --&gt;
+	&lt;span class=&quot;separator-right&quot;&gt;Lorem&lt;/span&gt; ipsum
+&lt;/p&gt;
+&lt;div style=&quot;width:180px&quot;&gt;
+	&lt;!-- to give something a separator to the bottom, add class=&quot;separator-bottom&quot; to a wrapping &lt;p&gt; or &lt;div&gt; --&gt;
+	&lt;p class=&quot;separator-bottom&quot;&gt;Lorem ipsum dolor sit amet&lt;/p&gt;
+	&lt;p&gt;Consectetur adipisicing elit&lt;/p&gt;
+&lt;/div&gt;</pre>
+		
+		<h4>Dependencies (to be included in HTML file header)</h4>
+		<ul>
+			<li>impact-green.css</li>
+		</ul>
+		
+		
+		<!-- Slider -->
+				
+		<h2 class="demoHeaders">Slider</h2>	
+		<p>Users can use sliders to choose from a continuous range of values. A slider has
+		a bar that shows the range and an indicator that shows the current value.
+		Optional tick marks show values.</p> 
+		
+		<h3>Enabled</h3>
+		<div class="slider" style="width:200px"></div>
+		
+		<h3>Disabled</h3>
+		<div class="disabled-slider"></div>
+		
+		<h4>Code snippet</h4>
+		<pre class="brush: xml">
+&lt;!-- This HTML code snippet shows how to make sliders like them above --&gt;
+&lt;!-- A slider is made of an empty &lt;div&gt; with class=&quot;slider&quot; --&gt;
+&lt;!-- A slider can have a varibale width with style=&quot;width:200px&quot; --&gt;
+&lt;div class=&quot;slider&quot; style=&quot;width:200px&quot;&gt;&lt;/div&gt;
+
+&lt;!-- A disabled slider must have class=&quot;disabled-slider&quot; --&gt;
+&lt;div class=&quot;disabled-slider&quot;&gt;&lt;/div&gt;</pre>
+		
+		<h4>Dependencies (to be included in HTML file header)</h4>
+		<ul>
+			<li>JQuery UI Core</li>
+			<li>JQuery UI Widget</li>
+			<li>impact-green.css</li>
+		</ul>
+
+		<!-- Datepicker -->
+
+		<script type="text/javascript"><!--
+
+			$(function(){
+
+				$('#datepicker1').datepicker( 
+					 "option", "dateFormat", "d. MM yy"
+				);
+				
+			});
+		
+		--></script>		
+
+		<h2 class="demoHeaders">Datepicker</h2>
+		<p>Users can select a specific date and/or time using the visualisation of a calender
+		or clock. Quick links are provided to ensure quick and easy selection, e.g.
+		today, last month, next month, selection of year.</p>
+		
+		<h3>Inline placed Date Picker</h3>
+		<div class="datepicker-inline"></div>
+		
+		<h3>Hidden Date Picker (showed, if clicked into the input field)</h3>				
+		<div>
+			<label>Date:</label>
+			<input class="datepicker" type="text" id="datepicker1" />
+		</div>
+		
+		<h3>Hidden Date Picker (showed, if clicked the button right of the input field)</h3>
+		<div>
+			<label>Date:</label>
+			<input class="datepicker-button" type="text" id="datepicker2" />
+		</div>
+		
+		<h4>Code snippet</h4>
+		<pre class="brush: xml">
+&lt;!-- This HTML code snippet shows how to make Date Pickers like them above --&gt;
+&lt;!-- A visible date picker is just a &lt;div&gt; with class=&quot;datepicker-inline&quot; --&gt;
+&lt;div class=&quot;datepicker-inline&quot;&gt;&lt;/div&gt;
+
+&lt;!-- A text field  under which a datepicker apears ist just a &lt;input&gt; with class=&quot;datepicker&quot;--&gt;
+&lt;form&gt;
+	&lt;fieldset&gt;
+		&lt;label&gt;Date:&lt;/label&gt;
+		&lt;input class=&quot;datepicker&quot; type=&quot;text&quot; id=&quot;datepicker1&quot; /&gt;
+	&lt;/fieldset&gt;
+&lt;/form&gt;
+
+&lt;!-- A text field with a button, to trigger the datepicker ist just a &lt;input&gt; with class=&quot;datepicker-button&quot;--&gt;
+&lt;form&gt;
+	&lt;fieldset&gt;
+	&lt;label&gt;Date:&lt;/label&gt;
+	&lt;input class=&quot;datepicker-button&quot; type=&quot;text&quot; id=&quot;datepicker2&quot; /&gt;
+	&lt;/fieldset&gt;
+&lt;/form&gt;</pre>
+
+		<pre class="brush: js">
+// This Java Script code snippet shows how to manipulate a datepicker
+$(function(){
+
+	//Access the datepicker...
+	$('#datepicker1').datepicker( 
+		
+		//Change the date format of the input field...
+		&quot;option&quot;, &quot;dateFormat&quot;, &quot;d. MM yy&quot;
+	);
+
+});
+</pre>
+		
+		<h4>Drawbacks</h4>
+		<ul>
+			<li>There is no (native) time picker in JQuery.</li>
+			<li>A plugin is available (see below).</li>
+		</ul>
+		
+		<h4>Dependencies (to be included in HTML file header)</h4>
+		<ul>
+			<li>JQuery UI Core</li>
+			<li>JQuery UI Widget</li>
+			<li>impact-green.css</li>
+		</ul>
+
+		<!-- Timepicker -->
+
+		<script type="text/javascript"><!--
+
+			$(function(){
+
+				$('#timepicker1').timepicker( {
+					defaultTime: '9:20',
+				});
+				
+			});
+		
+		--></script>		
+
+		
+		<h2 class="demoHeaders">Timepicker</h2>
+		<p>Users can select a specific date and/or time using the visualisation of a calender
+		or clock. Quick links are provided to ensure quick and easy selection, e.g.
+		today, last month, next month, selection of year.</p>
+		
+
+		<h3>Inline placed Time Picker</h3>
+		<div class="timepicker-inline"></div>
+		
+		<h3>Hidden time Picker (showed, if clicked into the input field)</h3>				
+		<div>
+			<label>Time:</label>
+			<input class="timepicker" type="text" id="timepicker1" />
+		</div>
+		
+		<h3>Hidden Time Picker (showed, if clicked the button right of the input field)</h3>
+		<div>
+			<label>Time:</label>
+			<input class="timepicker-button" type="text" id="timepicker2" />
+		</div>
+
+		
+		<h4>Code snippet</h4>
+		<pre class="brush: xml">
+&lt;!-- This HTML code snippet shows how to make Time Pickers like them above --&gt;
+&lt;!-- A visible date picker is just a &lt;div&gt; with class=&quot;timepicker-inline&quot; --&gt;
+&lt;div class=&quot;timepicker-inline&quot;&gt;&lt;/div&gt;
+
+&lt;!-- A text field  under which a timepicker apears ist just a &lt;input&gt; with class=&quot;timepicker&quot;--&gt;
+&lt;form&gt;
+	&lt;fieldset&gt;
+		&lt;label&gt;Time:&lt;/label&gt;
+		&lt;input class=&quot;timepicker&quot; type=&quot;text&quot; id=&quot;timepicker1&quot; /&gt;
+	&lt;/fieldset&gt;
+&lt;/form&gt;
+
+&lt;!-- A text field with a button, to trigger the timepicker ist just a &lt;input&gt; with class=&quot;timepicker-button&quot;--&gt;
+&lt;form&gt;
+	&lt;fieldset&gt;
+		&lt;label&gt;Time:&lt;/label&gt;
+		&lt;input class=&quot;timepicker-button&quot; type=&quot;text&quot; id=&quot;timepicker2&quot; /&gt;
+	&lt;/fieldset&gt;
+&lt;/form&gt;</pre>
+
+		<pre class="brush: xml">
+// This Java Script code snippet shows how to manipulate a timepicker
+$(function(){
+
+	//Access the timepicker...
+	$('#timepicker1').timepicker( {
+	
+		//Change the preselected time...
+		defaultTime: '9:20',
+	});
+
+});</pre>
+
+		<h4>Dependencies (to be included in HTML file header)</h4>
+		<ul>
+			<li>JQuery UI Core</li>
+			<li>JQuery UI Widget</li>
+			<li>impact-green.css</li>
+			<li>jquery.ui.timepicker.js</li>
+			<li>jquery-ui-timepicker.css</li>
+		</ul>
+
+		<!-- Progressive Disclosure Indicator -->
+		
+		<h2 class="demoHeaders">Progressive Disclosure Indicator</h2>
+		<p>Progressive disclosure indicators are used to access or hide additional
+		information (e.g. data, options, pages). This is an easy way to provide only the
+		information that is needed, as additional information can be accessed quickly and
+		intuitively.</p>
+		
+		<p><i>No demo available for now.</i></p>
+		
+		<h4>Dependencies (to be included in HTML file header)</h4>
+		<ul>
+			<li>impact-green.css (prospective)</li>
+		</ul>
+
+
+		<!-- Search Box -->
+
+		<h2 class="demoHeaders">Search Box</h2>
+		<p>Users can search for data using a search box. The decision of whether the
+		IMPACT toolbox uses an instant search (results are displayed immediately as
+		user types, search icon is shown as a graphic, not a button) or a regular search
+		(performed when user clicks search button) depends on the complexity and
+		content used for the individual tools.</p>
+		
+		<form action="#">
+			<fieldset class="search-box">
+				<label for="search">Search</label>
+				<input type="text" name="search" id="search" />
+				<input type="submit" value="search"/>
+			</fieldset>
+		</form>
+
+		<h4>Code snippet</h4>
+		<pre class="brush: xml">
+&lt;!-- This HTML code snippet shows how to make a Search Box like that above --&gt;
+&lt;form action=&quot;#&quot;&gt;
+	&lt;!-- A search box must be wrapped with a &lt;div&gt; or &lt;fieldset&gt; with class=&quot;search-box&quot; --&gt;
+	&lt;fieldset class=&quot;search-box&quot;&gt;
+		&lt;label for=&quot;search&quot;&gt;Search&lt;/label&gt;
+		&lt;input type=&quot;text&quot; name=&quot;search&quot; id=&quot;search&quot; /&gt;
+		&lt;input type=&quot;submit&quot; value=&quot;search&quot;/&gt;
+	&lt;/fieldset&gt;
+&lt;/form&gt;</pre>
+				
+		<h4>Dependencies (to be included in HTML file header)</h4>
+		<ul>
+			<li>impact-green.css</li>
+		</ul>
+		
+
+		<!-- Tool Tip -->
+
+		<h2 class="demoHeaders">Tool Tip</h2>
+		<p>Tool tips are visualised as small pop-up windows that label unlabelled elements,
+		e.g. toolbar controls. Tool tips are only visible when users point to the according
+		element (hover).</p>
+		
+		<p>
+			<a class="tooltip" title="A Tooltip">Hover me for a tool tip</a>
+		</p>
+		
+		<h4>Dependencies (to be included in HTML file header)</h4>
+		<ul>
+			<li>impact-green.css</li>
+		</ul>
+
+		<!-- Info Tip -->
+
+		<h2 class="demoHeaders">Info Tip</h2>
+		<p>Info Tips are closely related to tool tips but they provides more information by
+		displaying descriptive text. Info tips can be used for elements such as toolbar
+		controls, pictures, links.</p>
+		
+		<p><i>No demo available for now.</i></p>
+		
+		<h4>Dependencies (to be included in HTML file header)</h4>
+		<ul>
+			<li>impact-green.css</li>
+		</ul>
+
+
+		<!-- Relations/Connections -->
+
+		<h2 class="demoHeaders">Relations/Connections</h2>
+		<p>These elements show the relations of different elements or types of elements
+		and are visualised by lines. The lines can have labels to add textual information in
+		addition to colour coding and coding by line styles. Lines can also have various
+		styles of ends to illustrate the kind of relation, e.g. arrows.</p>
+		
+		<p><i>No demo available for now.</i></p>
+		
+		<h4>Dependencies (to be included in HTML file header)</h4>
+		<ul>
+			<li>impact-green.css (prospective)</li>
+		</ul>
+
+		<!-- Reasons -->
+
+		<h2 class="demoHeaders">Reasons</h2>
+		<p>Reasons are visualised as the underlying basis of arguments or other elements 
+		that need further clarification or more detailed information. A visualisation for
+		reasons will follow during the next phase of the IMPACT project.</p>
+		
+		<p><i>No demo available for now.</i></p>
+				
+		<h4>Dependencies (to be included in HTML file header)</h4>
+		<ul>
+			<li>impact-green.css (prospective)</li>
+		</ul>
+		
+		<!-- Sources -->
+
+		<h2 class="demoHeaders">Sources</h2>
+		<p>To enhance the credibility of the IMPACT toolbox and to offer
+		transparent information for users, sources are displayed wheneve
+		available. It is important that the display of sources is unobtrusive and does not
+		interfere with the clear and intuitive visualisation of information. Therefore
+		sources are coded as text links or icons.</p>
+		
+		<p><i>No demo available for now.</i></p>
+				
+		<h4>Dependencies (to be included in HTML file header)</h4>
+		<ul>
+			<li>impact-green.css (prospective)</li>
+		</ul>
+		
+		<!-- Downloads -->
+
+		<h2 class="demoHeaders">Downloads</h2>
+		<p>Downloads are indicated by a download icon and the document name, document
+		type, file size. Additionally, applicable icons for the document type can be
+		added as well as the date the document was published or created.</p>
+		
+		<p><i>No demo available for now.</i></p>
+				
+		<h4>Dependencies (to be included in HTML file header)</h4>
+		<ul>
+			<li>impact-green.css (prospective)</li>
+		</ul>
+		<p><br/></p>
+		<hr/><hr/>
+		
+	</div></body>
+</html>

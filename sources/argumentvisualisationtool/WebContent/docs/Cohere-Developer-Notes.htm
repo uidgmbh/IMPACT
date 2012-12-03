@@ -1,0 +1,250 @@
+<html>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Cohere Develop Notes</title>
+<style>
+<!--
+body {
+	font-family:"Arial";
+	font-size:12.0pt;
+	font-family:"Arial";
+}
+li {
+	margin-bottom: 15px;
+}
+p {
+	margin:0cm;
+	margin-bottom:10px;
+}
+-->
+</style>
+</head>
+
+<body lang=EN-US link=blue vlink=blue style='tab-interval:36.0pt'>
+
+<center><h1>Cohere Developer Notes</h1></center>
+
+<p>This is a really quick overview of the site structure with some
+instructions further down on setting up the database and config files.</p>
+
+<p><b>NOTE:</b> While the Cohere code base is released under the LGPL license: http://www.fsf.org/licensing/licenses/lgpl.html, developers should be aware that the <b>admin</b> and the <b>timeline_2.3.0</b> folder contains third party code that is under the GPL license: http://www.fsf.org/licensing/licenses/gpl-3.0.html</p>
+
+<p>If you need more help at present, please ask your questions through the
+Google <a href="http://groups.google.com/group/coheregroup">Cohere developer group</a></p>
+
+<h2>A Quick What’s Where</h2>
+<p>The top level has the config.php file, (see 4.
+<a href="#config">Edit settings in /config.php to point to your set up and
+database</a>, below)</p>
+
+<p>The top level has the main primary php files for the main pages of the site:  the index file, and the main context pages, like user, search, groups, the login, logout and reset pages and the fav icon etc..</p>
+
+<p><b>Folders:</b></p>
+
+<ul style="list-style:none;">
+
+<li><b>_util </b> - This is the code used to create the api apilib comments. You will need PHPDocumentor installed and you will need to edit the batch files in this folder as appropriate if you want to use this on your version of the Cohere code.</li>
+
+<li><b>admin  </b> - This folder has various files that produce and display various statistics about the activity on the site. If
+you are a user who has the ‘IsAdministrator’ field set to ‘Y’, you will see an
+extra menu item when logged in at the top of the screen called admin, for
+accessing these stats reports.</li>
+
+<li><b>api </b> - This folder holds the Cohere services file that processes incoming service request,
+(see phplib/apilib.php for the actual guts).</li>
+
+<li><b>Auth </b> - This is the OpenID library.</li>
+<li><b>docs </b> - This is where the developer docs are.</li>
+<li><b>help </b> - This is where the help pages are.</li>
+<li><b>images </b> - This is where all the graphics for the site are. It has various subfolders.</li>
+<li><b>import </b> - This folder holds the php files that handle the various import options in Cohere like rss, rdf and compendium.</li>
+<li><b>includes</b> - This folder has all files that are included in many other places as includes e.g. header, footer, sidebar etc.
+	<ul>
+		<li><b>scriptaculous</b> - This library handles the string matching for idea creation and search entries and then draws the
+drop-down box to select from as the user types.</li>
+	</ul>
+
+<li><b>install</b> - This folder has the sql files needed to create a Cohere database and install the default data. See <a href="#setup">Setting up a Cohere Server </a>below
+</li>
+
+<li><b>jetpack</b> - This folder and its subfolders hold all code, image etc. related to our Firefox Jetpack. This is a new and currently experimental possible future replacement for the our main Firefox extension.</li>
+<li><b>mailtemplates</b> - This folder holds text files templates for the various emails Cohere can send.</li>
+<li><b>ontology</b> - This folder holds pdf and cohere.owl schema for the Cohere RDF import.</li>
+<li><b>phplib</b> - This folder holds all the main libraries of php methods used by the site. It also holds all the main php class files for the primary object of the site, like user, node, linktype etc..
+	<ul>
+		<li><b>formats</b> - This folder has the php files that format the Cohere service reply text into the request format, like XML or  json etc. There is one file per supported format.</li>
+		<li><b>jdp-twitterlibphp</b> - This is the library use for Tweeting.</li>
+		<li><b>recaptcha-php-1.10</b> - This is the recaptcha library.</li>
+		<li><b>rss</b> - This is the library used for processing rss<./li>
+	</ul>
+</li>
+<li><b>plugin</b> - This folder's subfolders have files related to the FireFox plugin and files shared by the website and the plugin.
+		<ul>
+		<li><b>ui</b> - This folder has php files for various popup pages used by the website and
+the FireFox plugin, like create an idea and create a connection popups.</li>
+		<li><b>download</b> - This folder has the FireFox plugin related files for downloading and auto-updating the plugin.</li>
+		</ul>
+</li>
+
+<li><b>screencasts</b> - This folder holds some screencasts that show how to used areas of the site.</li>
+
+<li><b>snippet</b> - This folder has the pages that are used when embedding a Cohere snippet in another site. Each type of
+embed has its own page and there are also special header and footer files for these pages.</li>
+
+<li><b>uploads</b> - This folder holds user profile pictures. Each user will have a folder
+in here labelled uniquely. This folder also holds the default user and group images to use when no image has been uploaded.</li>
+
+<li><b>visualizes</b> - This folder holds the java script files that are responsible for handling the display of the various data
+visualisations offered on the Cohere website, like the network or timeline views etc.
+		<ul>
+		<li><b>connectionnetjars</b> - This folder holds the jar files for the connection net.</li>
+		<li><b>timeline_2.3.0</b> - This folder holds the MIT library for drawing the timeline. It is under MIT and GPL licenses</li>
+		</ul>
+</li>
+</ul>
+
+<br>
+<h2><a name=setup>Setting up a Cohere Server</a></h2>
+
+<ol>
+
+<li>Run /install/db.sql on <span style='font-family: Arial;color:#2A00FF'>'cohere'</span> database</li>
+
+<li><a name="defaultdata"></a>Run /install/default-data.sql on <span style='color:#2A00FF'>'cohere'</span> database (more details below)</p>
+<p>We have setup some default data for Cohere.</p>
+<p>This contains default node types a.k.a. roles, and
+link types, and a default user who owns them.</p>
+<p>You may want to modify these to be different default
+data. If you do, make sure you adjust the <br>$CFG-&gt;defaultRoleGroupID in
+the config.php file accordingly.</p>
+<p>It is these default role and link types that are copied to new users as their starting pot
+of types to select from.</p>
+</li>
+
+<li>Copy /config-sample.php to /config.php</li> 
+
+<li> Edit settings in /config.php to point to your set up and database.
+<br/><br/>All setting have comments explaining their use. 
+<br/>Some setting you will not need to change as they are simply default or static data for the site. 
+<br/>The following parameters are ones you really do need to change for your site to work:
+<br/><br/>		
+<b>$CFG-&gt;homeAddress = &quot;http://web/path/to/website/&quot;;</b>
+<br/>( home address is the base url for the website and must end with trailing '/' )
+
+<br/><br/><b>$CFG-&gt;dirAddress = &quot;/file/path/to/website/&quot;;</b>
+<br/> (dir address is the base file path for the website)
+
+<br/><br/><b>$CFG-&gt;databaseaddress = &quot;localhost&quot;; </b>
+<br/> (the database address, e.g. localhost or a url etc.)
+
+<br/><br/><b>$CFG-&gt;databaseuser</b>
+<br/> (the database username that Cohere uses to login to the database)
+
+<br/><br/><b>$CFG-&gt;databasepass</b>
+<br/> (the database password to go with the above username)
+
+<br/><br/><b>$CFG-&gt;databasename</b>
+<br/> (the database name for the database Cohere is to use)
+
+<br/><br/><b>$CFG-&gt;workdir = &quot;/tmp/&quot;</b>
+<br/> (the path to a temp directory that Cohere can use)
+
+<br/><br/><b>$CFG-&gt;RECAPTCHA_PUBLIC = &quot;&lt;add recaptcha public key here&gt;&quot;;</b>
+<br/><b>$CFG-&gt;RECAPTCHA_PRIVATE = &quot;&lt;add recaptcha private key here&gt;&quot;;</b>
+<br/> (recaptcha public/private keys - you will need to get new keys for your website)
+
+<br/><br/><b>$CFG-&gt;RECAPTCHA_PUBLIC = &quot;6Lf9oggAAAAAAAkA3Ip9bnqAItDucHKCNGjtfQSq&quot;;</b>
+<br/><b>$CFG-&gt;RECAPTCHA_PRIVATE = &quot;6Lf9oggAAAAAAG4gi5xOhqqs0D1RE_hN5ZHPnL3c&quot;;</b>
+<br/> (for working on locahost these should just work so you can replace above with these and test first, then get new
+keys for your live site or if these don't work)
+
+<br/><br/><b>$CFG-&gt;GOOGLE_MAPS_KEY = &quot;&lt;add google map key here&gt;&quot;;</b>
+<br/> (Google maps: You will need to go and get a Google maps key for your site)
+
+<br/><br/><b>$CFG-&gt;GOOGLE_ANALYTICS_KEY = &quot;&quot;;</b>
+<br/> (Google analytics key: You will need to go and get a Google analytics key for your site)
+<br/><br/>
+</li>
+
+<li><p><b>Important:</b>There are many places in the server code where there are hard coded
+ url's to the Cohere or KMi websites. Although we have tried to use the config setting where possible, 
+ there are still many that you will need to edit. </p>
+ 
+ <p><b>The section below talks about the places you will need to modify the urls in the code as well as other code modification you may need to make, so please go through it carefully!!</b></p>
+
+ <p>Below is a screen shot of the search results for open.ac.uk in Cohere verson 2, (where the match count is not stated, it means there is 1):</p>
+ <img src="images/url-list.png" border="0" style="margin-top: 10px; margin-bottom: 10px;" />
+
+<p>Let's look at these a folder at a time: </p>
+
+<h3>admin</h3>
+<img src="images/url-admin.png" border="0" style="margin-top: 10px; margin-bottom: 10px;" />
+<p>The footer.php file has a reference to KMi home page for the related project. It also has a reference to OLnet website, which is the project currently funding Cohere. You may want to leave these as they are on your site or change the footer to your own link(s).
+See also includes/footer.php and dialogfooter.php which has the same links.</p>
+
+<h3>docs</h3>
+<p>Well... your here. The currently available documentation for the Cohere website</p>
+
+<h3>help</h3>
+<img src="images/url-help.png" border="0" style="margin-top: 10px; margin-bottom: 10px;" />
+<p>These two are the email address for the author of the rdf component in Cohere. You will want to lave these.</p>
+
+<h3>import</h3>
+<img src="images/url-import.png" border="0" style="margin-top: 10px; margin-bottom: 10px;" />
+<p>You will need to replace these four urls with your own urls to your local ontology folder (in case for some reason ours moves)</p>
+
+<h3>includes</h3>
+<img src="images/url-includes.png" border="0" style="margin-top: 10px; margin-bottom: 10px;" />
+<p>The dialogfooter.php and footer.php files have a reference to KMi home page for the related project. They also has a reference to OLnet website, which is the project currently funding Cohere. You may want to leave these as they are on your site or change the footers completely to your own link(s). (see slao help/footer.php above)</p>
+
+<p>The header.php file contains the search examples. As these are urls to actual Cohere searches and there related data, you will have to either leave them completely alone (but be aware people will be redirected to Cohere.open.ac.uk if they click them, or better, replace all the search examples with examples from your own site.</p>
+
+<h3>install</h3>
+<img src="images/url-install.png" border="0" style="margin-top: 10px; margin-bottom: 10px;" />
+<p>The default-data.sql file holds default data for Cohere (<a href="#defaultdata">see 2. above</a>). You will wnat to edit the email address and the password for this default user.</p>
+
+<h3>jetpack</h3>
+<img src="images/url-jetpack.png" border="0" style="margin-top: 10px; margin-bottom: 10px;" />
+<p>This one is tool scary to show you. The Cohere Jetpack is an experimental new Firefox extension based on the jetpack prototype library. If you really want to offer this to your users, then you will need to replace all the urls particularly in the cohere-jetpack.js. Otherwise I would just remove the link to it on the includes/sidebar.php and forget about this folder. We will be re-writing this Jetpack using the new Jetpack api as soon as it is sufficiently mature.</p>
+
+<h3>ontology</h3>
+<img src="images/url-ontology.png" border="0" style="margin-top: 10px; margin-bottom: 10px;" />
+<p>You will need to replace these with your own url.</p>
+
+<h3>phplib</h3>
+<img src="images/url-phplib.png" border="0" style="margin-top: 10px; margin-bottom: 10px;" />
+<p>The first 12 of these urls are just in the examples at the top of the file. You can leave them.</p>
+<p>However, the last one is a reference to our proxy. You will need to edit this to your proxy, or is you don't have one, remove the proxy code line.</p>
+
+<h3>plugin</h3>
+<img src="images/url-plugin.png" border="0" style="margin-top: 10px; margin-bottom: 10px;" />
+<p>These are important. They are related to the auto-updating of the Cohere Firefox extension plugin. If you decide to offer your users the FireFox extension and you want it to write to your database, you will need to edit the cohere-firefox-plugin code (released in a separate folder in svn so that the url it uses to access the services is yours and you will need to edit these urls so that your users get auto updates from your version not ours.</p>
+
+<h3>screencasts</h3>
+<img src="images/url-screencasts.png" border="0" style="margin-top: 10px; margin-bottom: 10px;" />
+<p>You will need to replace this with your own url.</p>
+
+<h3>about.php</h3>
+<img src="images/url-about.png" border="0" style="margin-top: 10px; margin-bottom: 10px;" />
+<p>OK, you probably just want to do your own about page. You may want to pick through and leave some links to Cohere main, that is up to you.</p>
+
+<h3>config-sample.php</h3>
+<img src="images/url-configsample.png" border="0" style="margin-top: 10px; margin-bottom: 10px;" />
+<p>This is the file you will need to copy over and rename config.php for your site as mentioned in 3 and 4 above. We give you some defaults for the support and blog. You will have to decide if you want to keep a link to our openlean site. 
+</p>
+<p><b>IMPORTANT: </b>There is code in the file phplib/accesslib.php to validate against OpenLearn. You will need to review/remove this code as it will only work properly on the same subdomain.</p>
+
+<img src="images/openlearn.png" border="0" style="margin-top: 10px; margin-bottom: 10px;" />
+
+<h3>config.php</h3>
+<p>You will replace this file with your own version copied from the config-sample (see sections 3 and 4 above).</p>
+
+<h3>index.php</h3>
+<img src="images/url-index.png" border="0" style="margin-top: 10px; margin-bottom: 10px;" />
+<p>As with the header.php file, these are links to example searches of Cohere. You will want to edit these to your own example otherwise users will be redirected to our site. You may also want to think about changing the <b>Twitter</b> readers to point at your own account / searches etc.</p>
+
+ </li>
+</ol>
+</body>
+
+</html>

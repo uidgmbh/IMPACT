@@ -1,0 +1,6 @@
+<br><br>
+<p>Dear %s,</p>
+<h3>Below is your %s Cohere Search Agent Report</h3>
+
+<p>%s</p>
+<br>

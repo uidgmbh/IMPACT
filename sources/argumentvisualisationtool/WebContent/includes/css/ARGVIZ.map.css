@@ -1,0 +1,60 @@
+.debatemap {
+		position: relative;
+}
+.debatemap-cell {
+		border: solid 1px white;
+		font: 16px sans-serif;
+		color: darkgrey; /* Default color for non-hyperlink text */
+		line-height: 16px;
+		overflow: hidden;
+		position: absolute;
+		text-indent: 2px;
+}
+
+.debatemap-cell a {
+		color: black; /* Color for hyperlink text*/
+}
+
+.debatemap-cell a:hover {
+		text-decoration: underline;
+}
+
+.debatemap-cell div {
+		margin: 10px;
+}
+
+.title-cell {
+		font: bold 20px sans-serif;
+		color: black;
+}
+
+.nav_link {
+		color: blue;
+}
+.nav_link:hover {
+		text-decoration: underline;
+		cursor: pointer;
+}
+
+.clickable {
+		color: black;
+}
+
+.clickable:hover {
+		text-decoration: underline;
+}
+
+/**
+	 Default color theme for debatemap (based on d3's ordinal scale of
+	 10 categorical colours)
+ */
+.ARGVIZ-default-theme .q0-10 {fill: rgb(31, 119, 180);}
+.ARGVIZ-default-theme .q1-10 {fill: rgb(255, 127, 14);}
+.ARGVIZ-default-theme .q2-10 {fill: rgb(44, 160, 44);}
+.ARGVIZ-default-theme .q3-10 {fill: rgb(214, 39, 40);}
+.ARGVIZ-default-theme .q4-10 {fill: rgb(148, 103, 189);}
+.ARGVIZ-default-theme .q5-10 {fill: rgb(140, 86, 75);}
+.ARGVIZ-default-theme .q6-10 {fill: rgb(227, 119, 194);}
+.ARGVIZ-default-theme .q7-10 {fill: rgb(127, 127, 127);}
+.ARGVIZ-default-theme .q8-10 {fill: rgb(188, 189, 34);}
+.ARGVIZ-default-theme .q9-10 {fill: rgb(23, 190, 207);}

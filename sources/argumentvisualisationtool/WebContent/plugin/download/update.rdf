@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<r:RDF xmlns:r="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+<!-- Cohere -->
+<!-- ID for this cohere plugin -->
+<r:Description about="urn:mozilla:extension:{8598b2fc-f26d-40b4-af47-a06ba5643795}">
+  <em:updates>
+    <r:Seq>
+      <r:li>
+        <r:Description>
+          <em:version>0.6.9</em:version>
+          <em:targetApplication>
+            <r:Description>
+            	<!-- Don't change this ID - it's the one for firefox! -->
+              <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+              <em:minVersion>0.7</em:minVersion>
+              <em:maxVersion>4.0+</em:maxVersion>
+              <em:updateLink>https://cohere.open.ac.uk/plugin/download/cohere.xpi</em:updateLink>
+              <em:updateInfoURL>https://cohere.open.ac.uk/plugin/download/updateinfo-0.6.9.xhtml</em:updateInfoURL>              
+            </r:Description>
+          </em:targetApplication>
+	  <!-- Flock -->
+	  <em:targetApplication>
+	    <r:Description>
+	      <em:id>{a463f10c-3994-11da-9945-000d60ca027b}</em:id>
+	      <em:minVersion>1.0</em:minVersion>
+	      <em:maxVersion>1.0+</em:maxVersion>
+              <em:updateLink>https://cohere.open.ac.uk/plugin/download/cohere.xpi</em:updateLink>
+              <em:updateInfoURL>https://cohere.open.ac.uk/plugin/download/updateinfo-0.6.9.xhtml</em:updateInfoURL>              
+	    </r:Description>
+	  </em:targetApplication>
+        </r:Description>
+      </r:li>
+    </r:Seq>
+  </em:updates>
+</r:Description>
+</r:RDF>

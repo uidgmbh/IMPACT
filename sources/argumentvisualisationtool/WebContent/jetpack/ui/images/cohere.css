@@ -1,0 +1,47 @@
+#cohere-add-idea {
+    list-style-image: url("chrome://cohere/skin/add.png");
+}
+
+#cohere-add-clip {
+    list-style-image: url("chrome://cohere/skin/clip.png");
+}
+
+#cohere-add-conn {
+    list-style-image: url("chrome://cohere/skin/connection-16px.png");
+}
+
+#cohere-mydata {
+    list-style-image: url("chrome://cohere/skin/toolbar/profile.png");
+}
+
+#cohere-login {
+    list-style-image: url("chrome://cohere/skin/toolbar/profile.png");
+}
+
+#cohere-home {
+    list-style-image: url("chrome://cohere/skin/cohere_hourglass16x16.png");
+}
+
+#cohere-ideas-menulist {
+	width:400px;
+}
+
+#cohere-number-ideas {
+	align:right;
+}
+
+.idea-menuitem {
+	padding: 5px 0px 5px 26px;
+	/*background-image: url("chrome://cohere/skin/toolbar/profile.png");*/
+	background-repeat: no-repeat;
+	background-position: 5px 3px;
+}
+
+#sidebar-box {
+    overflow-x: hidden !important;
+}
+#sidebar {
+    min-width: 0px !important;
+    max-width: none !important;
+    overflow-x: hidden !important;
+}

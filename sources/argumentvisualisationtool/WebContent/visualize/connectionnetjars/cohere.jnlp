@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.0+" codebase="http://coheredev.open.ac.uk/visualize/connectionnetjars" href="cohere.jnlp">
+    <information>
+        <title>Cohere Network View</title>
+        <vendor>Cohere</vendor>
+    </information>
+    <resources>
+        <jar href="cohere.jar" main="true" />
+        <jar href="prefuse.jar" main="false" />
+        <jar href="plugin.jar" main="false" />
+    </resources>
+    <applet-desc
+         name="Cohere Network View"
+         main-class="cohere.CohereApplet">
+    </applet-desc>
+    <update check="background"/>
+</jnlp>

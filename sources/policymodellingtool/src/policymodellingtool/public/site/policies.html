@@ -1,0 +1,38 @@
+<html>
+<head>
+<style type="text/css">
+P.submit {text-align: left}
+</style>
+</head>
+
+<body>
+
+<h1 align="center">Policy Modelling Tool</h1>
+
+<div id="policies">
+  
+{{>pmmenu}}
+
+{{#header}}
+<h2>{{title}}</h2>
+
+<p>{{description_text}}</p>
+
+<p><i>Click on a "select" button below to view the
+legal effects of the given policy on the facts you have entered for
+the test case.</i><p>
+
+{{/header}}
+
+<h3>Table of Contents</h3>
+
+<div id="outline">
+  {{{outline_text}}}
+</div>
+
+{{{policies_text}}}
+
+</div>
+
+</body>
+</html>

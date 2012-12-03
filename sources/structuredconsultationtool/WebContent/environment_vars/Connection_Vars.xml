@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<connection>
+    <connectionaName>localhost</connectionaName>
+    <user>root</user>
+    <password>root</password>
+    <database>impact_UoL_UvA_DB_v1_5</database>
+ </connection>

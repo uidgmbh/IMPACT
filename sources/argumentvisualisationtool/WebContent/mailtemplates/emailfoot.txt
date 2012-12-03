@@ -1,0 +1,8 @@
+<p>The Cohere Team</p>
+
+<hr>
+<p>Please do not reply to this email, please use our <a href="%s">contact page</a> instead.<p/>
+
+<p>The Open University is incorporated by Royal Charter (RC 000391), an exempt charity in England & Wales and a charity registered in Scotland (SC 038302).</p>
+</body>
+</html>

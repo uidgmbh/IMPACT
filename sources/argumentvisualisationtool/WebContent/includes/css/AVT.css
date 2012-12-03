@@ -1,0 +1,53 @@
+/* IMPACT AVT Debate Map pallete*/
+.impact-avt .q0-20 {fill: rgb(163, 208, 91)}
+.impact-avt .q5-20 {fill: rgb(174, 214, 114)}
+.impact-avt .q10-20 {fill: rgb(185, 222, 138)}
+.impact-avt .q15-20 {fill: rgb(196, 226, 160)}
+
+.impact-avt .q1-20 {fill: rgb(132, 185, 236)}
+.impact-avt .q6-20 {fill: rgb(157, 198, 237)}
+.impact-avt .q11-20 {fill: rgb(180, 211, 237)}
+.impact-avt .q16-20 {fill: rgb(204, 222, 238)}
+
+.impact-avt .q2-20 {fill: rgb(185, 155, 251)}
+.impact-avt .q7-20 {fill: rgb(192, 171, 245)}
+.impact-avt .q12-20 {fill: rgb(203, 187, 240)}
+.impact-avt .q17-20 {fill: rgb(215, 204, 238)}
+
+.impact-avt .q3-20 {fill: rgb(217, 154, 197)}
+.impact-avt .q8-20 {fill: rgb(222, 169, 205)}
+.impact-avt .q13-20 {fill: rgb(224, 182, 211)}
+.impact-avt .q18-20 {fill: rgb(228, 197, 218)}
+
+.impact-avt .q4-20 {fill: rgb(223, 176, 109)}
+.impact-avt .q9-20 {fill: rgb(227, 185, 127)}
+.impact-avt .q14-20 {fill: rgb(229, 193, 142)}
+.impact-avt .q19-20 {fill: rgb(232, 203, 161)}
+
+
+span.download-link {
+    font: normal 15px sans-serif;
+}
+
+span.download-link a {
+	color: #0048B4;
+	font-size: 18px;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.debatemap-cell div{
+	font-size: 18px;
+	line-height: 21px;
+}
+
+.debatemap-cell div #network-div div{
+	font-size: 14px;
+}
+
+.nav_link {
+	color: #0048B4;
+	font-size: 21px;
+}
+
+

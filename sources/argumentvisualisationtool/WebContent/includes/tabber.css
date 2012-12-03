@@ -1,0 +1,118 @@
+#tabber {
+	width:100%;
+}
+
+#tabber ul.tab {
+	margin:0;
+	margin-left: 20px;	
+	padding:0px 0px 0px 0px;
+	list-style:none;
+}
+
+#tabber ul.tab2 {
+	margin:0;
+	margin-left: 5px;	
+	padding:0px 0px 0px 0px;
+	list-style:none;
+}
+
+#tabber li.tab {
+	font-weight: bold;
+	display:inline;
+	padding:0;
+	margin:0px;
+	
+}
+
+#tabber a.tab {
+  	float: left;
+	background:url("../images/tabber/tableft.png") no-repeat left top;
+	margin-right:3px;
+	padding:0 0 0 4px;
+	text-decoration:none;
+}
+
+#tabber span.tab {
+	float: left;
+	display:block;
+	background:url("../images/tabber/tabright.png") no-repeat right top;
+	padding:5px 8px 4px 3px;
+	color:#333;
+	cursor:pointer;
+}
+
+#tabber a.tab:hover span {
+	color:#591333;
+}
+
+#tabber a.tab:hover {
+	background-position:0% 0px;
+	color: #7F0000;
+}
+
+#tabber a.tab:hover span {
+	background-position:100% 0px;
+	color: #7F0000;
+}
+
+#tabber a.current {
+	background-position:0% 0px;
+	color: #7F0000;
+}
+
+#tabber a.current span {
+	background-position:100% 0px;
+	color: #7F0000;
+}
+
+#tabber a.unselected {
+	background-position:0% -25px;
+	color: #85C042;
+}
+
+#tabber a.unselected span {
+	background-position:100% -25px;
+	color: #85C042;
+}
+
+#tabber .tabcontent{
+	clear: both;
+	border: 2px solid #d3e8e8;
+	width: 100%;
+	padding: 5px;
+	padding-top: 8px;
+	overflow:hidden;
+}
+
+#tabber .tabcontenthome{
+	clear: both;
+	border: 2px solid #d3e8e8;
+	width: 100%;
+	padding: 5px;
+	padding-top: 8px;
+	padding-right: 10px;
+	overflow:hidden;
+}
+
+#tabber #nav-previous{
+	margin-right:0px;
+}
+
+#tabber #nav-next{
+	margin-left:0px;
+}
+
+#tabber .nav-page{
+	margin: 0px 4px;	
+}
+
+.nav-page{
+	margin: 0px 3px;	
+}
+
+#tabber .currentpage {
+   color: #40B5B2;
+   padding: 3px; 
+   border: 1px solid #FACEE3;
+   font-weight: bold;
+}

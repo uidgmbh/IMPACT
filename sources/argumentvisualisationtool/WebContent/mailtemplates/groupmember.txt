@@ -1,0 +1,12 @@
+<p>Dear %s,</p>
+<p><b>%s</b> has added you to the following Cohere group:</p>
+
+<table>
+<tr>
+<td>%s</td> 
+<td valign="top" style="font-size:80%%"><b><a href="%s">%s</a></b>%s</td>
+</tr>
+</table>
+
+<p>Please contact <a href="mailto:%s">%s</a> if you have any queries about this group.</p>
+

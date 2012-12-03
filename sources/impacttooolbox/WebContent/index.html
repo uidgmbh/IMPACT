@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+	<title>IMPACT Toolbox</title>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	<!-- BEGIN OF DESIGN AND STYLE SPECIFIC INCLUDS -->
+	
+	<link rel="icon" href="toolbox/images/impact_fav.ico" type="image/x-icon" />
+	
+	<!-- Load JQuery -->
+	<script src="toolbox/js/jquery-1.7.js" type="text/javascript"></script>
+	<script src="toolbox/js/jquery.rest.js" type="text/javascript"></script>
+	<script src="toolbox/js/jquery.address-1.4.js" type="text/javascript"></script>
+	
+	<!-- IMPACT UI Controls (JQuery Template) -->
+	<link type="text/css" href="toolbox/css/impact-ui/jquery-ui-1.8.11.custom.css" rel="stylesheet" />
+	<script type="text/javascript" src="toolbox/js/impact-ui/jquery-ui-1.8.11.custom.min.js"></script>
+	
+	<!-- JQuery Plug-ins -->
+	<!-- the jScrollPane script -->
+	<script type="text/javascript"	src="toolbox/js/impact-ui/jquery.jscrollpane.min.js"></script>
+	<!-- the mousewheel plug-in - to provide mouse wheel support in jScrollPane -->
+	<script type="text/javascript" src="toolbox/js/impact-ui/jquery.mousewheel.js"></script>
+	<script type="text/javascript" src="toolbox/js/impact-ui/jquery.mwheelIntent.js"></script>
+	<!-- the custom check box and radio buttons script -->
+	<script type="text/javascript" src="toolbox/js/impact-ui/ui.checkbox.js"></script>
+	<!-- the custom select box script (for drop down menus) -->
+	<script type="text/javascript" src="toolbox/js/impact-ui/jquery.selectbox-0.5.js"></script>
+	<!-- the progress indicator script -->
+	<script type="text/javascript" src="toolbox/js/impact-ui/jquery.busy.min.js"></script>
+	<!-- the time picker script -->
+	<script type="text/javascript" src="toolbox/js/impact-ui/jquery.ui.timepicker.js"></script>
+	<!-- styles needed by the time picker script -->
+	<link rel="stylesheet" type="text/css" media="all" href="toolbox/css/impact-ui/plugins/jquery-ui-timepicker.css" />
+
+	<!-- CSS -->	
+	<!-- Include the green Impact theme, never change this file manually -->
+	<link type="text/css" href="toolbox/css/impact-ui/impact-green.css" rel="stylesheet" />
+	<!-- IMPACT Toolbox main design -->
+	<link href="toolbox/css/main.css" rel="stylesheet" type="text/css" />
+	
+	<!-- END OF DESIGN AND STYLE SPECIFIC INCLUDS -->
+	
+	<!-- Initialize Toolbox stuff (no design styling) -->
+	<script src="toolbox/js/main.js" type="text/javascript"></script>
+
+	<!-- PARTNER PLUGINS START -->
+
+	<!-- PMT -->
+    <script type="text/javascript" src="../policymodellingtool/js/app/main.js"></script>
+    <link rel="stylesheet" href="toolbox/css/policymodelling/style.css" type="text/css" />
+    
+    <!-- ART -->
+    <script type="text/javascript" src="../argumentreconstructiontool/js/init.js"></script>
+    <link href="../argumentreconstructiontool/css/jquery-ui-1.8.20.custom.css" rel="stylesheet" type="text/css" />
+    <link href="../argumentreconstructiontool/css/art.css" rel="stylesheet" type="text/css" />
+	
+	<!-- AVT -->
+	<script type="text/javascript" src="../argumentvisualisationtool/includes/js/AVT.js"></script>
+	
+	<!-- SCT -->
+	<script type="text/javascript" src="../structuredconsultationtool/SCT.js"></script>
+	 
+	<!-- PARTNER PLUGINS END -->
+
+	<!-- RSS Feed -->
+	<!-- http://www.zazar.net/developers/jquery/zrssfeed/ 
+	<script src="toolbox/js/jquery.zrssfeed.min.js" type="text/javascript"></script>
+	<link href="toolbox/css/jquery.zrssfeed.css" rel="stylesheet" type="text/css" /> -->
+
+</head>
+<body class="toInit toolbox">
+
+	<div id="container_outer">
+		<div id="container_inner">
+			<div id="header">
+				<div id="header_left">
+					<div id="header_home" onclick="ImpactToolbox.setNavi(0)"></div>
+				</div>
+				<div id="header_right"></div>
+				<div id="header_center">
+
+					<div id="header_navi_upper">
+						<div style="display:none;">
+						Language&nbsp; 
+							<select id="languageselection">
+								<option>English</option>
+								<option>Deutsch</option>
+							</select>
+						</div>
+						
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="javascript:ImpactToolbox.setNavi(10);" >About</a> | 
+						<a href="javascript:ImpactToolbox.setNavi(11);">Imprint</a> | 
+						<a href="javascript:ImpactToolbox.setNavi(12);">Contact</a> | 
+						<a href="javascript:ImpactToolbox.setNavi(13);">Privacy</a> | 
+						<a href="javascript:ImpactToolbox.setNavi(14);">Help</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<!-- <a href="javascript:ImpactToolbox.setNavi(14);">Help</a>  | -->
+						
+						<div style="display:none;">Search &nbsp; <input type="text" id="search" /><button id="searchbutton"></button></div>
+					</div>
+
+					<div id="header_navi_upper_block"></div>
+
+					<div id="header_navi_lower">
+						<div id="login">
+							<span>You are not logged in. Login with: </span> <input
+								type="button" value="Google" class="headerButton"
+								onclick="ImpactToolbox.loginGoogle();" /> <input type="button"
+								value="Facebook" class="headerButton" onclick="ImpactToolbox.loginFacebook();" />
+						</div>
+						<div id="loggedin" display="none">
+							<div id="user">
+								<img src=""></img> <span id="username">User Name</span>
+							</div>
+							<button id="logout" class="headerstyle" onclick="ImpactToolbox.logout();">Logout</button>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div id="content">
+				<div id="navi">
+					<div id="buttonbg" class="nav0"></div>
+					<a class="button nav0 active" href="javascript:ImpactToolbox.setNavi(0)" title="Home"></a>
+					<a class="button nav1" href="javascript:ImpactToolbox.setNavi(1)" title="Topics"></a>
+					<div class="space"></div>
+					<a class="button nav2" href="javascript:ImpactToolbox.setNavi(2)" title="Argument Reconstruction"></a>
+					<a class="button nav3" href="javascript:ImpactToolbox.setNavi(3)" title="Argument Visualisation"></a>
+					<a class="button nav4" href="javascript:ImpactToolbox.setNavi(4)" title="Policy Modeling"></a>
+					<a class="button nav5" href="javascript:ImpactToolbox.setNavi(5)" title="Structured Consultation"></a>
+					<div id="navi_bottom"></div>
+				</div>
+				<div id="stagebg">
+					<img src="toolbox/css/impact-ui/images/toollogos/Icon_Home.png"
+						alt="toollogo" id="toollogo" />
+					<div id="stage"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 
+	<div id="useroptions">
+		<ol>
+			<li><a>Option 1</a></li>
+			<li><a>Option 2</a></li>
+			<li><a href="javascript:logout();">Logout</a></li>
+			<li><hr /></li>
+			<li><a href="javascript:deleteData();">Delete Userdata</a></li>
+		</ol>
+	</div>
+ 	-->
+</body>
+</html>
+

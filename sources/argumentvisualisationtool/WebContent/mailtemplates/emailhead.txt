@@ -1,0 +1,17 @@
+<html>
+<head>
+<style>
+body {
+	font-family: "Lucida Grande" Verdana, Arial, Helvetica, sans-serif; 
+	margin: 10px;
+	font-size: 80%%;
+	color: #40B5B2;
+}
+
+a {
+ 	color: #e80074;
+}
+</style>
+</head>
+<body>
+<img src="%s" alt="Cohere logo"/>

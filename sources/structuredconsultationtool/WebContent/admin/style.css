@@ -1,0 +1,59 @@
+body,
+html {
+margin:0;
+padding:0;
+color:#000;
+}
+
+ul {
+	margin: 0;
+}
+
+#contentWrap {
+	width: 1700px;
+	margin: 0 auto;
+	height: auto;
+	overflow: hidden;
+}
+
+#contentTop {
+	width: 1700px;
+	padding: 10px;
+	margin-left: 30px;
+}
+
+#contentMiddle {
+	float: left;
+	width: 800px;
+}
+
+
+#contentRight {
+	float: Right;
+	width: 800px;
+}
+
+#contentRight Ri {
+	list-style: none;
+	margin: 0 0 4px 0;
+	padding: 10px;
+	background-color:#00CCCC;
+	border: #CCCCCC solid 1px;
+	color:#fff;
+}
+
+
+#contentLeft {
+	float: Left;
+	width: 800px;
+	padding:10px;
+	background-color:#336600;
+	color:#FFFFFF;
+}
+
+#contentLeftNoColour {
+	float: Left;
+	width: 800px;
+	padding:6px;
+	color:#FFFFFF;
+}

@@ -1,0 +1,17 @@
+
+.proselection::-moz-selection{
+	background: #C0FFC0 !important;
+	color: blue !important;
+}
+.conselection::-moz-selection {
+	background: #FF8080 !important;
+	color: blue !important;
+}
+.otherselection::-moz-selection {
+	background: #C0FFFF !important;
+	color: blue !important;
+}
+.myselection::-moz-selection {
+	background: #FFFF80 !important;
+	color: blue !important;
+}

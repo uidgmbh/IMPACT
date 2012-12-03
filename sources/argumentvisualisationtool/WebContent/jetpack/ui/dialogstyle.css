@@ -1,0 +1,265 @@
+body {
+	font-family: Arial, Helvetica, sans-serif; 
+	margin: 0px;
+	font-size: 80%;
+	color: #40B5B2;
+}
+
+a {
+ 	color: #e80074;
+ 	text-decoration: none;
+}
+
+a.form {
+	font-size:90%;
+}
+
+h1 {
+	margin-top:5px;
+	margin-bottom: 10px;
+	font-size: 150%;	
+}
+
+h2 {
+	margin: 0px;
+	font-size: 140%;	
+	margin-bottom:10px;
+}
+
+.active {
+	color: #e80074;
+	cursor:pointer;		
+}
+
+.inactive{
+	cursor:	default;
+	color: #ccc;
+}
+
+#header {
+	width:100%;
+}
+
+#logo {
+	float: left;
+	padding: 10px;
+	margin-bottom:10px;
+}
+
+#logo .accesslink {
+	color:#FFFFFF;
+}
+
+#logo .hourglass {
+	padding-bottom: 5px;
+}
+#menu {
+	float:right;
+	margin-right: 10px;
+	margin-top: 20px;
+}
+
+#main {
+	clear:both;
+	width:100%
+}
+
+#content {
+	margin-left: 5px;
+	float:left;
+}
+
+
+#footer {
+	clear: both;
+	float: right;
+	margin-right: 10px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+/* form */
+div.formrow {
+	padding: 5px;
+	clear: both;
+	
+}
+
+.formlabel {
+	float: left;
+	margin-left:0px;
+	width: 70px;
+	padding:0px;
+	text-align: right;
+	font-weight: bold;
+} 
+ 
+.forminput {
+	margin-left: 5px;
+}
+ 
+.formsubmit {
+	margin-top:0px;
+	margin-left: 70px;	
+}
+
+.formhelp {
+ 	margin-left:10px;	
+}
+.input {
+	width: 250px;	
+}
+
+.inputshort {
+	width: 250px;	
+}
+
+.labelinput {
+	border: none;
+	color: #40B5B2;
+}
+
+.linktypeneutral {
+	background: #B2B2B2;
+	color: black;
+}
+
+.linktypepositive {
+	background: #00BD53;
+	color: black;
+}
+
+.linktypenegative {
+	background: #C10031;
+	color: black;
+}
+
+.urlinput {
+	width: 250px;
+		
+}
+
+.dateinput {
+	width: 180px;
+	font-size:90%;	
+}
+/* sub-form */
+.subform {
+	margin-left: 3px;
+	padding-top: 5px;
+	padding-right: 0px;
+	float:left; 
+	width: 390px;
+	border: 1px solid #40B5B2;
+}
+
+div.subformrow {
+	padding: 0px 3px 3px 3px;
+	clear: both;
+	text-align:left;
+}
+
+.subformlabel {
+	float: left;
+	margin-left:0px;
+	width: 50px;
+	padding:0px;
+	text-align: right;
+	font-weight: bold;
+	font-size: 90%;
+} 
+ 
+.subforminput {
+	margin-left: 5px;
+	font-size: 90%;
+}
+ 
+.subformsubmit {
+	margin-left: 75px;
+	font-size: 90%;	
+}
+
+.subformbutton {
+	font-size: 90%;	
+}
+
+hr.urldivider {
+	background: #40B5B2;
+	border:0px;
+	padding:0px;
+	height: 1px;
+	width: 100%;
+} 
+/* for sort options */
+
+.errors {
+	color:red;
+	clear:both;	
+}
+
+#contextimage {
+	float: left;
+	margin-left:0px;
+	width: 70px;
+	padding:5px;
+	margin-bottom:10px;
+}
+
+#contextinfo {
+	float: left;
+	margin-bottom:10px;
+}
+
+.required {
+	color: red;
+	font-weight: bold;
+}
+
+.help {
+	color: #001;
+	font-weight: bold;
+}
+
+#fromidea {
+	clear:both;
+		
+}
+
+#toidea {
+	clear:both;	
+}
+
+#link {
+	clear: both;
+	width:391px;
+	margin-left:auto;
+	margin-right:auto;	
+	text-align:center;	
+}
+
+
+.connwrapper {}
+
+#link-top {
+	background-image: url("../images/connection/edit/link-neutral-top.png");
+	background-repeat:no-repeat;
+	background-position:top center;
+	height: 18px;
+}
+
+#link-bottom {
+	background-image: url("../images/connection/edit/link-neutral-bottom.png");
+	background-repeat:no-repeat;
+	background-position:bottom center;
+	height: 21px;
+}
+
+#newlinktypeform {
+	clear:both; 
+	margin-left:auto;
+	margin-right:auto;
+	width:300px;
+	margin-top:10px;
+	border:1px solid #AFD8D7;
+	padding:5px;
+}
