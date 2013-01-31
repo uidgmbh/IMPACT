@@ -1,4 +1,29 @@
 <?php
+/* ----------------------------------------------------------------------------
+ * Copyright (c) 2012 Leibniz Center for Law, University of Amsterdam, the 
+ * Netherlands
+ *
+ * This program and the accompanying materials are licensed and made available
+ * under the terms and conditions of the European Union Public Licence (EUPL 
+ * v.1.1).
+ *
+ * You should have received a copy of the  European Union Public Licence (EUPL 
+ * v.1.1) along with this program as the file license.txt; if not, please see
+ * http://joinup.ec.europa.eu/software/page/eupl/licence-eupl.
+ *
+ * This software is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+ * or FITNESS FOR A PARTICULAR PURPOSE.
+ * ----------------------------------------------------------------------------
+ * Project:      IMPACT
+ * Created:      2011-2012
+ * Last Change:  14.12.2012 (final release date)
+ * ----------------------------------------------------------------------------
+ * Created by the Leibniz Center for Law, University of Amsterdam, The 
+ * Netherlands, 2012
+ * Authors: Jochem Douw (http://jochemdouw.nl), Sander Latour
+ * ----------------------------------------------------------------------------
+ */
 /**
  * This class was taken from the code of the Wrox book Professional PHP5, and 
  * adapted. Nice as future addition: make extra parameter for select, update, 
@@ -77,7 +102,7 @@ class Database {
       //for security reasons, also escape the field
       $field = mysqli_escape_string($this->connection, $field);      
 
-      $arWhere[] = "$field = $val";
+      $arWhere[] = "`$field` = \"$val\"";
     }
 
     $sql = "SELECT * FROM $table ";
@@ -124,7 +149,7 @@ class Database {
       AND $occurrencetable.{$conjunctiontable} = $conjunctiontable.${conjunctiontable}_id
       AND $occurrencetable.$conjunctType = $conjunctType.${conjunctType}_id";
 
-    $resource = mysqli_query($this->connection, $query) or show_error("The following MySQL error occurred: ".mysqli_error($this->resource));
+    $resource = mysqli_query($this->connection, $query) or show_error("The following MySQL error occurred: ".mysqli_error($this->connection));
 
     //for every found conjunct...
     while($conjunct = mysqli_fetch_assoc($resource)){

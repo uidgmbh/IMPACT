@@ -1,4 +1,29 @@
 <?php
+/* ----------------------------------------------------------------------------
+ * Copyright (c) 2012 Leibniz Center for Law, University of Amsterdam, the 
+ * Netherlands
+ *
+ * This program and the accompanying materials are licensed and made available
+ * under the terms and conditions of the European Union Public Licence (EUPL 
+ * v.1.1).
+ *
+ * You should have received a copy of the  European Union Public Licence (EUPL 
+ * v.1.1) along with this program as the file license.txt; if not, please see
+ * http://joinup.ec.europa.eu/software/page/eupl/licence-eupl.
+ *
+ * This software is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+ * or FITNESS FOR A PARTICULAR PURPOSE.
+ * ----------------------------------------------------------------------------
+ * Project:      IMPACT
+ * Created:      2011-2012
+ * Last Change:  14.12.2012 (final release date)
+ * ----------------------------------------------------------------------------
+ * Created by the Leibniz Center for Law, University of Amsterdam, The 
+ * Netherlands, 2012
+ * Authors: Jochem Douw (http://jochemdouw.nl), Sander Latour
+ * ----------------------------------------------------------------------------
+ */
 /**
   This is the document class
   @constructor
@@ -11,7 +36,20 @@ class Document extends DbItem{
   }
 
   /**
-    Returns the unique identifier of objects of this type for storage in the storage mechanism. Is sort of a surrogate for a constant, that won't work in the superclass of this class.
+   * Extension of the parent function load, but also loads the fact whether a 
+   * document is annotated or not.
+   * @since 13 December 2012
+   */
+  function load($id){
+    parent::load($id);
+    $this->data['annotated'] = $this->isAnnotated();
+    $this->data['newest_version'] = $this->isNewestVersion();
+  }
+
+  /**
+    Returns the unique identifier of objects of this type for storage in the 
+    storage mechanism. Is sort of a surrogate for a constant, that won't work 
+    in the superclass of this class.
     @retval string The storage ID
    */
   public static function getStorageID(){ 
@@ -37,18 +75,32 @@ class Document extends DbItem{
     @retval boolean True when annotated, false otherwise
    */
    function isAnnotated(){
-     //^$db = new Database();
      $arConditions = array(
          'document_id' => $this->getID()
          );
      $result = $this->db->select(textSection::getStorageID(), $arConditions);
      return (bool) count($result);
-       //$annotationQuery = "SELECT * FROM ART_text_sections WHERE `document_id` = ".$only_row['id'];
    }
+
+  function isNewestVersion(){
+    $arConditions = array(
+      'first_id' => $this->data['first_id']
+    );
+    $result = $this->db->select($this->getStorageID(), $arConditions);
+    $isNewest = true; //until proven otherwise
+    foreach($result as $row){
+      if($row['version'] > $this->data['version']){
+        $isNewest = false;
+      }
+    }
+    return $isNewest;
+  }
 
   /**
     Save a brand new document
-    @retval int/boolean The ID of the just-saved element (especially useful when adding a new document, of which the ID is not known by definition), or false when the create failed.
+    @retval int/boolean The ID of the just-saved element (especially useful 
+    when adding a new document, of which the ID is not known by definition), 
+    or false when the create failed.
   */
   protected function createNewDocument(){
     $arFieldValues = array();
@@ -85,7 +137,6 @@ class Document extends DbItem{
     $arFieldValues['url'] = $this->data["url"];
     $arFieldValues['version'] = $this->data["version"] + 1;
     $arFieldValues['first_id'] = $this->data["first_id"];
-    //^$db = new Database();
     $document_id = $this->db->insert($this->getStorageID(), $arFieldValues);
     $first_id = $this->db->update($this->getStorageID(), 
       array('title' => $this->data['title']),

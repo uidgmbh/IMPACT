@@ -1,3 +1,6 @@
+// Copyright (c) 2012 Fraunhofer Gesellschaft
+// Licensed under the EUPL V.1.1
+
 // Displays a view to select a candidate for a premise or an exception
 PM.PremiseCandidateView = Backbone.View.extend(
     {className: "premise-candidate",
@@ -20,7 +23,8 @@ PM.PremiseCandidateView = Backbone.View.extend(
      render: function() {
          var data = this.model.toJSON();
          
-         this.$el.html(ich.premisecandidate());
+         this.$el.html(ich.premisecandidate({pmt_role: $.i18n.prop('pmt_role'),
+                                             pmt_statement: $.i18n.prop('pmt_statement')}));
          
          var role = this.$('.role-input');
          role.prop('disabled', !data.editableRole);
@@ -39,7 +43,7 @@ PM.PremiseCandidateView = Backbone.View.extend(
                                        return AGB.statement_text(statement);
                                    }
                                   },
-                            placeholder: "Select a statement",
+                            placeholder: $.i18n.prop('pmt_select_a_statement'),
                             formatSelection: AGB.format_selected_statement,
                             formatResult: AGB.statement_text,
                             initSelection: function(element, callback) {

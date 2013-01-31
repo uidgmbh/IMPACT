@@ -65,7 +65,7 @@ class SctImporter {
     $cohere_id = $this->_findCohereIdByArtId('practical_reasoning_as-'.$id);
 
     if (empty($cohere_id)) {
-      return new Result('sctimport', false);
+      return new Result('sctimport', new stdClass());
     }
 
     $result = new stdClass();
@@ -122,7 +122,7 @@ class SctImporter {
   }
 
   private function _findCohereIdByArtId($art_id) {
-    $stmnt = $this->pdo->prepare('SELECT DISTINCT cohere_id FROM Mappings' .
+    $stmnt = $this->pdo->prepare('SELECT DISTINCT cohere_id FROM IMPACT_Mappings' .
                                  '  WHERE art_id=:art_id');
     $stmnt->bindParam(':art_id', $art_id, PDO::PARAM_STR);
     $stmnt->execute();

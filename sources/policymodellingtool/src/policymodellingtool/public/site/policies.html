@@ -1,38 +1,50 @@
 <html>
-<head>
-<style type="text/css">
-P.submit {text-align: left}
-</style>
-</head>
+  <head>
+    <style type="text/css">
+      P.submit {text-align: left}
+    </style>
+  </head>
 
-<body>
+  <body>
 
-<h1 align="center">Policy Modelling Tool</h1>
+    <h1 align="center">Policy Modelling Tool</h1>
 
-<div id="policies">
-  
-{{>pmmenu}}
+    <div id="policies">
+      
+      {{>pmmenu}}
 
-{{#header}}
-<h2>{{title}}</h2>
+      {{#header}}
+      <h2>{{title}}</h2>
 
-<p>{{description_text}}</p>
+      <div class="policies-filtering-indication">
+        {{pmt_policies_filtering_indication}}
+      </div>
+      <div class="policies-filtering">
+        <p>{{current_issue}} {{{issue}}}</p>
+        <p> {{can_display}}</p>
+        <ul>
+          <li><a id="all" class="clickable policy-filtering">{{all_policies}}</a></li>
+          <li><a id="in" class="clickable policy-filtering">{{policies_making_in}}</a></li>
+          <li><a id="out" class="clickable policy-filtering">{{policies_making_out}}</a></li>
+          <li><a id="undecided" class="clickable policy-filtering">{{policies_making_undecided}}</a></li>
+        </ul>
+      </div>
 
-<p><i>Click on a "select" button below to view the
-legal effects of the given policy on the facts you have entered for
-the test case.</i><p>
+      <p>{{description_text}}</p>
 
-{{/header}}
+      <p><i>{{{pmt_see_effects}}}</i><p>
 
-<h3>Table of Contents</h3>
+        {{/header}}
 
-<div id="outline">
-  {{{outline_text}}}
-</div>
+        <h3>{{pmt_table_of_contents}}</h3>
 
-{{{policies_text}}}
+        <div id="outline">
+          {{{outline_text}}}
+        </div>
 
-</div>
+        {{{policies_text}}}
 
-</body>
+    </div>
+
+  </body>
 </html>

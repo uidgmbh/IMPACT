@@ -52,17 +52,17 @@ class ArtImporter {
     $this->pdo = new PDO($dsn, $dbuser, $dbpass);
     $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $this->pdo->exec('CREATE TABLE IF NOT EXISTS Mappings (' .
+    $this->pdo->exec('CREATE TABLE IF NOT EXISTS IMPACT_Mappings (' .
                '  id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,' .
                '  art_id TEXT,' .
                '  cohere_id TEXT)');
 
-    $this->pdo->exec('CREATE TABLE IF NOT EXISTS Arguments_Statements (' .
+    $this->pdo->exec('CREATE TABLE IF NOT EXISTS IMPACT_Arguments_Statements (' .
                '  id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,' .
                '  argument_id TEXT,' .
                '  statement_id TEXT)');
 
-    $this->pdo->exec('CREATE TABLE IF NOT EXISTS Issues_Arguments (' .
+    $this->pdo->exec('CREATE TABLE IF NOT EXISTS IMPACT_Issues_Arguments (' .
                '  id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,' .
                '  issue_id TEXT,' .
                '  argument_id TEXT)');
@@ -70,6 +70,12 @@ class ArtImporter {
     $this->pdo->exec('CREATE TABLE IF NOT EXISTS IMPACT_Arguments_Contributors (' .
                '  cohere_id VARCHAR(255) NOT NULL PRIMARY KEY,' .
                '  contributor_name TEXT)');
+
+    // For when we need to do some debugging
+    $this->pdo->exec('CREATE TABLE IF NOT EXISTS IMPACT_Log (' .
+               '  id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,' .
+               '  timestamp TEXT,' .
+               '  context TEXT)');
 
   }
 
@@ -98,7 +104,7 @@ class ArtImporter {
 
     if (! getNode($issue->id) instanceof CNode) {
       $this->connectionset = new ConnectionSet($connections);
-      $this->connectionset->num_imported = 0;
+      $this->connectionset->num_imported = -1;
       return $this->connectionset;
     }
 
@@ -112,10 +118,10 @@ class ArtImporter {
     $num_imported = 0;
 
     foreach ($responses as $response) {
-      if ($response->argument->scheme === 'practical_reasoning_as' ||
-          $response->argument->scheme === 'Practical Reasoning') {
+      if (($response->argument->scheme === 'practical_reasoning_as') &&
+          !empty($response->argument->conclusion->statement->text)) {
         $connections = array_merge(
-          $connections, $this->importArgument($response->argument, $issue));
+          $connections, $this->_importArgument($response->argument, $issue));
         $num_imported += 1;
         $current_argument_ids[] = $response->argument->id;
       }
@@ -142,7 +148,15 @@ class ArtImporter {
     return $this->connectionset;
   }
 
-  private function importArgument($argument, $issue) {
+  /**
+   * Import a single argument (conclusion and premises)
+   *
+   * @access private
+   * @param object $argument The argument object to be imported
+   * @param object $issue The issue the argument is associated with
+   * @return array An array of Cohere connection objects
+   */
+  private function _importArgument($argument, $issue) {
     $conclusion = $argument->conclusion;
     $statement = $conclusion->statement;
     $connections = array();
@@ -164,6 +178,14 @@ class ArtImporter {
       $this->addresses_link_type->linktypeid, $issue->id,
       $this->issue_node_type->roleid);
 
+    // Use source URL attribute of conclusion-statement as the source URL of
+    // its associated argument
+    if (!empty($statement->source)) {
+      $url_obj = addURL(
+        $statement->source, "Response Document", "Response Document", "N");
+      $argument_node->addURL($url_obj->urlid);
+    }
+
     $this->storeIdMapping($argument->id, $argument_node->nodeid);
     $this->storeArtIssueArgumentRelation($issue->id, $argument->id);
     $this->storeArgumentContributor($argument_node->nodeid, $statement->contributor);
@@ -171,7 +193,7 @@ class ArtImporter {
     foreach ($argument->premises as $premise) {
       if (! empty($premise->statement->text)) {
 
-        $new_connection = $this->importPremise($premise, $argument_node);
+        $new_connection = $this->_importPremise($premise, $argument_node);
         if ($new_connection) {
           $connections[] = $new_connection;
         }
@@ -183,8 +205,22 @@ class ArtImporter {
     return $connections;
   }
 
-  private function importPremise($premise, $argument_node) {
+  /**
+   * Import a single premise of an argument
+   *
+   * @access private
+   * @param object $premise The premise to be imported
+   * @param CNode $argument_node The Cohere CNode of the argument
+   * @return Connection|false If successful return new Connection object
+   */
+  private function _importPremise($premise, $argument_node) {
     $statement = $premise->statement;
+
+    // If we don't recognise the scheme-role of the premise then stop import
+    $link_type = $this->getLinkTypeFromPremiseRole($statement->scheme_role);
+    if (empty($link_type)) {
+      return false;
+    }
 
     // If we have already imported this argument then erase Cohere data and
     // reimport
@@ -200,11 +236,15 @@ class ArtImporter {
 
     $this->storeIdMapping($statement->id, $node->nodeid);
 
-    $premise_role = $statement->scheme_role;
+    // Use source URL attribute of a premise-statement as the source URL of
+    // its associated argument (if no source URL has already been added)
+    if (empty($argument_node->urls) && !(empty($statement->source))) {
+      $url_obj = addURL(
+        $statement->source, "Response Document", "Response Document", "N");
+      $argument_node->addURL($url_obj->urlid);
+    }
 
-    $link_type = $this->getLinkTypeFromPremiseRole($premise_role);
-
-    return (empty($link_type)) ? false : addConnection(
+    return addConnection(
       $argument_node->nodeid, $this->argument_node_type->roleid,
       $link_type->linktypeid, $node->nodeid,
       $this->statement_node_type->roleid);
@@ -248,7 +288,7 @@ class ArtImporter {
    */
   private function storeIdMapping($art_id, $cohere_id) {
 
-    $stmnt = $this->pdo->prepare('INSERT INTO Mappings' .
+    $stmnt = $this->pdo->prepare('INSERT INTO IMPACT_Mappings' .
                            '  (art_id, cohere_id)' .
                            '  VALUES' .
                            '  (:art_id, :cohere_id)');
@@ -267,7 +307,7 @@ class ArtImporter {
    */
   private function deleteIdMapping($art_id, $cohere_id) {
 
-    $stmnt = $this->pdo->prepare('DELETE FROM Mappings' .
+    $stmnt = $this->pdo->prepare('DELETE FROM IMPACT_Mappings' .
                                  '  WHERE art_id=:art_id' .
                                  '  AND cohere_id=:cohere_id');
     $stmnt->bindParam(':art_id', $art_id, PDO::PARAM_STR);
@@ -285,7 +325,7 @@ class ArtImporter {
   private function storeArtArgumentStatementRelation(
     $argument_id, $statement_id) {
 
-    $stmnt = $this->pdo->prepare('INSERT INTO Arguments_Statements' .
+    $stmnt = $this->pdo->prepare('INSERT INTO IMPACT_Arguments_Statements' .
                            '  (argument_id, statement_id)' .
                            '  VALUES' .
                            '  (:argument_id, :statement_id)');
@@ -305,7 +345,7 @@ class ArtImporter {
   private function deleteArtArgumentStatementRelation(
     $argument_id, $statement_id) {
 
-    $stmnt = $this->pdo->prepare('DELETE FROM Arguments_Statements' .
+    $stmnt = $this->pdo->prepare('DELETE FROM IMPACT_Arguments_Statements' .
                                  '  WHERE argument_id=:argument_id' .
                                  '  AND statement_id=:statement_id');
     $stmnt->bindParam(':argument_id', $argument_id, PDO::PARAM_STR);
@@ -322,7 +362,7 @@ class ArtImporter {
    */
   private function storeArtIssueArgumentRelation($issue_id, $argument_id) {
 
-    $stmnt = $this->pdo->prepare('INSERT INTO Issues_Arguments' .
+    $stmnt = $this->pdo->prepare('INSERT INTO IMPACT_Issues_Arguments' .
                            '  (issue_id, argument_id)' .
                            '  VALUES' .
                            '  (:issue_id, :argument_id)');
@@ -342,7 +382,7 @@ class ArtImporter {
   private function deleteArtIssueArgumentRelation(
     $issue_id, $argument_id) {
 
-    $stmnt = $this->pdo->prepare('DELETE FROM Issues_Arguments' .
+    $stmnt = $this->pdo->prepare('DELETE FROM IMPACT_Issues_Arguments' .
                                  '  WHERE issue_id=:issue_id' .
                                  '  AND argument_id=:argument_id');
     $stmnt->bindParam(':issue_id', $issue_id, PDO::PARAM_STR);
@@ -351,7 +391,7 @@ class ArtImporter {
   }
 
   private function findCohereIdByArtId($art_id) {
-    $stmnt = $this->pdo->prepare('SELECT DISTINCT cohere_id FROM Mappings' .
+    $stmnt = $this->pdo->prepare('SELECT DISTINCT cohere_id FROM IMPACT_Mappings' .
                                  '  WHERE art_id=:art_id');
     $stmnt->bindParam(':art_id', $art_id, PDO::PARAM_STR);
     $stmnt->execute();
@@ -360,7 +400,7 @@ class ArtImporter {
   }
 
   private function findArtArgumentIdsByIssueId($issue_id) {
-    $stmnt = $this->pdo->prepare('SELECT DISTINCT argument_id FROM Issues_Arguments' .
+    $stmnt = $this->pdo->prepare('SELECT DISTINCT argument_id FROM IMPACT_Issues_Arguments' .
                                  '  WHERE issue_id=:issue_id');
     $stmnt->bindParam(':issue_id', $issue_id, PDO::PARAM_STR);
     $stmnt->execute();
@@ -375,7 +415,7 @@ class ArtImporter {
   }
 
   private function findArtStatementIdsByArgumentId($argument_id) {
-    $stmnt = $this->pdo->prepare('SELECT DISTINCT statement_id FROM Arguments_Statements' .
+    $stmnt = $this->pdo->prepare('SELECT DISTINCT statement_id FROM IMPACT_Arguments_Statements' .
                                  '  WHERE argument_id=:argument_id');
     $stmnt->bindParam(':argument_id', $argument_id, PDO::PARAM_STR);
     $stmnt->execute();
@@ -439,6 +479,21 @@ class ArtImporter {
     $stmnt->execute();
 
     return ($row = $stmnt->fetch()) ? $row['contributor_name'] : null;
+  }
+
+  /**
+   * Logging function if we need to do any debugging
+   */
+  private function _log($context) {
+
+    $stmnt = $this->pdo->prepare('INSERT INTO IMPACT_Log' .
+                           '  (timestamp, context)' .
+                           '  VALUES' .
+                           '  (:timestamp, :context)');
+
+    $stmnt->bindParam(':timestamp', date('Y-m-d H:i:s'), PDO::PARAM_STR);
+    $stmnt->bindParam(':context', $context, PDO::PARAM_STR);
+    $stmnt->execute();
   }
 }
 

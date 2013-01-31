@@ -1,8 +1,30 @@
 <?php
-
+/* ----------------------------------------------------------------------------
+ * Copyright (c) 2012 Leibniz Center for Law, University of Amsterdam, the 
+ * Netherlands
+ *
+ * This program and the accompanying materials are licensed and made available
+ * under the terms and conditions of the European Union Public Licence (EUPL 
+ * v.1.1).
+ *
+ * You should have received a copy of the  European Union Public Licence (EUPL 
+ * v.1.1) along with this program as the file license.txt; if not, please see
+ * http://joinup.ec.europa.eu/software/page/eupl/licence-eupl.
+ *
+ * This software is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+ * or FITNESS FOR A PARTICULAR PURPOSE.
+ * ----------------------------------------------------------------------------
+ * Project:      IMPACT
+ * Created:      2011-2012
+ * Last Change:  14.12.2012 (final release date)
+ * ----------------------------------------------------------------------------
+ * Created by the Leibniz Center for Law, University of Amsterdam, The 
+ * Netherlands, 2012
+ * Authors: Jochem Douw (http://jochemdouw.nl), Sander Latour
+ * ----------------------------------------------------------------------------
+ */
 header('Access-Control-Allow-Origin: *');
-
-
 /*
 This document has the following parts, in this order:
 - Includes and other initial things
@@ -98,7 +120,7 @@ if($uri->valid()){
         //var_export($data);
         $doc = new Document($data, $db);
         $output = $doc->save();
-        echo json_encode($output);
+        echo json_encode(array('data'=>$output));
         //addDocument($storage, $data, false);
       } elseif($uri->next() == "version" && $firstID = $uri->nextInt()) {
         /*******************************************
@@ -110,8 +132,7 @@ if($uri->valid()){
         //Basically the same as adding a new document
         $doc = new Document($data, $db);
         $output = $doc->save();
-        echo json_encode($output);
-
+        echo json_encode(array('data'=>$output));
       } else {
         header('HTTP/1.0 400 Bad Request');
         echo json_encode(
@@ -180,7 +201,7 @@ if($uri->valid()){
         /*********************************
         * Update discussion              *
         * ============================== *
-        * PUT /api.php?/discussion/(int) *
+        * PUT /api.php?/discussions/(int) *
         *********************************/
         if($data){
           $discussion = new Discussion($data, $db);
@@ -210,7 +231,7 @@ if($uri->valid()){
         /*************************************
          * Get all discussions                *
          * ================================== *
-         * /api.php?/discussions              *
+         * GET /api.php?/discussions          *
          *************************************/
       header('HTTP/1.0 200 OK');
       $discussions = $storage->fetchDiscussions();
@@ -292,15 +313,13 @@ if($uri->valid()){
          * ============================ *
          * GET /api.php?/documents/     *
          ********************************/
-      log_message(API_LOG_FILE, "GET /api.php?/documents/");
-
-      $documents = $storage->fetchDocuments();
-      if($documents){
-        echo json_encode(array("documents"=>$documents));
-      } else {
-        header('HTTP/1.0 400 Bad Request');
-      }
-      }else if($id = $uri->nextInt()){
+        $documents = $storage->fetchDocuments();
+        if($documents){
+          echo json_encode(array("documents"=>$documents));
+        } else {
+          header('HTTP/1.0 400 Bad Request');
+        }
+        }else if($id = $uri->nextInt()){
         /**************************************
          * Get document by id                 *
          * ================================== *

@@ -1,4 +1,29 @@
 <?php
+/* ----------------------------------------------------------------------------
+ * Copyright (c) 2012 Leibniz Center for Law, University of Amsterdam, the 
+ * Netherlands
+ *
+ * This program and the accompanying materials are licensed and made available
+ * under the terms and conditions of the European Union Public Licence (EUPL 
+ * v.1.1).
+ *
+ * You should have received a copy of the  European Union Public Licence (EUPL 
+ * v.1.1) along with this program as the file license.txt; if not, please see
+ * http://joinup.ec.europa.eu/software/page/eupl/licence-eupl.
+ *
+ * This software is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+ * or FITNESS FOR A PARTICULAR PURPOSE.
+ * ----------------------------------------------------------------------------
+ * Project:      IMPACT
+ * Created:      2011-2012
+ * Last Change:  14.12.2012 (final release date)
+ * ----------------------------------------------------------------------------
+ * Created by the Leibniz Center for Law, University of Amsterdam, The 
+ * Netherlands, 2012
+ * Authors: Jochem Douw (http://jochemdouw.nl), Sander Latour
+ * ----------------------------------------------------------------------------
+ */
 
 define("RELATION_READER_LOG_FILE", "relation_reader.log"); 
 
@@ -144,1033 +169,1036 @@ class relationReader{
    * @returns Associative array containing the contents of relations.xml
    **/
   function giveAssoc(){
-    return array (
+    return 
+
+array (
+  0 => 
+  array (
+    'tag' => 'relations',
+    'value' => 
+    array (
       0 => 
       array (
-        'tag' => 'relations',
+        'tag' => 'relation',
+        'value' => '',
+        'attributes' => 
+        array (
+          'type' => 'domain',
+          'label' => 'Domain',
+        ),
+      ),
+      1 => 
+      array (
+        'tag' => 'relation',
+        'value' => '',
+        'attributes' => 
+        array (
+          'type' => 'source',
+          'label' => 'Source',
+        ),
+      ),
+      2 => 
+      array (
+        'tag' => 'relation',
+        'value' => '',
+        'attributes' => 
+        array (
+          'type' => 'proposition',
+          'label' => 'Proposition',
+        ),
+      ),
+      3 => 
+      array (
+        'tag' => 'relation',
+        'value' => '',
+        'attributes' => 
+        array (
+          'type' => 'premise',
+          'label' => 'Premise',
+        ),
+      ),
+      4 => 
+      array (
+        'tag' => 'relation',
+        'value' => '',
+        'attributes' => 
+        array (
+          'type' => 'concl',
+          'label' => 'Conclusion',
+        ),
+      ),
+      5 => 
+      array (
+        'tag' => 'relation',
         'value' => 
         array (
           0 => 
           array (
-            'tag' => 'relation',
-            'value' => '',
+            'tag' => 'structure',
+            'value' => 
+            array (
+              0 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'domain',
+                  'name' => 'domain1',
+                  'arity' => '1',
+                ),
+              ),
+              1 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'proposition',
+                  'name' => 'proposition1',
+                  'arity' => '1',
+                ),
+              ),
+            ),
             'attributes' => 
             array (
-              'type' => 'domain',
-              'label' => 'Domain',
+              'version' => 'database',
             ),
           ),
           1 => 
           array (
-            'tag' => 'relation',
-            'value' => '',
-            'attributes' => 
-            array (
-              'type' => 'source',
-              'label' => 'Source',
-            ),
-          ),
-          2 => 
-          array (
-            'tag' => 'relation',
-            'value' => '',
-            'attributes' => 
-            array (
-              'type' => 'proposition',
-              'label' => 'Proposition',
-            ),
-          ),
-          3 => 
-          array (
-            'tag' => 'relation',
-            'value' => '',
-            'attributes' => 
-            array (
-              'type' => 'premise',
-              'label' => 'Premise',
-            ),
-          ),
-          4 => 
-          array (
-            'tag' => 'relation',
-            'value' => '',
-            'attributes' => 
-            array (
-              'type' => 'concl',
-              'label' => 'Conclusion',
-            ),
-          ),
-          5 => 
-          array (
-            'tag' => 'relation',
+            'tag' => 'structure',
             'value' => 
             array (
               0 => 
               array (
-                'tag' => 'structure',
-                'value' => 
-                array (
-                  0 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'domain',
-                      'name' => 'domain1',
-                      'arity' => '1',
-                    ),
-                  ),
-                  1 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'proposition',
-                      'name' => 'proposition1',
-                      'arity' => '1',
-                    ),
-                  ),
-                ),
+                'tag' => 'element',
+                'value' => '',
                 'attributes' => 
                 array (
-                  'version' => 'database',
+                  'type' => 'domain',
+                  'name' => 'domain1',
+                  'arity' => '1',
                 ),
               ),
               1 => 
               array (
-                'tag' => 'structure',
-                'value' => 
-                array (
-                  0 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'domain',
-                      'name' => 'domain1',
-                      'arity' => '1',
-                    ),
-                  ),
-                  1 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'proposition',
-                      'name' => 'proposition1',
-                      'arity' => '1',
-                    ),
-                  ),
-                ),
+                'tag' => 'element',
+                'value' => '',
                 'attributes' => 
                 array (
-                  'version' => 'interpreted',
+                  'type' => 'proposition',
+                  'name' => 'proposition1',
+                  'arity' => '1',
                 ),
               ),
             ),
             'attributes' => 
             array (
-              'type' => 'domain_proposition',
-              'arity' => '1',
-            ),
-          ),
-          6 => 
-          array (
-            'tag' => 'relation',
-            'value' => 
-            array (
-              0 => 
-              array (
-                'tag' => 'structure',
-                'value' => 
-                array (
-                  0 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'domain',
-                      'name' => 'domain1',
-                      'arity' => '1',
-                    ),
-                  ),
-                  1 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'source',
-                      'name' => 'source1',
-                      'arity' => '1',
-                    ),
-                  ),
-                ),
-                'attributes' => 
-                array (
-                  'version' => 'database',
-                ),
-              ),
-              1 => 
-              array (
-                'tag' => 'structure',
-                'value' => 
-                array (
-                  0 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'domain',
-                      'name' => 'domain1',
-                      'arity' => '1',
-                    ),
-                  ),
-                  1 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'source',
-                      'name' => 'source1',
-                      'arity' => '1',
-                    ),
-                  ),
-                ),
-                'attributes' => 
-                array (
-                  'version' => 'interpreted',
-                ),
-              ),
-            ),
-            'attributes' => 
-            array (
-              'type' => 'domain_source',
-              'arity' => '1',
-            ),
-          ),
-          7 => 
-          array (
-            'tag' => 'relation',
-            'value' => 
-            array (
-              0 => 
-              array (
-                'tag' => 'structure',
-                'value' => 
-                array (
-                  0 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'proposition',
-                      'name' => 'proposition1',
-                      'arity' => '1',
-                    ),
-                  ),
-                  1 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'source',
-                      'name' => 'source1',
-                      'arity' => '1',
-                    ),
-                  ),
-                ),
-                'attributes' => 
-                array (
-                  'version' => 'database',
-                ),
-              ),
-              1 => 
-              array (
-                'tag' => 'structure',
-                'value' => 
-                array (
-                  0 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'proposition',
-                      'name' => 'proposition1',
-                      'arity' => '1',
-                    ),
-                  ),
-                  1 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'source',
-                      'name' => 'source1',
-                      'arity' => '1',
-                    ),
-                  ),
-                ),
-                'attributes' => 
-                array (
-                  'version' => 'interpreted',
-                ),
-              ),
-            ),
-            'attributes' => 
-            array (
-              'type' => 'source_proposition',
-            ),
-          ),
-          8 => 
-          array (
-            'tag' => 'relation',
-            'value' => 
-            array (
-              0 => 
-              array (
-                'tag' => 'structure',
-                'value' => 
-                array (
-                  0 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => 
-                    array (
-                      0 => 
-                      array (
-                        'tag' => 'element',
-                        'value' => '',
-                        'attributes' => 
-                        array (
-                          'type' => 'domain',
-                          'name' => 'domain1',
-                          'arity' => '1',
-                        ),
-                      ),
-                      1 => 
-                      array (
-                        'tag' => 'element',
-                        'value' => '',
-                        'attributes' => 
-                        array (
-                          'type' => 'source',
-                          'name' => 'source1',
-                          'arity' => '1',
-                        ),
-                      ),
-                    ),
-                    'attributes' => 
-                    array (
-                      'type' => 'domain_source',
-                      'arity' => '1',
-                    ),
-                  ),
-                  1 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => 
-                    array (
-                      0 => 
-                      array (
-                        'tag' => 'element',
-                        'value' => '',
-                        'attributes' => 
-                        array (
-                          'type' => 'domain',
-                          'name' => 'domain1',
-                          'arity' => '1',
-                        ),
-                      ),
-                      1 => 
-                      array (
-                        'tag' => 'element',
-                        'value' => '',
-                        'attributes' => 
-                        array (
-                          'type' => 'proposition',
-                          'name' => 'proposition1',
-                          'arity' => '1',
-                        ),
-                      ),
-                    ),
-                    'attributes' => 
-                    array (
-                      'type' => 'domain_proposition',
-                      'arity' => '1',
-                    ),
-                  ),
-                  2 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => 
-                    array (
-                      0 => 
-                      array (
-                        'tag' => 'element',
-                        'value' => '',
-                        'attributes' => 
-                        array (
-                          'type' => 'proposition',
-                          'name' => 'proposition1',
-                          'arity' => '1',
-                        ),
-                      ),
-                      1 => 
-                      array (
-                        'tag' => 'element',
-                        'value' => '',
-                        'attributes' => 
-                        array (
-                          'type' => 'source',
-                          'name' => 'source1',
-                          'arity' => '1',
-                        ),
-                      ),
-                    ),
-                    'attributes' => 
-                    array (
-                      'type' => 'source_proposition',
-                      'arity' => '1',
-                    ),
-                  ),
-                ),
-                'attributes' => 
-                array (
-                  'version' => 'database',
-                ),
-              ),
-              1 => 
-              array (
-                'tag' => 'structure',
-                'value' => 
-                array (
-                  0 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'domain',
-                      'name' => 'domain1',
-                      'arity' => '1',
-                      'label' => 'Domain',
-                    ),
-                  ),
-                  1 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'proposition',
-                      'name' => 'proposition1',
-                      'arity' => '1',
-                      'label' => 'Proposition',
-                      'conclusion' => '1',
-                    ),
-                  ),
-                  2 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'source',
-                      'name' => 'source1',
-                      'arity' => '1',
-                      'label' => 'Source',
-                    ),
-                  ),
-                ),
-                'attributes' => 
-                array (
-                  'version' => 'interpreted',
-                ),
-              ),
-            ),
-            'attributes' => 
-            array (
-              'type' => 'credible_source_as',
-              'label' => 'Credible Source Argument Scheme',
-            ),
-          ),
-          9 => 
-          array (
-            'tag' => 'relation',
-            'value' => 
-            array (
-              0 => 
-              array (
-                'tag' => 'structure',
-                'value' => 
-                array (
-                  0 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'agent',
-                      'name' => 'agent1',
-                      'arity' => '1',
-                    ),
-                  ),
-                ),
-                'attributes' => 
-                array (
-                  'version' => 'database',
-                ),
-              ),
-              1 => 
-              array (
-                'tag' => 'structure',
-                'value' => 
-                array (
-                  0 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'agent',
-                      'name' => 'agent1',
-                      'arity' => '1',
-                    ),
-                  ),
-                ),
-                'attributes' => 
-                array (
-                  'version' => 'interpreted',
-                ),
-              ),
-            ),
-            'attributes' => 
-            array (
-              'type' => 'action',
-              'label' => 'Action',
-            ),
-          ),
-          10 => 
-          array (
-            'tag' => 'relation',
-            'value' => '',
-            'attributes' => 
-            array (
-              'type' => 'agent',
-              'label' => 'Agent',
-            ),
-          ),
-          11 => 
-          array (
-            'tag' => 'relation',
-            'value' => '',
-            'attributes' => 
-            array (
-              'type' => 'proposition',
-              'label' => 'Proposition',
-            ),
-          ),
-          12 => 
-          array (
-            'tag' => 'relation',
-            'value' => '',
-            'attributes' => 
-            array (
-              'type' => 'value',
-              'label' => 'Value',
-            ),
-          ),
-          13 => 
-          array (
-            'tag' => 'relation',
-            'value' => 
-            array (
-              0 => 
-              array (
-                'tag' => 'structure',
-                'value' => 
-                array (
-                  0 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => 
-                    array (
-                      0 => 
-                      array (
-                        'tag' => 'element',
-                        'value' => '',
-                        'attributes' => 
-                        array (
-                          'type' => 'agent',
-                          'arity' => '1',
-                          'name' => 'agent1',
-                        ),
-                      ),
-                    ),
-                    'attributes' => 
-                    array (
-                      'type' => 'action',
-                      'arity' => '1',
-                      'name' => 'action1',
-                    ),
-                  ),
-                  1 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'circumstances',
-                      'arity' => 'n',
-                      'conjunctiontable' => 'conjunction',
-                      'occurrencetable' => 'prop_occurrence',
-                      'conjuncttype' => 'proposition',
-                      'name' => 'circumstances1',
-                      'label' => 'Circumstances',
-                    ),
-                  ),
-                  2 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'consequences',
-                      'arity' => 'n',
-                      'conjunctiontable' => 'conjunction',
-                      'occurrencetable' => 'prop_occurrence',
-                      'conjuncttype' => 'proposition',
-                      'name' => 'consequences1',
-                      'label' => 'Consequences',
-                    ),
-                  ),
-                  3 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'values',
-                      'arity' => 'n',
-                      'conjunctiontable' => 'conjunction',
-                      'occurrencetable' => 'value_occurrence',
-                      'conjuncttype' => 'value',
-                      'name' => 'values1',
-                      'label' => 'Values',
-                    ),
-                  ),
-                ),
-                'attributes' => 
-                array (
-                  'version' => 'database',
-                ),
-              ),
-              1 => 
-              array (
-                'tag' => 'structure',
-                'value' => 
-                array (
-                  0 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'action',
-                      'arity' => '1',
-                      'name' => 'action1',
-                      'conclusion' => '1',
-                    ),
-                  ),
-                  1 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'agent',
-                      'arity' => '1',
-                      'name' => 'agent1',
-                    ),
-                  ),
-                  2 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'circumstances',
-                      'arity' => 'n',
-                      'conjuncttype' => 'proposition',
-                      'conjunctiontable' => 'conjunction',
-                      'occurrencetable' => 'prop_occurrence',
-                      'name' => 'circumstances1',
-                      'label' => 'Circumstances',
-                    ),
-                  ),
-                  3 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'consequences',
-                      'arity' => 'n',
-                      'conjuncttype' => 'proposition',
-                      'conjunctiontable' => 'conjunction',
-                      'occurrencetable' => 'prop_occurrence',
-                      'name' => 'consequences1',
-                      'label' => 'Consequences',
-                    ),
-                  ),
-                  4 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'values',
-                      'arity' => 'n',
-                      'conjuncttype' => 'value',
-                      'conjunctiontable' => 'conjunction',
-                      'occurrencetable' => 'value_occurrence',
-                      'name' => 'values1',
-                      'label' => 'Values',
-                    ),
-                  ),
-                ),
-                'attributes' => 
-                array (
-                  'version' => 'interpreted',
-                ),
-              ),
-            ),
-            'attributes' => 
-            array (
-              'type' => 'practical_reasoning_as',
-              'label' => 'Practical Reasoning Argument Scheme',
-            ),
-          ),
-          14 => 
-          array (
-            'tag' => 'relation',
-            'value' => 
-            array (
-              0 => 
-              array (
-                'tag' => 'structure',
-                'value' => 
-                array (
-                  0 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'source',
-                      'arity' => '1',
-                      'name' => 'source1',
-                    ),
-                  ),
-                  1 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'value',
-                      'arity' => '1',
-                      'name' => 'value1',
-                    ),
-                  ),
-                ),
-                'attributes' => 
-                array (
-                  'version' => 'database',
-                ),
-              ),
-              1 => 
-              array (
-                'tag' => 'structure',
-                'value' => 
-                array (
-                  0 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'source',
-                      'arity' => '1',
-                      'name' => 'source1',
-                    ),
-                  ),
-                  1 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'value',
-                      'arity' => '1',
-                      'name' => 'value1',
-                    ),
-                  ),
-                ),
-                'attributes' => 
-                array (
-                  'version' => 'interpreted',
-                ),
-              ),
-            ),
-            'attributes' => 
-            array (
-              'type' => 'value_recognition_as',
-              'label' => 'Value Recognition Argument Scheme',
-            ),
-          ),
-          15 => 
-          array (
-            'tag' => 'relation',
-            'value' => 
-            array (
-              0 => 
-              array (
-                'tag' => 'structure',
-                'value' => 
-                array (
-                  0 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => 
-                    array (
-                      0 => 
-                      array (
-                        'tag' => 'element',
-                        'value' => '',
-                        'attributes' => 
-                        array (
-                          'type' => 'domain',
-                          'name' => 'domain1',
-                          'arity' => '1',
-                        ),
-                      ),
-                      1 => 
-                      array (
-                        'tag' => 'element',
-                        'value' => '',
-                        'attributes' => 
-                        array (
-                          'type' => 'source',
-                          'name' => 'source1',
-                          'arity' => '1',
-                        ),
-                      ),
-                    ),
-                    'attributes' => 
-                    array (
-                      'type' => 'domain_source',
-                      'arity' => '1',
-                    ),
-                  ),
-                  1 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => 
-                    array (
-                      0 => 
-                      array (
-                        'tag' => 'element',
-                        'value' => '',
-                        'attributes' => 
-                        array (
-                          'type' => 'agent',
-                          'arity' => '1',
-                          'name' => 'agent1',
-                        ),
-                      ),
-                    ),
-                    'attributes' => 
-                    array (
-                      'type' => 'action',
-                      'arity' => '1',
-                      'name' => 'action1',
-                    ),
-                  ),
-                ),
-                'attributes' => 
-                array (
-                  'version' => 'database',
-                ),
-              ),
-              1 => 
-              array (
-                'tag' => 'structure',
-                'value' => 
-                array (
-                  0 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'domain',
-                      'name' => 'domain1',
-                      'arity' => '1',
-                      'label' => 'Domain',
-                    ),
-                  ),
-                  1 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'source',
-                      'name' => 'source1',
-                      'arity' => '1',
-                      'label' => 'Source',
-                    ),
-                  ),
-                  2 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'action',
-                      'name' => 'action1',
-                      'arity' => '1',
-                      'label' => 'Source',
-                    ),
-                  ),
-                  3 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'agent',
-                      'name' => 'agent1',
-                      'arity' => '1',
-                      'label' => 'Agent',
-                    ),
-                  ),
-                ),
-                'attributes' => 
-                array (
-                  'version' => 'interpreted',
-                ),
-              ),
-            ),
-            'attributes' => 
-            array (
-              'type' => 'value_credible_source_as',
-              'label' => 'Value Credible Source Argument Scheme',
-            ),
-          ),
-          16 => 
-          array (
-            'tag' => 'relation',
-            'value' => 
-            array (
-              0 => 
-              array (
-                'tag' => 'structure',
-                'value' => 
-                array (
-                  0 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'premises',
-                      'arity' => 'n',
-                      'conjunctiontable' => 'conjunction',
-                      'occurrencetable' => 'premise_occurrence',
-                      'conjuncttype' => 'premise',
-                      'name' => 'premise1',
-                      'label' => 'Premises',
-                    ),
-                  ),
-                  1 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'concl',
-                      'arity' => '1',
-                      'name' => 'concl1',
-                    ),
-                  ),
-                ),
-                'attributes' => 
-                array (
-                  'version' => 'database',
-                ),
-              ),
-              1 => 
-              array (
-                'tag' => 'structure',
-                'value' => 
-                array (
-                  0 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'premises',
-                      'arity' => 'n',
-                      'conjunctiontable' => 'conjunction',
-                      'occurrencetable' => 'premise_occurrence',
-                      'conjuncttype' => 'premise',
-                      'name' => 'premise1',
-                      'label' => 'Premises',
-                    ),
-                  ),
-                  1 => 
-                  array (
-                    'tag' => 'element',
-                    'value' => '',
-                    'attributes' => 
-                    array (
-                      'type' => 'concl',
-                      'arity' => '1',
-                      'name' => 'concl1',
-                      'label' => 'Conclusion',
-                    ),
-                  ),
-                ),
-                'attributes' => 
-                array (
-                  'version' => 'interpreted',
-                ),
-              ),
-            ),
-            'attributes' => 
-            array (
-              'type' => 'general_as',
-              'label' => 'General Argument Scheme',
+              'version' => 'interpreted',
             ),
           ),
         ),
+        'attributes' => 
+        array (
+          'type' => 'domain_proposition',
+          'arity' => '1',
+        ),
       ),
-    );
+      6 => 
+      array (
+        'tag' => 'relation',
+        'value' => 
+        array (
+          0 => 
+          array (
+            'tag' => 'structure',
+            'value' => 
+            array (
+              0 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'domain',
+                  'name' => 'domain1',
+                  'arity' => '1',
+                ),
+              ),
+              1 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'source',
+                  'name' => 'source1',
+                  'arity' => '1',
+                ),
+              ),
+            ),
+            'attributes' => 
+            array (
+              'version' => 'database',
+            ),
+          ),
+          1 => 
+          array (
+            'tag' => 'structure',
+            'value' => 
+            array (
+              0 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'domain',
+                  'name' => 'domain1',
+                  'arity' => '1',
+                ),
+              ),
+              1 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'source',
+                  'name' => 'source1',
+                  'arity' => '1',
+                ),
+              ),
+            ),
+            'attributes' => 
+            array (
+              'version' => 'interpreted',
+            ),
+          ),
+        ),
+        'attributes' => 
+        array (
+          'type' => 'domain_source',
+          'arity' => '1',
+        ),
+      ),
+      7 => 
+      array (
+        'tag' => 'relation',
+        'value' => 
+        array (
+          0 => 
+          array (
+            'tag' => 'structure',
+            'value' => 
+            array (
+              0 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'proposition',
+                  'name' => 'proposition1',
+                  'arity' => '1',
+                ),
+              ),
+              1 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'source',
+                  'name' => 'source1',
+                  'arity' => '1',
+                ),
+              ),
+            ),
+            'attributes' => 
+            array (
+              'version' => 'database',
+            ),
+          ),
+          1 => 
+          array (
+            'tag' => 'structure',
+            'value' => 
+            array (
+              0 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'proposition',
+                  'name' => 'proposition1',
+                  'arity' => '1',
+                ),
+              ),
+              1 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'source',
+                  'name' => 'source1',
+                  'arity' => '1',
+                ),
+              ),
+            ),
+            'attributes' => 
+            array (
+              'version' => 'interpreted',
+            ),
+          ),
+        ),
+        'attributes' => 
+        array (
+          'type' => 'source_proposition',
+        ),
+      ),
+      8 => 
+      array (
+        'tag' => 'relation',
+        'value' => 
+        array (
+          0 => 
+          array (
+            'tag' => 'structure',
+            'value' => 
+            array (
+              0 => 
+              array (
+                'tag' => 'element',
+                'value' => 
+                array (
+                  0 => 
+                  array (
+                    'tag' => 'element',
+                    'value' => '',
+                    'attributes' => 
+                    array (
+                      'type' => 'domain',
+                      'name' => 'domain1',
+                      'arity' => '1',
+                    ),
+                  ),
+                  1 => 
+                  array (
+                    'tag' => 'element',
+                    'value' => '',
+                    'attributes' => 
+                    array (
+                      'type' => 'source',
+                      'name' => 'source1',
+                      'arity' => '1',
+                    ),
+                  ),
+                ),
+                'attributes' => 
+                array (
+                  'type' => 'domain_source',
+                  'arity' => '1',
+                ),
+              ),
+              1 => 
+              array (
+                'tag' => 'element',
+                'value' => 
+                array (
+                  0 => 
+                  array (
+                    'tag' => 'element',
+                    'value' => '',
+                    'attributes' => 
+                    array (
+                      'type' => 'domain',
+                      'name' => 'domain1',
+                      'arity' => '1',
+                    ),
+                  ),
+                  1 => 
+                  array (
+                    'tag' => 'element',
+                    'value' => '',
+                    'attributes' => 
+                    array (
+                      'type' => 'proposition',
+                      'name' => 'proposition1',
+                      'arity' => '1',
+                    ),
+                  ),
+                ),
+                'attributes' => 
+                array (
+                  'type' => 'domain_proposition',
+                  'arity' => '1',
+                ),
+              ),
+              2 => 
+              array (
+                'tag' => 'element',
+                'value' => 
+                array (
+                  0 => 
+                  array (
+                    'tag' => 'element',
+                    'value' => '',
+                    'attributes' => 
+                    array (
+                      'type' => 'proposition',
+                      'name' => 'proposition1',
+                      'arity' => '1',
+                    ),
+                  ),
+                  1 => 
+                  array (
+                    'tag' => 'element',
+                    'value' => '',
+                    'attributes' => 
+                    array (
+                      'type' => 'source',
+                      'name' => 'source1',
+                      'arity' => '1',
+                    ),
+                  ),
+                ),
+                'attributes' => 
+                array (
+                  'type' => 'source_proposition',
+                  'arity' => '1',
+                ),
+              ),
+            ),
+            'attributes' => 
+            array (
+              'version' => 'database',
+            ),
+          ),
+          1 => 
+          array (
+            'tag' => 'structure',
+            'value' => 
+            array (
+              0 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'domain',
+                  'name' => 'domain1',
+                  'arity' => '1',
+                  'label' => 'Domain',
+                ),
+              ),
+              1 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'proposition',
+                  'name' => 'proposition1',
+                  'arity' => '1',
+                  'label' => 'Proposition',
+                  'conclusion' => '1',
+                ),
+              ),
+              2 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'source',
+                  'name' => 'source1',
+                  'arity' => '1',
+                  'label' => 'Source',
+                ),
+              ),
+            ),
+            'attributes' => 
+            array (
+              'version' => 'interpreted',
+            ),
+          ),
+        ),
+        'attributes' => 
+        array (
+          'type' => 'credible_source_as',
+          'label' => 'Credible Source Argument Scheme',
+        ),
+      ),
+      9 => 
+      array (
+        'tag' => 'relation',
+        'value' => 
+        array (
+          0 => 
+          array (
+            'tag' => 'structure',
+            'value' => 
+            array (
+              0 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'agent',
+                  'name' => 'agent1',
+                  'arity' => '1',
+                ),
+              ),
+            ),
+            'attributes' => 
+            array (
+              'version' => 'database',
+            ),
+          ),
+          1 => 
+          array (
+            'tag' => 'structure',
+            'value' => 
+            array (
+              0 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'agent',
+                  'name' => 'agent1',
+                  'arity' => '1',
+                ),
+              ),
+            ),
+            'attributes' => 
+            array (
+              'version' => 'interpreted',
+            ),
+          ),
+        ),
+        'attributes' => 
+        array (
+          'type' => 'action',
+          'label' => 'Action',
+        ),
+      ),
+      10 => 
+      array (
+        'tag' => 'relation',
+        'value' => '',
+        'attributes' => 
+        array (
+          'type' => 'agent',
+          'label' => 'Agent',
+        ),
+      ),
+      11 => 
+      array (
+        'tag' => 'relation',
+        'value' => '',
+        'attributes' => 
+        array (
+          'type' => 'proposition',
+          'label' => 'Proposition',
+        ),
+      ),
+      12 => 
+      array (
+        'tag' => 'relation',
+        'value' => '',
+        'attributes' => 
+        array (
+          'type' => 'value',
+          'label' => 'Value',
+        ),
+      ),
+      13 => 
+      array (
+        'tag' => 'relation',
+        'value' => 
+        array (
+          0 => 
+          array (
+            'tag' => 'structure',
+            'value' => 
+            array (
+              0 => 
+              array (
+                'tag' => 'element',
+                'value' => 
+                array (
+                  0 => 
+                  array (
+                    'tag' => 'element',
+                    'value' => '',
+                    'attributes' => 
+                    array (
+                      'type' => 'agent',
+                      'arity' => '1',
+                      'name' => 'agent1',
+                    ),
+                  ),
+                ),
+                'attributes' => 
+                array (
+                  'type' => 'action',
+                  'arity' => '1',
+                  'name' => 'action1',
+                ),
+              ),
+              1 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'circumstances',
+                  'arity' => 'n',
+                  'conjunctiontable' => 'conjunction',
+                  'occurrencetable' => 'prop_occurrence',
+                  'conjuncttype' => 'proposition',
+                  'name' => 'circumstances1',
+                  'label' => 'Circumstances',
+                ),
+              ),
+              2 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'consequences',
+                  'arity' => 'n',
+                  'conjunctiontable' => 'conjunction',
+                  'occurrencetable' => 'prop_occurrence',
+                  'conjuncttype' => 'proposition',
+                  'name' => 'consequences1',
+                  'label' => 'Consequences',
+                ),
+              ),
+              3 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'values',
+                  'arity' => 'n',
+                  'conjunctiontable' => 'conjunction',
+                  'occurrencetable' => 'value_occurrence',
+                  'conjuncttype' => 'value',
+                  'name' => 'values1',
+                  'label' => 'Values',
+                ),
+              ),
+            ),
+            'attributes' => 
+            array (
+              'version' => 'database',
+            ),
+          ),
+          1 => 
+          array (
+            'tag' => 'structure',
+            'value' => 
+            array (
+              0 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'action',
+                  'arity' => '1',
+                  'name' => 'action1',
+                  'conclusion' => '1',
+                ),
+              ),
+              1 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'agent',
+                  'arity' => '1',
+                  'name' => 'agent1',
+                ),
+              ),
+              2 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'circumstances',
+                  'arity' => 'n',
+                  'conjuncttype' => 'proposition',
+                  'conjunctiontable' => 'conjunction',
+                  'occurrencetable' => 'prop_occurrence',
+                  'name' => 'circumstances1',
+                  'label' => 'Circumstances',
+                ),
+              ),
+              3 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'consequences',
+                  'arity' => 'n',
+                  'conjuncttype' => 'proposition',
+                  'conjunctiontable' => 'conjunction',
+                  'occurrencetable' => 'prop_occurrence',
+                  'name' => 'consequences1',
+                  'label' => 'Consequences',
+                ),
+              ),
+              4 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'values',
+                  'arity' => 'n',
+                  'conjuncttype' => 'value',
+                  'conjunctiontable' => 'conjunction',
+                  'occurrencetable' => 'value_occurrence',
+                  'name' => 'values1',
+                  'label' => 'Values',
+                ),
+              ),
+            ),
+            'attributes' => 
+            array (
+              'version' => 'interpreted',
+            ),
+          ),
+        ),
+        'attributes' => 
+        array (
+          'type' => 'practical_reasoning_as',
+          'label' => 'Practical Reasoning Argument Scheme',
+        ),
+      ),
+      14 => 
+      array (
+        'tag' => 'relation',
+        'value' => 
+        array (
+          0 => 
+          array (
+            'tag' => 'structure',
+            'value' => 
+            array (
+              0 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'source',
+                  'arity' => '1',
+                  'name' => 'source1',
+                ),
+              ),
+              1 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'value',
+                  'arity' => '1',
+                  'name' => 'value1',
+                ),
+              ),
+            ),
+            'attributes' => 
+            array (
+              'version' => 'database',
+            ),
+          ),
+          1 => 
+          array (
+            'tag' => 'structure',
+            'value' => 
+            array (
+              0 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'source',
+                  'arity' => '1',
+                  'name' => 'source1',
+                ),
+              ),
+              1 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'value',
+                  'arity' => '1',
+                  'name' => 'value1',
+                ),
+              ),
+            ),
+            'attributes' => 
+            array (
+              'version' => 'interpreted',
+            ),
+          ),
+        ),
+        'attributes' => 
+        array (
+          'type' => 'value_recognition_as',
+          'label' => 'Value Recognition Argument Scheme',
+        ),
+      ),
+      15 => 
+      array (
+        'tag' => 'relation',
+        'value' => 
+        array (
+          0 => 
+          array (
+            'tag' => 'structure',
+            'value' => 
+            array (
+              0 => 
+              array (
+                'tag' => 'element',
+                'value' => 
+                array (
+                  0 => 
+                  array (
+                    'tag' => 'element',
+                    'value' => '',
+                    'attributes' => 
+                    array (
+                      'type' => 'domain',
+                      'name' => 'domain1',
+                      'arity' => '1',
+                    ),
+                  ),
+                  1 => 
+                  array (
+                    'tag' => 'element',
+                    'value' => '',
+                    'attributes' => 
+                    array (
+                      'type' => 'source',
+                      'name' => 'source1',
+                      'arity' => '1',
+                    ),
+                  ),
+                ),
+                'attributes' => 
+                array (
+                  'type' => 'domain_source',
+                  'arity' => '1',
+                ),
+              ),
+              1 => 
+              array (
+                'tag' => 'element',
+                'value' => 
+                array (
+                  0 => 
+                  array (
+                    'tag' => 'element',
+                    'value' => '',
+                    'attributes' => 
+                    array (
+                      'type' => 'agent',
+                      'arity' => '1',
+                      'name' => 'agent1',
+                    ),
+                  ),
+                ),
+                'attributes' => 
+                array (
+                  'type' => 'action',
+                  'arity' => '1',
+                  'name' => 'action1',
+                ),
+              ),
+            ),
+            'attributes' => 
+            array (
+              'version' => 'database',
+            ),
+          ),
+          1 => 
+          array (
+            'tag' => 'structure',
+            'value' => 
+            array (
+              0 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'domain',
+                  'name' => 'domain1',
+                  'arity' => '1',
+                  'label' => 'Domain',
+                ),
+              ),
+              1 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'source',
+                  'name' => 'source1',
+                  'arity' => '1',
+                  'label' => 'Source',
+                ),
+              ),
+              2 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'action',
+                  'name' => 'action1',
+                  'arity' => '1',
+                  'label' => 'Source',
+                ),
+              ),
+              3 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'agent',
+                  'name' => 'agent1',
+                  'arity' => '1',
+                  'label' => 'Agent',
+                ),
+              ),
+            ),
+            'attributes' => 
+            array (
+              'version' => 'interpreted',
+            ),
+          ),
+        ),
+        'attributes' => 
+        array (
+          'type' => 'value_credible_source_as',
+          'label' => 'Value Credible Source Argument Scheme',
+        ),
+      ),
+      16 => 
+      array (
+        'tag' => 'relation',
+        'value' => 
+        array (
+          0 => 
+          array (
+            'tag' => 'structure',
+            'value' => 
+            array (
+              0 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'premises',
+                  'arity' => 'n',
+                  'conjunctiontable' => 'conjunction',
+                  'occurrencetable' => 'premise_occurrence',
+                  'conjuncttype' => 'premise',
+                  'name' => 'premise1',
+                  'label' => 'Premises',
+                ),
+              ),
+              1 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'concl',
+                  'arity' => '1',
+                  'name' => 'concl1',
+                ),
+              ),
+            ),
+            'attributes' => 
+            array (
+              'version' => 'database',
+            ),
+          ),
+          1 => 
+          array (
+            'tag' => 'structure',
+            'value' => 
+            array (
+              0 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'premises',
+                  'arity' => 'n',
+                  'conjunctiontable' => 'conjunction',
+                  'occurrencetable' => 'premise_occurrence',
+                  'conjuncttype' => 'premise',
+                  'name' => 'premise1',
+                  'label' => 'Premises',
+                ),
+              ),
+              1 => 
+              array (
+                'tag' => 'element',
+                'value' => '',
+                'attributes' => 
+                array (
+                  'type' => 'concl',
+                  'arity' => '1',
+                  'name' => 'concl1',
+                  'label' => 'Conclusion',
+                ),
+              ),
+            ),
+            'attributes' => 
+            array (
+              'version' => 'interpreted',
+            ),
+          ),
+        ),
+        'attributes' => 
+        array (
+          'type' => 'general_as',
+          'label' => 'General Argument Scheme',
+        ),
+      ),
+    ),
+  ),
+)
+      ;
   } //end of function giveAssoc();
 
 }

@@ -1,3 +1,6 @@
+// Copyright (c) 2012 Fraunhofer Gesellschaft
+// Licensed under the EUPL V.1.1
+
 
 AGB.argument_url = function(db, argid)
 {
@@ -63,6 +66,36 @@ AGB.argument_html = function(db, argument_data)
     AGB.set_undercutters_text(argument_data);
     AGB.set_rebuttals_text(argument_data);
     AGB.set_dependents_text(argument_data);
+    argument_data.pmt_id = $.i18n.prop('pmt_id');
+    argument_data.pmt_scheme = $.i18n.prop('pmt_scheme');
+    argument_data.pmt_strict = $.i18n.prop('pmt_strict');
+    argument_data.pmt_weight = $.i18n.prop('pmt_weight');
+    argument_data.pmt_value = $.i18n.prop('pmt_value');
+    argument_data.pmt_premises = $.i18n.prop('pmt_premises');
+    argument_data.pmt_value = $.i18n.prop('pmt_value');
+    argument_data.pmt_conclusion = $.i18n.prop('pmt_conclusion');
+    argument_data.pmt_counterarguments = $.i18n.prop('pmt_counterarguments');
+    argument_data.pmt_used_by = $.i18n.prop('pmt_used_by');
+
+    argument_data.pmt_key = $.i18n.prop('pmt_key');
+    argument_data.pmt_coverage = $.i18n.prop('pmt_coverage');
+    argument_data.pmt_creator = $.i18n.prop('pmt_creator');
+    argument_data.pmt_date = $.i18n.prop('pmt_date');
+    argument_data.pmt_date = $.i18n.prop('pmt_date');
+    argument_data.pmt_format = $.i18n.prop('pmt_format');
+    argument_data.pmt_identifier = $.i18n.prop('pmt_identifier');
+    argument_data.pmt_language = $.i18n.prop('pmt_language');
+    argument_data.pmt_publisher = $.i18n.prop('pmt_publisher');
+    argument_data.pmt_relation = $.i18n.prop('pmt_relation');
+    argument_data.pmt_rights = $.i18n.prop('pmt_rights');
+    argument_data.pmt_source = $.i18n.prop('pmt_source');
+    argument_data.pmt_subject = $.i18n.prop('pmt_subject');
+    argument_data.pmt_title = $.i18n.prop('pmt_title');
+    argument_data.pmt_type = $.i18n.prop('pmt_type');
+
+    argument_data = PM.merge_menu_props(argument_data);
+    argument_data = PM.merge_ag_menu_props(argument_data); 
+    
     var argument_html = ich.argument(argument_data);
     return argument_html.filter('#argument');
 };
@@ -92,7 +125,7 @@ AGB.set_premises_text = function(argument_data)
 
 AGB.set_argument_title_text = function(info)
 {
-    var default_text = "Argument";
+    var default_text = $.i18n.prop('pmt_argument');
     if(info.header) {
         info.argument_title_text = info.header.title ? info.header.title['en'] : default_text;
     } else {
@@ -154,7 +187,10 @@ AGB.argument_link = function(db, id, text)
 
 
 AGB.enable_argument_edition = function(db, argid) {
-    $('#menus').append(ich.argumenteditormenu());
+    $('#menus').append(ich.argumenteditormenu({
+        pmt_menu_edit: $.i18n.prop('pmt_menu_edit'),
+        pmt_menu_delete: $.i18n.prop('pmt_menu_delete'),
+    }));
     $('#delete-argument').click(_.bind(AGB.delete_argument, AGB, db, argid));
     $('#edit-argument').click(_.bind(AGB.edit_argument, AGB, db, argid));
     $('.evaluate').click(_.bind(AGB.evaluate, AGB, _.bind(AGB.display_argument, AGB, db, argid)));
@@ -186,7 +222,7 @@ AGB.edit_argument = function(db, argid) {
                                                       schemes: PM.schemes,
                                                       current_lang: IMPACT.lang});
     var argumenteditorview = new PM.ArgumentEditorView({model: argumentcandidate,
-                                                        title: 'Edit Argument'});
+                                                        title: $.i18n.prop('pmt_edit_argument')});
 
     argumenteditorview.render();
     $('#argumenteditor').html(argumenteditorview.$el);

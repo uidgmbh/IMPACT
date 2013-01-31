@@ -2,6 +2,7 @@
 
 session_start();
 include('../support/database_connect_admin.php');
+include ('admin_header.php');
 
 function createOptions($information, $value1, $value2){
 

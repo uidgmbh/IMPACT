@@ -1,7 +1,9 @@
 <?xml version="1.0"?>
 <connection>
     <connectionaName>localhost</connectionaName>
-    <user>root</user>
-    <password>root</password>
+    <user>impact_leeds</user>
+    <password>7FRzcxTqvZeXJ2QX</password>
     <database>impact_UoL_UvA_DB_v1_5</database>
  </connection>
+
+

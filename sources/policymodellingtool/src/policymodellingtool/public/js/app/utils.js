@@ -1,3 +1,6 @@
+// Copyright (c) 2012 Fraunhofer Gesellschaft
+// Licensed under the EUPL V.1.1
+
 // adds a format method to all string
 // place holders are of the form {0}, {1} etc
 
@@ -38,4 +41,20 @@ UTILS.is_url = function(url) {
 UTILS.gen_id = function() {
     var newDate = new Date;
     return newDate.getTime();
+};
+
+PM.get_cookies = function() {
+    var cookies = { };
+
+    if (document.cookie && document.cookie != '') {
+        var split = document.cookie.split(';');
+        for (var i = 0; i < split.length; i++) {
+            var name_value = split[i].split("=");
+            name_value[0] = name_value[0].replace(/^ /, '');
+            cookies[decodeURIComponent(name_value[0])] = decodeURIComponent(name_value[1]);
+        }
+    }
+
+    return cookies;
+   
 };

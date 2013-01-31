@@ -1,19 +1,13 @@
 <?php
 //	include('../support/header.php');
 ?>
-<div class="breadcrumb">
-	<ul>
-		<li><b>Introduction</b></li>
-		<li>Circumstances (+)</li>
-		<li>Consequences (+)</li>
-		<li>Values (+)</li>
-		<li>Summary</li>
-	</ul>
+<div class ="navigation">
+<a class="first active" href="javascript:void(0);">Introduction</a><a href="javascript:void(0);">Circumstances</a><a href="javascript:void(0);">Consequences</a><a href="javascript:void(0);">Values</a><a class="last" href="javascript:void(0);">Summary</a>
 </div>
 <div class="survey toInit">
-	<div class="intro">
+	<h1>
 	Welcome to the Structured Consultation Tool.
-	</div>
+	</h1>
 	<div class="introductions">
 	<p>The Structured Consultation Tool seeks detailed feedback on a specific policy proposal.</p>
 	<p>In response to the following question taken from the Green paper Copyright in the Knowledge Economy:</p>
@@ -21,9 +15,9 @@
 	<div class="question">
 	<p>Q 9: Should the law be clarified with respect to whether the scanning of works held in libraries for the purpose of making their content searchable on the Internet goes beyond the scope of current exceptions to copyright?</p>
 	</div>
-	<div class="introductions">
+	<h2>
 	It has been proposed that:
-	</div>
+	</h2>
 	
 	<div class="question">
 	<p>Legislators should clarify the law so that libraries are able to digitise works they hold for the purpose of making content Internet searchable. </p>

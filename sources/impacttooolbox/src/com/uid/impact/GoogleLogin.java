@@ -1,4 +1,27 @@
 package com.uid.impact;
+/* --------------------------------------------------------------------------------
+ * Copyright (c) 2012 User Interface Design GmbH, Germany
+ *
+ * This program and the accompanying materials are licensed and made available 
+ * under the terms and conditions of the European Union Public Licence (EUPL v.1.1).
+ *
+ * You should have received a copy of the  European Union Public Licence (EUPL v.1.1)
+ * along with this program as the file LICENSE.txt; if not, please see
+ * http://joinup.ec.europa.eu/software/page/eupl/licence-eupl.
+ * 
+ * This software is distributed in the hope that it will be useful, but 
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY 
+ * or FITNESS FOR A PARTICULAR PURPOSE. 
+ * --------------------------------------------------------------------------------
+ * File:         GoogleLogin.java
+ * Project:      IMPACT
+ * Created:      10.01.2012
+ * Last Change:  12.12.2012
+ * --------------------------------------------------------------------------------
+ * Created by User Interface Design GmbH (UID) 2012
+ * Author: Pascal Welsch (pascal.welsch@uid.com)
+ * --------------------------------------------------------------------------------
+ */
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -34,12 +57,13 @@ import com.uid.impact.ImpactUser.Provider;
 public class GoogleLogin {
 
 	private static final String SCOPE = "https://www.googleapis.com/auth/userinfo.profile";
+	//TODO selber rausfinden
 	private static final String CALLBACK_URL = "http://impact.uid.com:8080/impact/oauth2callbackgoogle";
 
 	private static final HttpTransport TRANSPORT = new NetHttpTransport();
 	private static final JsonFactory JSON_FACTORY = new JacksonFactory();
 
-	// FILL THESE IN WITH YOUR VALUES FROM THE API CONSOLE
+	// TODO FILL THESE IN WITH YOUR VALUES FROM THE API CONSOLE
 	private static final String CLIENT_ID = "683166602083-gh3dcq82ljrffmnfpjlht0gnmo4jsuh5.apps.googleusercontent.com";
 	private static final String CLIENT_SECRET = "MdcW6poZrxe9-H4KiBvIQYG7";
 
@@ -88,9 +112,15 @@ public class GoogleLogin {
 		user.setProvider(Provider.Google);
 
 		user.setId(validateJson.get("user_id").toString());
+		
+//		//TODO: EMail here?
+//		user.setEmail(validateJson.get("user_email").toString());
+
+		
 		System.out.println("Request user infos");
 		JSONObject plusInfos = getUserInfos(user.getId());
 
+		
 		user.setName(plusInfos.getString("displayName"));
 		user.setPictureUrl(plusInfos.getJSONObject("image").getString("url"));
 

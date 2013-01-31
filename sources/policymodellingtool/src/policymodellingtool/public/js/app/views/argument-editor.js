@@ -1,3 +1,6 @@
+// Copyright (c) 2012 Fraunhofer Gesellschaft
+// Licensed under the EUPL V.1.1
+
 // View for editing an argument
 PM.ArgumentEditorView = Backbone.View.extend(
     {className: "argument-editor",
@@ -29,7 +32,18 @@ PM.ArgumentEditorView = Backbone.View.extend(
      render: function() {
          var data = this.model.toJSON();
          
-         this.$el.html(ich.argumenteditor({title: this.title}));
+         this.$el.html(ich.argumenteditor({title: this.title,
+                                           pmt_header: $.i18n.prop('pmt_header'),
+                                           pmt_direction: $.i18n.prop('pmt_direction'),
+                                           pmt_strict: $.i18n.prop('pmt_strict'),
+                                           pmt_weight: $.i18n.prop('pmt_weight'),
+                                           pmt_yes: $.i18n.prop('pmt_yes'),
+                                           pmt_no: $.i18n.prop('pmt_no'),
+                                           pmt_high: $.i18n.prop('pmt_high'),
+                                           pmt_low: $.i18n.prop('pmt_low'),
+                                           pmt_cancel: $.i18n.prop('pmt_cancel'),
+                                           pmt_save_argument: $.i18n.prop('pmt_save_argument') 
+                                          }));
 
          if(data.argument.attributes.pro) {
              this.pro_el().attr('checked',true);
@@ -54,7 +68,25 @@ PM.ArgumentEditorView = Backbone.View.extend(
              var scheme_metadata = _.clone(scheme.get('header'));
              delete scheme_metadata.title;
              PM.set_metadata_has_properties(scheme_metadata);
-             var scheme_metadata_html = ich.metadata(scheme_metadata);
+
+             var data = _.clone(scheme_metadata);
+             data.pmt_key = $.i18n.prop('pmt_key');
+             data.pmt_coverage = $.i18n.prop('pmt_coverage');
+             data.pmt_creator = $.i18n.prop('pmt_creator');
+             data.pmt_date = $.i18n.prop('pmt_date');
+             data.pmt_date = $.i18n.prop('pmt_date');
+             data.pmt_format = $.i18n.prop('pmt_format');
+             data.pmt_identifier = $.i18n.prop('pmt_identifier');
+             data.pmt_language = $.i18n.prop('pmt_language');
+             data.pmt_publisher = $.i18n.prop('pmt_publisher');
+             data.pmt_relation = $.i18n.prop('pmt_relation');
+             data.pmt_rights = $.i18n.prop('pmt_rights');
+             data.pmt_source = $.i18n.prop('pmt_source');
+             data.pmt_subject = $.i18n.prop('pmt_subject');
+             data.pmt_title = $.i18n.prop('pmt_title');
+             data.pmt_type = $.i18n.prop('pmt_type');
+
+             var scheme_metadata_html = ich.metadata(data);
              this.$('.scheme-metadata').html(scheme_metadata_html);
              
              if(scheme_metadata.description && scheme_metadata.description[IMPACT.lang]) {
@@ -73,7 +105,7 @@ PM.ArgumentEditorView = Backbone.View.extend(
          }
          this.premises_candidates_view = new PM.PremisesCandidatesView(
              {model: this.model,
-              add_more_text: "Add a premise",
+              add_more_text: $.i18n.prop('pmt_add_premise'),
               container: 'premises',
               elements_name: 'Premises',
               el: this.$('.argument-editor-premises')});
@@ -84,7 +116,7 @@ PM.ArgumentEditorView = Backbone.View.extend(
          }
          this.exceptions_candidates_view = new PM.PremisesCandidatesView(
              {model: this.model,
-              add_more_text: "Add an exception",
+              add_more_text: $.i18n.prop('pmt_add_exception'),
               container: 'exceptions',
               elements_name: 'Exceptions',
               el: this.$('.argument-editor-exceptions')});

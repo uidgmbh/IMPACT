@@ -11,7 +11,15 @@
 ?>
 
 
-<?php 
+<?php
+
+
+PRINT "<div class = 'navigation'>";
+PRINT "<a class='first' href='javascript:void(0);'>Introduction</a><a href='javascript:void(0);'>Circumstances</a><a href='javascript:void(0);'>Consequences</a><a href='javascript:void(0);'>Values</a><a class='last active' href='javascript:void(0);'>Summary</a>";
+PRINT "</div>";
+
+
+/* 
 PRINT  "<div class='breadcrumb'>";
 PRINT  "<ul>";
 		PRINT  "<li>Introduction</li>";
@@ -21,6 +29,7 @@ PRINT  "<ul>";
 		PRINT  "<li><b>Summary</b></li>";
 	PRINT  "</ul>";
 PRINT  "</div>";
+*/
 ?>
 
 <?php 

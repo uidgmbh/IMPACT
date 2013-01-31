@@ -102,6 +102,44 @@ A list of known bugs at this time:
 - When selecting the very beginning of a document and clicking the "paste" 
   button, the quote is not saved.
 
+
+*********
+ License 
+*********
+This is the license header that is put above all files (with extra attributions at the data base dump of the database we made together with the University of Liverpool)
+/* ----------------------------------------------------------------------------
+ * Copyright (c) 2012 Leibniz Center for Law, University of Amsterdam, the 
+ * Netherlands
+ *
+ * This program and the accompanying materials are licensed and made available
+ * under the terms and conditions of the European Union Public Licence (EUPL 
+ * v.1.1).
+ *
+ * You should have received a copy of the  European Union Public Licence (EUPL 
+ * v.1.1) along with this program as the file license.txt; if not, please see
+ * http://joinup.ec.europa.eu/software/page/eupl/licence-eupl.
+ *
+ * This software is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+ * or FITNESS FOR A PARTICULAR PURPOSE.
+ * ----------------------------------------------------------------------------
+ * Project:      IMPACT
+ * Created:      2011-2012
+ * Last Change:  14.12.2012 (final release date)
+ * ----------------------------------------------------------------------------
+ * Created by the Leibniz Center for Law, University of Amsterdam, The 
+ * Netherlands, 2012
+ * Authors: Jochem Douw (http://jochemdouw.nl), Sander Latour, Giovanni Sileno
+ * ----------------------------------------------------------------------------
+ */
+
+ Alternative licese for the DB dumps:
+ * Created by:  University of Liverpool, UK and the Leibniz Center for Law,
+ * University of Amsterdam, The Netherlands, 2012.
+ * Authors: Adam Wyner, Katie Atkinson, Trevor Bench-Capon, Maya Wardeh,
+ * Chenxi Li, Jochem Douw, and Giovanni Sileno.
+ 
+
 ************
   Versions
 ************
@@ -184,3 +222,33 @@ Version 3.0 - 22 Nov 2012
  
 Version 3.0.1 - 23 Nov 2012
 - Updated a few help texts.
+
+Version 3.1 - 5 Dec 2012
+- Solved a problem with displaying text next to (i)-items in the toolbox.
+- Made most connections with dependency injection in stead of constantly 
+  building new Database objects. Tool got quicker and we got rid of a failure 
+  message that appeared on UID's servers because too many DB-connections were 
+  made.
+- Solved problems with start() and init() methods called by the toolbox.
+- Added scrollbars to the left and right canvas, so you can scroll them 
+  independently, significantly improving the UI when it comes to copy-pasting.
+- Solved a few smaller UI issues.
+- Added a "source" attribute to the issue export for the AVT with the URL of 
+  the textsection connected to the elements of an argument (or "statement" in 
+  Leeds' terms)
+- Added HTTP header entry to api.php so it can be accessed from Drupal 
+  (circumventing the Same Origin Policy of JavaScript).
+
+Version 3.1.1 - 6 Dec 2012
+- Solved a issue retrieval bug, caused by the fact that the UID server does 
+  not seem to understand queries where big numbers are not between double 
+  quotes.
+
+Version 3.2 - 14 Dec 2012
+- New version of main.css, that improved the scrolling function.
+- Also solved other scrolling issues that appeared in FF and Chrome
+- Solved bugs with document management
+- Added license info for EUCL license to every file, and in license.txt
+- Integrated new help texts to argument schemes.
+- Added extra user reaction-related data (no structural info) into the 1_5 
+  database dump.

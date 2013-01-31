@@ -1,3 +1,6 @@
+// Copyright (c) 2012 Fraunhofer Gesellschaft
+// Licensed under the EUPL V.1.1
+
 PM.scheme_text = function(scheme) {
     if(_.isNil(scheme)) {
         return "";
@@ -25,4 +28,5 @@ PM.display_schemes = function(scheme_id) {
     
     $('#pm').html(theory_view.$el);
     PM.activate('#schemes-item');
+    PM.attach_lang_listener();
 };

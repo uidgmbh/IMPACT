@@ -59,7 +59,16 @@ SCT.start = function(toolboxState){
                         $("#tocircumstance").trigger("click");
                         return false;
                   }
+
                 });
+
+
+                  if(toolboxState.userLoggedIn)
+                  {
+                        $("#home_forum_name_input").val(toolboxState.username);
+                  }
+
+
         });
 	}
 

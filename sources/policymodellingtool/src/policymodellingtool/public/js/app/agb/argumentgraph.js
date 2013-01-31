@@ -1,3 +1,6 @@
+// Copyright (c) 2012 Fraunhofer Gesellschaft
+// Licensed under the EUPL V.1.1
+
 // Sets the argument graph url. This causes the argument graph to
 // displayed.
 AGB.set_argumentgraph_url = function(db)
@@ -23,8 +26,17 @@ AGB.argumentgraph_html = function(db, data)
     data.references = data.metadata.filter(function (ref) { return ref.key; });
     data.hasreferences = data.references.length > 0;
     AGB.set_references_text(data.references);
-    data.title = AGB.markdown_to_html(data.metadata[0].title ? data.metadata[0].title[0] : "");
+    data.title = data.metadata[0].title ? data.metadata[0].title[0] : $.i18n.prop('pmt_menu_arguments');
     data.outline_text = AGB.outline_text(data.outline, db);
+    data.pmt_main_issues = $.i18n.prop('pmt_main_issues');
+    data.pmt_outline = $.i18n.prop('pmt_outline');
+    data.pmt_references = $.i18n.prop('pmt_references');
+
+    data = PM.merge_menu_props(data);
+    data = PM.merge_ag_menu_props(data); 
+
+    data.lang = IMPACT.lang;
+    
     var argumentgraph_html = ich.argumentgraph(data);
     return argumentgraph_html.filter('#argumentgraph');
 };
@@ -107,7 +119,9 @@ AGB.outline_text = function(tree, db, index)
 // Activates the edition of the argument graph
 AGB.enable_ag_edition = function(db) {
     // $('#ageditormenu').remove();
-    $('#menus').append(ich.ageditormenuon());
+    $('#menus').append(ich.ageditormenuon({'new_statement_text': $.i18n.prop('pmt_new_statement'),
+                                           'new_argument_text': $.i18n.prop('pmt_new_argument')
+                                          }));
     $('#newstatement').click(_.bind(AGB.show_statement_editor, AGB,
                                     {save_callback: function() {
                                          AGB.display_argumentgraph(IMPACT.db);
@@ -115,6 +129,7 @@ AGB.enable_ag_edition = function(db) {
                                      }}));
     $('#newargument').click(AGB.new_argument);
     $('.evaluate').click(_.bind(AGB.evaluate, AGB, _.bind(AGB.display_argumentgraph, AGB, db)));
+    // $('.vote').click(catb.views.pmt.vote.vote);
     
     return false;
 };

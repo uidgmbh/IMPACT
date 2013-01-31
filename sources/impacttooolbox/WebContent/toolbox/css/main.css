@@ -1,3 +1,28 @@
+/* --------------------------------------------------------------------------------
+ * Copyright (c) 2012 User Interface Design GmbH, Germany
+ *
+ * This program and the accompanying materials are licensed and made available 
+ * under the terms and conditions of the European Union Public Licence (EUPL v.1.1).
+ *
+ * You should have received a copy of the  European Union Public Licence (EUPL v.1.1)
+ * along with this program as the file LICENSE.txt; if not, please see
+ * http://joinup.ec.europa.eu/software/page/eupl/licence-eupl.
+ * 
+ * This software is distributed in the hope that it will be useful, but 
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY 
+ * or FITNESS FOR A PARTICULAR PURPOSE. 
+ * --------------------------------------------------------------------------------
+ * File:         main.css
+ * Project:      IMPACT
+ * Created:      13.11.2011
+ * Last Change:  12.12.2012
+ * --------------------------------------------------------------------------------
+ * Created by User Interface Design GmbH (UID) 2012
+ * Author: Daniel.Kersting (daniel.kersting@uid.com)
+ * --------------------------------------------------------------------------------
+ */
+
+
 /* Basic declaration */
 html,body {
 	margin: 0;
@@ -158,7 +183,7 @@ input.bright {
 	height: 98px;
 	width: 73px;
 	background-image: url(../images/frame/lower_right.png);
-	/* TODO Bild 15px (h�he) kleiner machen*/
+	/* TODO Bild 15px (h.he) kleiner machen*/
 }
 
 #buttonbg {
@@ -607,6 +632,8 @@ hr {
 	width: 725px;
 	color: #7AB817;
 	margin: 22px 0 20px 0;
+	border: 1px solid;
+	border-top: 0;
 }
 
 
@@ -654,6 +681,15 @@ hr {
 	margin-top: 15px;
 }
 
+#hometiles .inside div span {
+	color: #7AB817;
+	font-size: 1em;
+	display: block;
+	font-weight: bold;
+	line-height: 1em;
+	margin-top: 15px;
+}
+
 .tile_art {
 	background: url(impact-ui/images/toollogos/Icon_ArgumentReconstruction.png) no-repeat 90% 90%;
 }
@@ -680,6 +716,40 @@ hr {
 
 #pm {
 	margin-top: 2px;
+}
+
+/* ART */
+#art #canvasleft
+{
+        background: transparent;
+}
+
+#art #canvasleft > .ui-tabs.ui-widget.ui-widget-content.ui-corner-all
+{
+        min-height: 592px;
+}
+
+#art #canvasright .ui-tabs .ui-tabs-panel
+{
+        height: 528px;
+        overflow: auto;
+}
+
+#art #canvasleft .ui-tabs .ui-tabs-panel
+{
+        height: 528px;
+        overflow: auto;
+}
+
+#art #canvasleft
+{
+        overflow:hidden;
+}
+
+
+#art #canvasright
+{
+        overflow:hidden;
 }
 
 /* SCT */
@@ -730,4 +800,74 @@ hr {
 	font-size: 1.2em;
 	font-weight: bold;
 	margin-top: 30px;
+}
+
+
+
+
+/*Custom checkbox and radio buttons (webkit only)**/
+
+
+input[type=checkbox] {
+	-webkit-appearance: none;
+	position: relative;
+	display: inline-block;
+	line-height: 1em;
+	margin: 0 5px 0 0;
+	padding: 0;
+    height: 12px;
+    top:2px;
+    width: 12px;
+    background: url("impact-ui/images/backgrounds.png") no-repeat scroll -3px -501px transparent;
+}
+
+input[type=checkbox]:checked::after {
+	position: absolute;
+	content: '';
+	left: 0;
+	top: 0;
+	height: 12px;
+	width: 12px;
+    background: url("impact-ui/images/backgrounds.png") no-repeat scroll -3px -514px transparent;
+}
+
+input[type=checkbox]:hover {
+    background: url("impact-ui/images/backgrounds.png") no-repeat scroll -16px -501px transparent;
+}
+
+input[type=checkbox]:hover:checked::after {
+    background: url("impact-ui/images/backgrounds.png") no-repeat scroll -16px -514px transparent;
+}
+
+
+
+input[type=radio] {
+	-webkit-appearance: none;
+	position: relative;
+	display: inline-block;
+	line-height: 1em;
+	margin: 0 5px 0 0;
+	padding: 0;
+    height: 12px;
+    top:2px;
+    width: 12px;
+    background: url("impact-ui/images/backgrounds.png") no-repeat scroll -199px -462px transparent;
+}
+
+input[type=radio]:checked::after {
+	position: absolute;
+	content: '';
+	left: 0;
+	top: 0;
+	height: 12px;
+	width: 12px;
+    background: url("impact-ui/images/backgrounds.png") no-repeat scroll -210px -462px transparent;
+}
+
+input[type=radio]:hover {
+    background: url("impact-ui/images/backgrounds.png") no-repeat scroll -199px -473px transparent;
+}
+
+input[type=radio]:hover:checked::after {
+    background: url("impact-ui/images/backgrounds.png") no-repeat scroll -210px -473px transparent;
 }

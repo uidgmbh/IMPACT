@@ -1,3 +1,6 @@
+// Copyright (c) 2012 Fraunhofer Gesellschaft
+// Licensed under the EUPL V.1.1
+
 // A candidate for the conclusion of an argument
 PM.ConclusionCandidateView = Backbone.View.extend(
     {events: {
@@ -13,9 +16,9 @@ PM.ConclusionCandidateView = Backbone.View.extend(
      render: function() {
          var data = this.model.toJSON();
          
-         this.$el.html(ich.conclusioncandidate({conclusion_text: "Conclusion",
+         this.$el.html(ich.conclusioncandidate({conclusion_text: $.i18n.prop('pmt_conclusion'),
                                                 create_new_statement_text: 
-                                                "Create a new statement"}));
+                                                $.i18n.prop('pmt_create_statement')}));
          
          var statement = this.statement();
          statement.select2({data: {results: data.statements.toJSON(),
@@ -23,7 +26,7 @@ PM.ConclusionCandidateView = Backbone.View.extend(
                                        return AGB.statement_text(statement);
                                    }
                                   },
-                            placeholder: "Select a statement",
+                            placeholder: $.i18n.prop('pmt_select_statement'),
                             formatSelection: AGB.format_selected_statement,
                             formatResult: AGB.statement_text,
                             initSelection: function(element, callback) {

@@ -1,3 +1,28 @@
+/* ----------------------------------------------------------------------------
+ * Copyright (c) 2012 Leibniz Center for Law, University of Amsterdam, the 
+ * Netherlands
+ *
+ * This program and the accompanying materials are licensed and made available
+ * under the terms and conditions of the European Union Public Licence (EUPL 
+ * v.1.1).
+ *
+ * You should have received a copy of the  European Union Public Licence (EUPL 
+ * v.1.1) along with this program as the file license.txt; if not, please see
+ * http://joinup.ec.europa.eu/software/page/eupl/licence-eupl.
+ *
+ * This software is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+ * or FITNESS FOR A PARTICULAR PURPOSE.
+ * ----------------------------------------------------------------------------
+ * Project:      IMPACT
+ * Created:      2011-2012
+ * Last Change:  14.12.2012 (final release date)
+ * ----------------------------------------------------------------------------
+ * Created by the Leibniz Center for Law, University of Amsterdam, The 
+ * Netherlands, 2012
+ * Authors: Jochem Douw (http://jochemdouw.nl), Sander Latour
+ * ----------------------------------------------------------------------------
+ */
 /**
  * Contains functions for making pages. Usually done by first calling an 
  * init-function (e.g. initShowAddDiscussion()), which sets up the general page 
@@ -68,7 +93,9 @@ var Pages = {
     var element = $("#"+elementID);
     element.fadeOut("fast", function(){
       $(this).html(contents);
-      $(this).fadeIn("fast");
+      $(this).fadeIn("fast", function(){
+          $(this).scrollTop(0)
+          });
     });
   },
   
@@ -272,6 +299,7 @@ var Pages = {
     remote_relation_list.append(list);
     annotationtab.append(remote_relation_list);
     Pages.show("annotationtab", annotationtab);
+    //^annotationtab.scrollTop(0);
   },
 
   /******************************
@@ -606,16 +634,17 @@ var Pages = {
   
   /**
     This function displays the add-form for new documents.
-    @ {Document} document - Contains a document when a new version of that document has to be created. Otherwise false or undefined.
+    @ {Document} document - Contains a document when a new version of that 
+    document has to be created. Otherwise false or undefined.
     @since 2 March 2012
   */
-  showAddDocument: function(document){
+  showAddDocument: function(documentObj){
     var add_form = Draw.section();
-    add_form.append(Draw.topbar("Add new document"));
-    if(document == undefined || document == false){
+    add_form.append(Draw.topbar("Add new document or document version"));
+    if(documentObj == undefined || document == false){
       var doc = new Document(); //renderForm() is not static, so it needs an object, in this case an empty document
     } else {
-      var doc = document;
+      var doc = documentObj;
     }
     add_form.append(doc.renderForm(true));
     Pages.show("canvasright", add_form);
@@ -668,10 +697,18 @@ var Pages = {
     var url = doc.getDataItem("url");
     
     if(url != undefined){
-      var url_display = $("<a>")
-                          .attr("href", url)
-                          .attr("target", "_new")
-                          .text(url);
+      if(url.length < 35){
+        var url_display = $("<a>")
+          .attr("href", url)
+          .attr("target", "_new")
+          .text(url);
+      } else {
+        var url_display = $("<a>")
+          .attr("href", url)
+          .attr("target", "_new")
+          .attr("title", url)
+          .text("Click here for the original document");
+      }
     } else {
       var url_display = $("<i>").text("No URL specified (free text input)");
     }
@@ -756,7 +793,9 @@ var Pages = {
       })
                           .addClass("art-closebox")
                      );
-      canvasright.fadeIn("fast");
+      canvasright.fadeIn("fast", function(){
+        $(this).scrollTop(0);
+      });
     });
   },
 

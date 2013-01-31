@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<web-app>
+<?xml version="1.0" encoding="UTF-8"?><web-app>
   <servlet>
     <servlet-name>impact.web.routes-war/impact-app servlet</servlet-name>
     <servlet-class>impact.web.servlet</servlet-class>

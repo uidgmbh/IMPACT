@@ -180,7 +180,17 @@ function create_table_row ($sub_consequence){
 ?>
 
 
-<?php 
+<?php
+
+
+PRINT "<div class = 'navigation'>";
+PRINT "<a class='first' href='javascript:void(0);'>Introduction</a><a href='javascript:void(0);'>Circumstances</a><a href='javascript:void(0);' class='active'>Consequences</a><a href='javascript:void(0);'>Values</a><a class='last' href='javascript:void(0);'>Summary</a>";
+PRINT "</div>";
+
+
+
+
+/* 
 PRINT  "<div class='breadcrumb'>";
 PRINT  "<ul>";
 		PRINT  "<li>Introduction</li>";
@@ -190,12 +200,14 @@ PRINT  "<ul>";
 		PRINT  "<li>Summary</li>";
 	PRINT  "</ul>";
 PRINT  "</div>";
+*/
 ?>
 
 <?php 
-PRINT  "<div class='survey toInit'>";
+	PRINT  "<div class='survey toInit'>";
+	PRINT  "<h1>Consequences</h1>";
 	PRINT  "<div class='intro'>";
-	PRINT  "<p>In response to the question about Copyright in the Knowledge Economy:</p>";
+	PRINT  "<h2>In response to the question about Copyright in the Knowledge Economy:</h2>";
 	PRINT  "</div>";
 	
 	PRINT  "<div class='question'>";
@@ -203,7 +215,7 @@ PRINT  "<div class='survey toInit'>";
 	PRINT  "</div>";
 
 	PRINT  "<div class='introductions'>";
-	PRINT  "<p>An action was proposed:</p>";
+	PRINT  "<p><b>An action was proposed:</b></p>";
 	
 	PRINT  "<div class='question'>";
 	PRINT  "<p>Legislators should clarify the law so that libraries are able to digitise works they hold for the purpose of making content Internet searchable.</p>"

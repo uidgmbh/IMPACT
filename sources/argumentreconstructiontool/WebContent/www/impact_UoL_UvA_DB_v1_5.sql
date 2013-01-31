@@ -1,3 +1,29 @@
+/* ----------------------------------------------------------------------------
+ * Copyright (c) 2012 University of Liverpool, UK and Leibniz Center for Law, 
+ * University of Amsterdam, the Netherlands
+ *
+ * This program and the accompanying materials are licensed and made available
+ * under the terms and conditions of the European Union Public Licence (EUPL 
+ * v.1.1).
+ *
+ * You should have received a copy of the  European Union Public Licence (EUPL 
+ * v.1.1) along with this program as the file license.txt; if not, please see
+ * http://joinup.ec.europa.eu/software/page/eupl/licence-eupl.
+ *
+ * This software is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+ * or FITNESS FOR A PARTICULAR PURPOSE.
+ * ----------------------------------------------------------------------------
+ * Project:      IMPACT
+ * Created:      2011-2012
+ * Last Change:  14.12.2012 (final release date)
+ * ----------------------------------------------------------------------------
+ * Created by:  University of Liverpool, UK and the Leibniz Center for Law,
+ * University of Amsterdam, The Netherlands, 2012.
+ * Authors: Adam Wyner, Katie Atkinson, Trevor Bench-Capon, Maya Wardeh,
+ * Chenxi Li, Jochem Douw, and Giovanni Sileno.
+ * ----------------------------------------------------------------------------
+ */
 # ************************************************************
 # Sequel Pro SQL dump
 # Version 3408
@@ -357,6 +383,31 @@ CREATE TABLE `consultation_inst` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+LOCK TABLES `consultation_inst` WRITE;
+/*!40000 ALTER TABLE `consultation_inst` DISABLE KEYS */;
+
+INSERT INTO `consultation_inst` (`consultation_inst_id`, `consultation`, `user`)
+VALUES
+	(1,4,1),
+	(2,4,2),
+	(3,4,3),
+	(4,4,4),
+	(5,4,5),
+	(6,4,6),
+	(7,4,7),
+	(8,4,8),
+	(9,4,9),
+	(10,4,10),
+	(11,4,11),
+	(12,4,12),
+	(13,4,13),
+	(14,4,14),
+	(15,4,15),
+	(16,4,16),
+	(17,4,17);
+
+/*!40000 ALTER TABLE `consultation_inst` ENABLE KEYS */;
+UNLOCK TABLES;
 
 # Dump of table credible_source_as
 # ------------------------------------------------------------
@@ -453,6 +504,113 @@ CREATE TABLE `credible_source_ur` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+INSERT INTO `credible_source_ur` (`credible_source_ur_id`, `credible_source_as`, `consultation_inst`, `domain_source_resp`, `domain_prop_resp`, `source_prop_resp`)
+VALUES
+	(1,10,1,'agree','agree','agree'),
+	(2,11,1,'agree','agree','agree'),
+	(3,12,1,'agree','agree','agree'),
+	(4,13,1,'agree','agree','agree'),
+	(5,14,1,'agree','agree','agree'),
+	(6,15,1,'agree','agree','agree'),
+	(7,10,2,'agree','agree','agree'),
+	(8,11,2,'disagree','agree','disagree'),
+	(9,12,2,'disagree','agree','disagree'),
+	(10,13,2,'agree','agree','agree'),
+	(11,14,2,'disagree','agree','disagree'),
+	(12,15,2,'disagree','agree','disagree'),
+	(13,10,3,'agree','agree','agree'),
+	(14,11,3,'agree','agree','agree'),
+	(15,12,3,'agree','agree','agree'),
+	(16,13,3,'agree','agree','agree'),
+	(17,14,3,'agree','agree','agree'),
+	(18,15,3,'agree','agree','agree'),
+	(19,10,4,'agree','agree','agree'),
+	(20,11,4,'agree','agree','agree'),
+	(21,12,4,'agree','agree','agree'),
+	(22,13,4,'agree','agree','agree'),
+	(23,14,4,'agree','agree','agree'),
+	(24,15,4,'agree','agree','agree'),
+	(25,10,5,'agree','agree','agree'),
+	(26,11,5,'agree','agree','agree'),
+	(27,12,5,'agree','agree','agree'),
+	(28,13,5,'agree','agree','agree'),
+	(29,14,5,'agree','agree','agree'),
+	(30,15,5,'agree','agree','agree'),
+	(31,10,6,'agree','agree','agree'),
+	(32,11,6,'agree','agree','agree'),
+	(33,12,6,'agree','agree','agree'),
+	(34,13,6,'agree','agree','agree'),
+	(35,14,6,'agree','agree','agree'),
+	(36,15,6,'agree','agree','agree'),
+	(37,10,7,'agree','agree','agree'),
+	(38,11,7,'agree','agree','agree'),
+	(39,12,7,'agree','agree','agree'),
+	(40,13,7,'agree','agree','agree'),
+	(41,14,7,'agree','agree','agree'),
+	(42,15,7,'agree','agree','agree'),
+	(43,10,8,'agree','n/a','agree'),
+	(44,11,8,'agree','agree','agree'),
+	(45,12,8,'agree','agree','agree'),
+	(46,13,8,'agree','agree','agree'),
+	(47,14,8,'agree','agree','agree'),
+	(48,15,8,'n/a','agree','agree'),
+	(49,10,9,'agree','agree','agree'),
+	(50,11,9,'agree','agree','agree'),
+	(51,12,9,'agree','agree','agree'),
+	(52,13,9,'agree','agree','agree'),
+	(53,14,9,'agree','agree','agree'),
+	(54,15,9,'agree','agree','agree'),
+	(55,10,10,'agree','agree','agree'),
+	(56,11,10,'agree','agree','agree'),
+	(57,12,10,'agree','agree','agree'),
+	(58,13,10,'agree','agree','agree'),
+	(59,14,10,'agree','agree','agree'),
+	(60,15,10,'agree','agree','agree'),
+	(61,10,11,'agree','agree','agree'),
+	(62,11,11,'agree','agree','agree'),
+	(63,12,11,'agree','agree','agree'),
+	(64,13,11,'agree','agree','agree'),
+	(65,14,11,'agree','agree','agree'),
+	(66,15,11,'agree','agree','agree'),
+	(67,10,12,'agree','agree','agree'),
+	(68,11,12,'agree','agree','agree'),
+	(69,12,12,'agree','agree','agree'),
+	(70,13,12,'agree','agree','agree'),
+	(71,14,12,'agree','agree','agree'),
+	(72,15,12,'agree','agree','agree'),
+	(73,10,13,'agree','agree','agree'),
+	(74,11,13,'agree','agree','agree'),
+	(75,12,13,'agree','agree','agree'),
+	(76,13,13,'agree','agree','agree'),
+	(77,14,13,'agree','agree','agree'),
+	(78,15,13,'agree','agree','agree'),
+	(79,10,14,'agree','agree','agree'),
+	(80,11,14,'agree','agree','agree'),
+	(81,12,14,'agree','agree','agree'),
+	(82,13,14,'agree','agree','agree'),
+	(83,14,14,'agree','agree','agree'),
+	(84,15,14,'agree','agree','agree'),
+	(85,10,15,'agree','agree','agree'),
+	(86,11,15,'agree','agree','agree'),
+	(87,12,15,'agree','agree','agree'),
+	(88,13,15,'agree','agree','agree'),
+	(89,14,15,'agree','agree','disagree'),
+	(90,15,15,'agree','agree','agree'),
+	(91,10,16,'agree','agree','agree'),
+	(92,11,16,'agree','agree','agree'),
+	(93,12,16,'agree','agree','agree'),
+	(94,13,16,'agree','agree','agree'),
+	(95,14,16,'agree','agree','agree'),
+	(96,15,16,'agree','agree','agree'),
+	(97,10,17,'agree','agree','agree'),
+	(98,11,17,'agree','agree','agree'),
+	(99,12,17,'n/a','agree','agree'),
+	(100,13,17,'agree','agree','agree'),
+	(101,14,17,'agree','agree','agree'),
+	(102,15,17,'agree','agree','agree');
+
+/*!40000 ALTER TABLE `credible_source_ur` ENABLE KEYS */;
+UNLOCK TABLES;
 
 # Dump of table domain
 # ------------------------------------------------------------
@@ -794,6 +952,114 @@ CREATE TABLE `proposition_prur` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+LOCK TABLES `proposition_prur` WRITE;
+INSERT INTO `proposition_prur` (`proposition_prur_id`, `consultation_inst`, `practical_reasoning_as`, `proposition`, `prop_resp`)
+VALUES
+	(1,1,1,1,'agree'),
+	(2,1,1,2,'agree'),
+	(3,1,1,3,'agree'),
+	(4,1,1,4,'agree'),
+	(5,1,1,5,'agree'),
+	(6,1,1,6,'agree'),
+	(7,2,1,1,'agree'),
+	(8,2,1,2,'disagree'),
+	(9,2,1,3,'disagree'),
+	(10,2,1,4,'agree'),
+	(11,2,1,5,'disagree'),
+	(12,2,1,6,'disagree'),
+	(13,3,1,1,'agree'),
+	(14,3,1,2,'agree'),
+	(15,3,1,3,'agree'),
+	(16,3,1,4,'agree'),
+	(17,3,1,5,'agree'),
+	(18,3,1,6,'agree'),
+	(19,4,1,1,'agree'),
+	(20,4,1,2,'agree'),
+	(21,4,1,3,'agree'),
+	(22,4,1,4,'agree'),
+	(23,4,1,5,'agree'),
+	(24,4,1,6,'agree'),
+	(25,5,1,1,'disagree'),
+	(26,5,1,2,'agree'),
+	(27,5,1,3,'agree'),
+	(28,5,1,4,'agree'),
+	(29,5,1,5,'agree'),
+	(30,5,1,6,'agree'),
+	(31,6,1,1,'agree'),
+	(32,6,1,2,'agree'),
+	(33,6,1,3,'agree'),
+	(34,6,1,4,'agree'),
+	(35,6,1,5,'agree'),
+	(36,6,1,6,'agree'),
+	(37,7,1,1,'agree'),
+	(38,7,1,2,'agree'),
+	(39,7,1,3,'agree'),
+	(40,7,1,4,'agree'),
+	(41,7,1,5,'agree'),
+	(42,7,1,6,'agree'),
+	(43,8,1,1,'disagree'),
+	(44,8,1,2,'agree'),
+	(45,8,1,3,'agree'),
+	(46,8,1,4,'agree'),
+	(47,8,1,5,'agree'),
+	(48,8,1,6,'disagree'),
+	(49,9,1,1,'agree'),
+	(50,9,1,2,'agree'),
+	(51,9,1,3,'disagree'),
+	(52,9,1,4,'agree'),
+	(53,9,1,5,'agree'),
+	(54,9,1,6,'agree'),
+	(55,10,1,1,'agree'),
+	(56,10,1,2,'agree'),
+	(57,10,1,3,'agree'),
+	(58,10,1,4,'agree'),
+	(59,10,1,5,'agree'),
+	(60,10,1,6,'agree'),
+	(61,11,1,1,'agree'),
+	(62,11,1,2,'agree'),
+	(63,11,1,3,'agree'),
+	(64,11,1,4,'agree'),
+	(65,11,1,5,'agree'),
+	(66,11,1,6,'agree'),
+	(67,12,1,1,'agree'),
+	(68,12,1,2,'agree'),
+	(69,12,1,3,'agree'),
+	(70,12,1,4,'agree'),
+	(71,12,1,5,'agree'),
+	(72,12,1,6,'agree'),
+	(73,13,1,1,'agree'),
+	(74,13,1,2,'agree'),
+	(75,13,1,3,'agree'),
+	(76,13,1,4,'agree'),
+	(77,13,1,5,'agree'),
+	(78,13,1,6,'agree'),
+	(79,14,1,1,'agree'),
+	(80,14,1,2,'agree'),
+	(81,14,1,3,'agree'),
+	(82,14,1,4,'agree'),
+	(83,14,1,5,'agree'),
+	(84,14,1,6,'agree'),
+	(85,15,1,1,'agree'),
+	(86,15,1,2,'agree'),
+	(87,15,1,3,'disagree'),
+	(88,15,1,4,'agree'),
+	(89,15,1,5,'disagree'),
+	(90,15,1,6,'agree'),
+	(91,16,1,1,'agree'),
+	(92,16,1,2,'agree'),
+	(93,16,1,3,'agree'),
+	(94,16,1,4,'agree'),
+	(95,16,1,5,'agree'),
+	(96,16,1,6,'agree'),
+	(97,17,1,1,'agree'),
+	(98,17,1,2,'agree'),
+	(99,17,1,3,'disagree'),
+	(100,17,1,4,'agree'),
+	(101,17,1,5,'disagree'),
+	(102,17,1,6,'agree');
+
+/*!40000 ALTER TABLE `proposition_prur` ENABLE KEYS */;
+UNLOCK TABLES;
 
 # Dump of table source
 # ------------------------------------------------------------
@@ -874,6 +1140,25 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+INSERT INTO `user` (`user_id`, `user_name`)
+VALUES
+	(1,''),
+	(2,'Neil'),
+	(3,'hrd'),
+	(4,''),
+	(5,''),
+	(6,'uu'),
+	(7,''),
+	(8,''),
+	(9,'tbc'),
+	(10,''),
+	(11,''),
+	(12,''),
+	(13,''),
+	(14,''),
+	(15,''),
+	(16,'test'),
+	(17,'Tim Bonnemann');
 
 # Dump of table value
 # ------------------------------------------------------------
@@ -990,6 +1275,64 @@ CREATE TABLE `value_credible_source_ur` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+LOCK TABLES `value_credible_source_ur` WRITE;
+/*!40000 ALTER TABLE `value_credible_source_ur` DISABLE KEYS */;
+INSERT INTO `value_credible_source_ur` (`value_credible_source_ur_id`, `value_credible_source_as`, `consultation_inst`, `domain_source_resp`, `domain_action_value_resp`, `source_action_value_resp`)
+VALUES
+	(1,3,1,'agree','agree','agree'),
+	(2,2,1,'agree','agree','agree'),
+	(3,1,1,'agree','agree','agree'),
+	(4,3,2,'agree','agree','agree'),
+	(5,2,2,'disagree','agree','agree'),
+	(6,1,2,'agree','agree','agree'),
+	(7,3,3,'agree','agree','agree'),
+	(8,2,3,'agree','agree','agree'),
+	(9,1,3,'agree','agree','agree'),
+	(10,3,4,'agree','agree','agree'),
+	(11,2,4,'agree','agree','agree'),
+	(12,1,4,'agree','agree','agree'),
+	(13,3,5,'agree','agree','agree'),
+	(14,2,5,'agree','agree','agree'),
+	(15,1,5,'agree','agree','agree'),
+	(16,3,6,'agree','agree','agree'),
+	(17,2,6,'agree','agree','agree'),
+	(18,1,6,'agree','agree','agree'),
+	(19,3,7,'agree','agree','agree'),
+	(20,2,7,'agree','agree','agree'),
+	(21,1,7,'agree','agree','agree'),
+	(22,3,8,'agree','agree','agree'),
+	(23,2,8,'agree','agree','agree'),
+	(24,1,8,'agree','agree','agree'),
+	(25,3,9,'agree','disagree','agree'),
+	(26,2,9,'agree','agree','disagree'),
+	(27,1,9,'agree','agree','agree'),
+	(28,3,10,'agree','agree','agree'),
+	(29,2,10,'agree','agree','agree'),
+	(30,1,10,'agree','agree','agree'),
+	(31,3,11,'agree','agree','agree'),
+	(32,2,11,'agree','agree','agree'),
+	(33,1,11,'agree','agree','agree'),
+	(34,3,12,'agree','agree','agree'),
+	(35,2,12,'agree','agree','agree'),
+	(36,1,12,'agree','agree','agree'),
+	(37,3,13,'agree','agree','agree'),
+	(38,2,13,'agree','agree','agree'),
+	(39,1,13,'agree','agree','agree'),
+	(40,3,14,'agree','agree','agree'),
+	(41,2,14,'agree','agree','agree'),
+	(42,1,14,'agree','agree','agree'),
+	(43,3,15,'agree','agree','agree'),
+	(44,2,15,'agree','agree','agree'),
+	(45,1,15,'disagree','agree','agree'),
+	(46,3,16,'agree','agree','agree'),
+	(47,2,16,'agree','agree','agree'),
+	(48,1,16,'agree','agree','agree'),
+	(49,3,17,'agree','agree','agree'),
+	(50,2,17,'agree','agree','agree'),
+	(51,1,17,'agree','agree','agree');
+
+/*!40000 ALTER TABLE `value_credible_source_ur` ENABLE KEYS */;
+UNLOCK TABLES;
 
 # Dump of table value_occurrence
 # ------------------------------------------------------------
@@ -1072,6 +1415,63 @@ CREATE TABLE `value_prur` (
   CONSTRAINT `value_prur_ibfk_3` FOREIGN KEY (`practical_reasoning_as`) REFERENCES `practical_reasoning_as` (`practical_reasoning_as_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `value_prur` WRITE;
+INSERT INTO `value_prur` (`value_prur_id`, `practical_reasoning_as`, `consultation_inst`, `value`, `value_resp`)
+VALUES
+	(1,1,1,3,'demote'),
+	(2,1,1,2,'neutral'),
+	(3,1,1,1,'promote'),
+	(4,1,2,3,'demote'),
+	(5,1,2,2,'demote'),
+	(6,1,2,1,'promote'),
+	(7,1,3,3,'demote'),
+	(8,1,3,2,'neutral'),
+	(9,1,3,1,'promote'),
+	(10,1,4,3,'demote'),
+	(11,1,4,2,'neutral'),
+	(12,1,4,1,'promote'),
+	(13,1,5,3,'demote'),
+	(14,1,5,2,'neutral'),
+	(15,1,5,1,'promote'),
+	(16,1,6,3,'demote'),
+	(17,1,6,2,'neutral'),
+	(18,1,6,1,'promote'),
+	(19,1,7,3,'demote'),
+	(20,1,7,2,'neutral'),
+	(21,1,7,1,'promote'),
+	(22,1,8,3,'demote'),
+	(23,1,8,2,'neutral'),
+	(24,1,8,1,'neutral'),
+	(25,1,9,3,'promote'),
+	(26,1,9,2,'demote'),
+	(27,1,9,1,'promote'),
+	(28,1,10,3,'demote'),
+	(29,1,10,2,'neutral'),
+	(30,1,10,1,'promote'),
+	(31,1,11,3,'demote'),
+	(32,1,11,2,'neutral'),
+	(33,1,11,1,'promote'),
+	(34,1,12,3,'demote'),
+	(35,1,12,2,'neutral'),
+	(36,1,12,1,'promote'),
+	(37,1,13,3,'demote'),
+	(38,1,13,2,'neutral'),
+	(39,1,13,1,'promote'),
+	(40,1,14,3,'demote'),
+	(41,1,14,2,'neutral'),
+	(42,1,14,1,'promote'),
+	(43,1,15,3,'demote'),
+	(44,1,15,2,'neutral'),
+	(45,1,15,1,'demote'),
+	(46,1,16,3,'demote'),
+	(47,1,16,2,'neutral'),
+	(48,1,16,1,'promote'),
+	(49,1,17,3,'neutral'),
+	(50,1,17,2,'neutral'),
+	(51,1,17,1,'neutral');
+
+/*!40000 ALTER TABLE `value_prur` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table value_recognition_as
@@ -1160,6 +1560,65 @@ CREATE TABLE `value_vrur` (
 
 
 
+LOCK TABLES `value_vrur` WRITE;
+/*!40000 ALTER TABLE `value_vrur` DISABLE KEYS */;
+
+INSERT INTO `value_vrur` (`value_vrur_id`, `value_recognition_as`, `consultation_inst`, `value`, `value_recog_resp`, `source_endow_resp`)
+VALUES
+	(1,6,1,3,'agree','agree'),
+	(2,5,1,2,'agree','agree'),
+	(3,4,1,1,'agree','agree'),
+	(4,6,2,3,'agree','agree'),
+	(5,5,2,2,'agree','agree'),
+	(6,4,2,1,'agree','agree'),
+	(7,6,3,3,'agree','agree'),
+	(8,5,3,2,'agree','agree'),
+	(9,4,3,1,'agree','agree'),
+	(10,6,4,3,'agree','agree'),
+	(11,5,4,2,'agree','agree'),
+	(12,4,4,1,'agree','agree'),
+	(13,6,5,3,'agree','agree'),
+	(14,5,5,2,'agree','agree'),
+	(15,4,5,1,'agree','agree'),
+	(16,6,6,3,'agree','agree'),
+	(17,5,6,2,'agree','agree'),
+	(18,4,6,1,'agree','agree'),
+	(19,6,7,3,'agree','agree'),
+	(20,5,7,2,'agree','agree'),
+	(21,4,7,1,'agree','agree'),
+	(22,6,8,3,'agree','agree'),
+	(23,5,8,2,'agree','agree'),
+	(24,4,8,1,'agree','agree'),
+	(25,6,9,3,'agree','agree'),
+	(26,5,9,2,'agree','agree'),
+	(27,4,9,1,'agree','agree'),
+	(28,6,10,3,'agree','agree'),
+	(29,5,10,2,'agree','agree'),
+	(30,4,10,1,'agree','agree'),
+	(31,6,11,3,'agree','agree'),
+	(32,5,11,2,'agree','agree'),
+	(33,4,11,1,'agree','agree'),
+	(34,6,12,3,'agree','agree'),
+	(35,5,12,2,'agree','agree'),
+	(36,4,12,1,'agree','agree'),
+	(37,6,13,3,'agree','agree'),
+	(38,5,13,2,'agree','agree'),
+	(39,4,13,1,'agree','agree'),
+	(40,6,14,3,'agree','agree'),
+	(41,5,14,2,'agree','agree'),
+	(42,4,14,1,'agree','agree'),
+	(43,6,15,3,'agree','agree'),
+	(44,5,15,2,'agree','agree'),
+	(45,4,15,1,'agree','agree'),
+	(46,6,16,3,'agree','agree'),
+	(47,5,16,2,'agree','agree'),
+	(48,4,16,1,'agree','agree'),
+	(49,6,17,3,'agree','agree'),
+	(50,5,17,2,'agree','agree'),
+	(51,4,17,1,'agree','agree');
+
+/*!40000 ALTER TABLE `value_vrur` ENABLE KEYS */;
+UNLOCK TABLES;
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

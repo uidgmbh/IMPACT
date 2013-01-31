@@ -1,4 +1,29 @@
 <?php
+/* ----------------------------------------------------------------------------
+ * Copyright (c) 2012 Leibniz Center for Law, University of Amsterdam, the 
+ * Netherlands
+ *
+ * This program and the accompanying materials are licensed and made available
+ * under the terms and conditions of the European Union Public Licence (EUPL 
+ * v.1.1).
+ *
+ * You should have received a copy of the  European Union Public Licence (EUPL 
+ * v.1.1) along with this program as the file license.txt; if not, please see
+ * http://joinup.ec.europa.eu/software/page/eupl/licence-eupl.
+ *
+ * This software is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+ * or FITNESS FOR A PARTICULAR PURPOSE.
+ * ----------------------------------------------------------------------------
+ * Project:      IMPACT
+ * Created:      2011-2012
+ * Last Change:  14.12.2012 (final release date)
+ * ----------------------------------------------------------------------------
+ * Created by the Leibniz Center for Law, University of Amsterdam, The 
+ * Netherlands, 2012
+ * Authors: Jochem Douw (http://jochemdouw.nl), Sander Latour
+ * ----------------------------------------------------------------------------
+ */
 /**
  * This is the discussion class
  * @since 4 September 2012
@@ -61,20 +86,12 @@ class Discussion extends DbItem{
    **/
   public function fetchIssue($issueID){
     $result = array();
-    //^$db = new Database();
-    //^$issueID = mysqli_real_escape_string($this->resource, $issueID);
-    /*$query = "SELECT *
-                FROM ART_discussions
-               WHERE issue_id = $issueID";
-    $resource = mysqli_query($this->resource, $query) or trigger_error(mysqli_error($this->resource));
-    $discussion = mysqli_fetch_assoc($resource); //should be only one.
-     */ 
     $discussion = $this->db->select("ART_discussions", array('issue_id' => $issueID));
     if(count($discussion) == 1){
       //everything went well, the discussion was found
       $discussion = $discussion[0];
     } else {
-      show_error("This issue was not found");
+      show_error("This issue was not found. Tried with ID ".$issueID);
     }
 
     //Fill the first index, ['issue']
@@ -93,8 +110,6 @@ class Discussion extends DbItem{
       $argument = array();
       //if this is an actual argument scheme...
       if(substr($relation['type'], -2) == 'as'){
-        //^$rel = new Relation($this);
-        //^$relDetails = $rel->interpret($relation['type'], $relation['id']);
         $rel = new Relation(null, $this->db);
         $argument['id'] = $relation['type']."-".$relation['id'];
         $rel->load($argument['id']);
@@ -113,6 +128,7 @@ class Discussion extends DbItem{
               $statement['text'] = $element['text_sections'][0]['text'];
               if(isset($element['text_sections'][0]['quote'])){
                 $statement['quote'] = $element['text_sections'][0]['quote'];
+                $statement['source'] = $element['text_sections'][0]['source'];
               }
             }
           } else {
@@ -136,7 +152,7 @@ class Discussion extends DbItem{
           }
         }
         $argument['premises'] = $premises;
-        $argument['conclusion'] = $conclusion;
+        $argument['conclusion'] = isset($conclusion) ? $conclusion : "";
         $argument['contributor'] = "The Software & Information Industry Association";
         $argument['creator'] = 'Bernd Groeninger--Policy Analyst';
         $argument['source'] = '';
@@ -159,7 +175,6 @@ class Discussion extends DbItem{
    * @param integer $discussionID
 	 **/
   public function fetchRelations($discussionID){
-    //^$db = new Database();
     if(!$discussionID || intval($discussionID) == 0)	return false;
       $result = array();
         $arConditions = array("discussion"    =>$discussionID);

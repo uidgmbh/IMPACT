@@ -1,3 +1,6 @@
+// Copyright (c) 2012 Fraunhofer Gesellschaft
+// Licensed under the EUPL V.1.1
+
 // Shows a new statement editor
 // @config accepts the following values:
 // atom, the default value of the atom field
@@ -9,9 +12,13 @@ AGB.show_statement_editor = function(config) {
     }
 
     if(_.isNil(config.statement)) {
-        $('#statementeditor').html(AGB.create_statement_editor({title: 'New Statement'}));    
+        $('#statementeditor').html(AGB.create_statement_editor(
+            {title: $.i18n.prop('pmt_new_statement')
+            }));    
     } else {
-        $('#statementeditor').html(AGB.create_statement_editor({title: 'Edit Statement'}));    
+        $('#statementeditor').html(AGB.create_statement_editor(
+            {title: $.i18n.prop('pmt_edit_statement')
+            }));
     }
     
     $('#cancel-statement').click(AGB.remove_statement_editor);
@@ -141,6 +148,22 @@ AGB.statement_created = function() {
 
 // Returns the HTML content of the statement editor
 AGB.create_statement_editor = function(data) {
+    data.pmt_header = $.i18n.prop('pmt_header');
+    data.pmt_atom_optional = $.i18n.prop('pmt_atom_optional');
+    data.pmt_proof_standard = $.i18n.prop('pmt_proof_standard');
+    data.pmt_pe = $.i18n.prop('pmt_pe');
+    data.pmt_dv = $.i18n.prop('pmt_dv');
+    data.pmt_cce = $.i18n.prop('pmt_cce');
+    data.pmt_brd = $.i18n.prop('pmt_brd');
+    data.pmt_description = $.i18n.prop('pmt_description');
+    data.pmt_main = $.i18n.prop('pmt_main');
+    data.pmt_weight_optional = $.i18n.prop('pmt_weight_optional');
+    data.pmt_low = $.i18n.prop('pmt_low');
+    data.pmt_high = $.i18n.prop('pmt_high');
+    data.pmt_cancel = $.i18n.prop('pmt_cancel');
+    data.pmt_text = $.i18n.prop('pmt_text');
+    data.pmt_save_statement = $.i18n.prop('pmt_save_statement');
+
     var html = ich.statementeditor(data);
     return html;
 };

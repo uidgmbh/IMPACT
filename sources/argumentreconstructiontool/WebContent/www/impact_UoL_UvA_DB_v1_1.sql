@@ -6,6 +6,33 @@
 -- Genereertijd: 15 Jul 2012 om 14:05
 -- Serverversie: 5.5.9
 -- PHP-Versie: 5.3.6
+/* ----------------------------------------------------------------------------
+ * Copyright (c) 2012 University of Liverpool, UK and Leibniz Center for Law, 
+ * University of Amsterdam, the Netherlands
+ *
+ * This program and the accompanying materials are licensed and made available
+ * under the terms and conditions of the European Union Public Licence (EUPL 
+ * v.1.1).
+ *
+ * You should have received a copy of the  European Union Public Licence (EUPL 
+ * v.1.1) along with this program as the file license.txt; if not, please see
+ * http://joinup.ec.europa.eu/software/page/eupl/licence-eupl.
+ *
+ * This software is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+ * or FITNESS FOR A PARTICULAR PURPOSE.
+ * ----------------------------------------------------------------------------
+ * Project:      IMPACT
+ * Created:      2011-2012
+ * Last Change:  14.12.2012 (final release date)
+ * ----------------------------------------------------------------------------
+ * Created by:  University of Liverpool, UK and the Leibniz Center for Law,
+ * University of Amsterdam, The Netherlands, 2012.
+ * Authors: Adam Wyner, Katie Atkinson, Trevor Bench-Capon, Maya Wardeh,
+ * Chenxi Li, Jochem Douw, and Giovanni Sileno.
+ * ----------------------------------------------------------------------------
+ */
+
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- CREATE DATABASE  `impact_UoL_UvA_DB_v1_1` ;

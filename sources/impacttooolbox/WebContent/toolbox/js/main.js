@@ -1,3 +1,30 @@
+/* --------------------------------------------------------------------------------
+ * Copyright (c) 2012 User Interface Design GmbH, Germany
+ *
+ * This program and the accompanying materials are licensed and made available 
+ * under the terms and conditions of the European Union Public Licence (EUPL v.1.1).
+ *
+ * You should have received a copy of the  European Union Public Licence (EUPL v.1.1)
+ * along with this program as the file LICENSE.txt; if not, please see
+ * http://joinup.ec.europa.eu/software/page/eupl/licence-eupl.
+ * 
+ * This software is distributed in the hope that it will be useful, but 
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY 
+ * or FITNESS FOR A PARTICULAR PURPOSE. 
+ * --------------------------------------------------------------------------------
+ * File:         main.js
+ * Project:      IMPACT
+ * Created:      23.05.2010
+ * Last Change:  12.12.2012
+ * --------------------------------------------------------------------------------
+ * Created by User Interface Design GmbH (UID) 2012
+ * Author: Daniel.Kersting (daniel.kersting@uid.com)
+ * --------------------------------------------------------------------------------
+ */
+
+//var toolboxRootPath = "http://impact.uid.com:8080/";
+var toolboxRootPath = "http://localhost:8080/";
+
 var toolboxState =
 {
 
@@ -8,32 +35,36 @@ var toolboxState =
 
     art :
     {
-        path : "http://impact.uid.com:8080/argumentreconstructiontool",
+        path : toolboxRootPath + "argumentreconstructiontool",
         div : "art",
         icon : "toolbox/css/impact-ui/images/toollogos/Icon_ArgumentReconstruction.png",
     },
     avt :
     {
-        path : "http://impact.uid.com:8080/argumentvisualisationtool",
+        path : toolboxRootPath + "argumentvisualisationtool",
         div : "avt",
         icon : "toolbox/css/impact-ui/images/toollogos/Icon_ArgumentAnalysisTrackingVisual.png",
     },
     pmt :
     {
-        path : "http://impact.uid.com:8080/policymodellingtool",
+        path : toolboxRootPath + "policymodellingtool",
         div : "pm",
         icon : "toolbox/css/impact-ui/images/toollogos/Icon_PolicyModelling.png"
     },
     sct :
     {
-        path : "http://impact.uid.com:8080/structuredconsultationtool",
+        path : toolboxRootPath + "structuredconsultationtool",
         div : "sct",
         icon : "toolbox/css/impact-ui/images/toollogos/Icon_StructuredConsultation.png",
     },
     toolbox :
     {
-        path : "http://impact.uid.com:8080/toolbox",
-    }
+        path : toolboxRootPath + "impact/",
+    },
+
+    userLoggedIn : false,
+    username : ""
+
 };
 
 $(document).ready(function()
@@ -46,6 +77,7 @@ var ImpactToolbox =
 
     init : function()
     {
+        
         // getCookie();
         $(window).resize(function()
         {
@@ -76,9 +108,8 @@ var ImpactToolbox =
         // {
         // $("#useroptions").hide();
         // $("#user").removeClass("openedOptions");
-        //            }
+        // }
         // });
-
 
         // $("#user").click(function()
         // {
@@ -95,7 +126,7 @@ var ImpactToolbox =
         // Lazy Loading
         if (typeof ImpactUI == "undefined")
         {
-            dynamicallyLoadJSFile('http://impact.uid.com:8080/impact/toolbox/js/impact-ui/impact-init.js', function()
+            dynamicallyLoadJSFile(toolboxState.toolbox.path + 'toolbox/js/impact-ui/impact-init.js', function()
             {
                 $("body").data("navi", 999);
                 ImpactToolbox.increaseHeight();
@@ -104,57 +135,58 @@ var ImpactToolbox =
                 ImpactToolbox.loadTool(tool);
             });
         }
-        
+
         ImpactToolbox.initSearchButton();
         ImpactToolbox.initLanguageSwitch();
-        
+
+        ImpactToolbox.showOrHideAdminTool();
     },
-    
+
     initSearchButton : function()
     {
-      $("#searchbutton").click(function()
-      {
-          ImpactToolbox.showUnderConstructionDialog();
-      });
+        $("#searchbutton").click(function()
+        {
+            ImpactToolbox.showUnderConstructionDialog();
+        });
     },
 
     initLanguageSwitch : function()
     {
-      $("#languageselection").change(function() 
-      {
-          ImpactToolbox.showUnderConstructionDialog();
-      });
+        $("#languageselection").change(function()
+        {
+            ImpactToolbox.showUnderConstructionDialog();
+        });
     },
-    
+
     showUnderConstructionDialog : function()
     {
         $('<div class="toInit"></div>')
-        .appendTo('body')
-        .html(
-                '<div><p>Sorry, this function is under construction.<br />We are working on this project and hope to include this function soon.</p></div>')
-        .dialog(
-        {
-            modal : true,
-            title : "Under Construction!",
-            zIndex : 10000,
-            autoOpen : true,
-            width : 'auto',
-            resizable : false,
-            buttons :
-            {
-                Ok : function()
+                .appendTo('body')
+                .html(
+                        '<div><p>Sorry, this function is under construction.<br />We are working on this project and hope to include this function soon.</p></div>')
+                .dialog(
                 {
-                    $(this).dialog("close");
-                }
-            },
-            close : function(event, ui)
-            {
-                $(this).remove();
-            }
-        });
+                    modal : true,
+                    title : "Under Construction!",
+                    zIndex : 10000,
+                    autoOpen : true,
+                    width : 'auto',
+                    resizable : false,
+                    buttons :
+                    {
+                        Ok : function()
+                        {
+                            $(this).dialog("close");
+                        }
+                    },
+                    close : function(event, ui)
+                    {
+                        $(this).remove();
+                    }
+                });
         ImpactUI.init();
     },
-    
+
     getURLParameter : function(name)
     {
         return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [ ,
@@ -181,6 +213,9 @@ var ImpactToolbox =
         case "sct":
         case "structuredconsultationtool":
             ImpactToolbox.setNavi(5);
+            break;
+        case "sct-admin":
+            ImpactToolbox.setNavi(15);
             break;
         default:
             ImpactToolbox.setNavi(0);
@@ -225,7 +260,7 @@ var ImpactToolbox =
         $('#home_bottom').css("height", height);
 
         width = ($('#stagebg').width());
-        tilewidth = Math.floor(width / 4);
+        tilewidth = Math.floor(width / 4) - 1;
 
         $("div[class^=tile]").each(function()
         {
@@ -280,6 +315,10 @@ var ImpactToolbox =
             $("#username")[0].innerHTML = name;
             $("#user").children("img").attr("src", picurl);
             $("#loggedin").css("display", "inline-block");
+            toolboxState.userLoggedIn = true;
+            
+            ImpactToolbox.showOrHideAdminTool();
+            
         }
     },
 
@@ -296,6 +335,7 @@ var ImpactToolbox =
                 $("#login").show();
                 $("#loggedin").hide();
                 location.reload();
+                toolboxState.userLoggedIn = false;
             }
         });
     },
@@ -355,6 +395,16 @@ var ImpactToolbox =
     {
         current = $("body").data("navi");
         last = $("body").data("navi_last");
+        
+        if(current == 15)
+        {
+            current = 5;
+        }
+        
+        if(last == 15)
+        {
+            last = 5;
+        }
 
         $(".button.nav" + last).removeClass("active");
         $(".button.nav" + current).addClass("active");
@@ -392,13 +442,17 @@ var ImpactToolbox =
         switch ($("body").data("navi"))
         {
         case 0: // HOME
-            $.get("http://impact.uid.com:8080/impact/toolbox/subpages/home.html", function(data)
+            $.get(toolboxState.toolbox.path + "toolbox/subpages/home.html", function(data)
             {
                 $("#stage")[0].innerHTML = "<div id='static-content' width='100%'>" + data + "</div>";
                 $("#toollogo").css("visibility", "hidden");
                 toolboxState.currentTool = null;
                 ImpactToolbox.resetTiles();
+
+                ImpactToolbox.showOrHideAdminTool();
+
             });
+            
             break;
 
         case 1: // Topics
@@ -421,6 +475,7 @@ var ImpactToolbox =
 
         case 5:// SCT (Structured consultation tool)
             ImpactToolbox.setTool(SCT, toolboxState.sct);
+            $("#stage").append("<span id='admintool'><a href='javascript:ImpactToolbox.setNavi(15);' >Create a new survey</a></span>");
             break;
 
         case 6:
@@ -440,27 +495,30 @@ var ImpactToolbox =
             break;
 
         case 10: // about
-            ImpactToolbox.loadStaticPage("http://impact.uid.com:8080/impact/toolbox/subpages/about.html");
-
+            ImpactToolbox.loadStaticPage(toolboxState.toolbox.path + "toolbox/subpages/about.html");
             break;
 
         case 11: // imprint
-            ImpactToolbox.loadStaticPage("http://impact.uid.com:8080/impact/toolbox/subpages/imprint.html");
+            ImpactToolbox.loadStaticPage(toolboxState.toolbox.path + "toolbox/subpages/imprint.html");
 
             break;
 
         case 12: // contact
-            ImpactToolbox.loadStaticPage("http://impact.uid.com:8080/impact/toolbox/subpages/contact.html");
+            ImpactToolbox.loadStaticPage(toolboxState.toolbox.path + "toolbox/subpages/contact.html");
 
             break;
 
         case 13: // privacy
-            ImpactToolbox.loadStaticPage("http://impact.uid.com:8080/impact/toolbox/subpages/privacy.html");
+            ImpactToolbox.loadStaticPage(toolboxState.toolbox.path + "toolbox/subpages/privacy.html");
             break;
 
         case 14: // help
-            ImpactToolbox.loadStaticPage("http://impact.uid.com:8080/impact/toolbox/subpages/help.html");
+            ImpactToolbox.loadStaticPage(toolboxState.toolbox.path + "toolbox/subpages/help.html");
             break;
+        case 15: // SCT ADMIN TOOL
+            $("#stage")[0].innerHTML = "<iframe scrolling='no' width='95%' height='95%' src='" + toolboxState.sct.path + "/admin/index.html' />";
+            $("#toollogo").css("visibility", "hidden");
+            toolboxState.currentTool = null;
         }
 
         $("#stage").addClass("toInit");
@@ -472,7 +530,7 @@ var ImpactToolbox =
         });
         $('#stage').fadeIn('fast ', function()
         {
-
+            ImpactToolbox.showOrHideAdminTool();
         });
     },
 
@@ -498,7 +556,7 @@ var ImpactToolbox =
     {
         ImpactToolbox.login("/impact/login/google")
     },
-    
+
     loginFacebook : function()
     {
         ImpactToolbox.login("/impact/login/facebook");
@@ -507,70 +565,74 @@ var ImpactToolbox =
     login : function(url)
     {
         $.ajax(
+        {
+            type : 'Get',
+            url : url,
+            dataType : "text",
+            success : function(url)
+            {
+                // var authwindow = window.open(url, "");
+                console.log(url);
+
+                // For large applications, you probably need a name for the window to prevent
+                // multiple
+                // window for the same goal
+                var name_of_popup = 'new_window_123';
+                // This works just fine unless there is a popup blocker
+                var popup = window.open(url, name_of_popup);
+
+                if (popup == null || typeof (popup) == "undefined" || (popup == null && popup.outerWidth == 0)
+                        || (popup != null && popup.outerHeight == 0) || popup.test == "undefined")
                 {
-                    type : 'Get',
-                    url : url,
-                    dataType : "text",
-                    success : function(url)
+                    ImpactToolbox.showPopupNotAllowed(url);
+                }
+                else if (popup)
+                {
+                    popup.onload = function()
                     {
-                        // var authwindow = window.open(url, "");
-                        console.log(url);
-                
-                        // For large applications, you probably need a name for the window to prevent multiple
-                        // window for the same goal
-                        var name_of_popup = 'new_window_123';
-                        // This works just fine unless there is a popup blocker
-                        var popup = window.open(url, name_of_popup);
-                
-                        
-                        if(popup == null ||  typeof(popup) == "undefined" || (popup==null && popup.outerWidth == 0)  ||  (popup!=null && popup.outerHeight == 0)  || popup.test == "undefined")
+                        if (popup.screenX === 0)
                         {
                             ImpactToolbox.showPopupNotAllowed(url);
+                            popup.close();
                         }
-                        else if(popup) {
-                            popup.onload = function() {
-                                if (popup.screenX === 0) {
-                                    ImpactToolbox.showPopupNotAllowed(url);
-                                     popup.close();
-                                }
-                            };
-                        }
-                    }
-                });  
+                    };
+                }
+            }
+        });
     },
 
     showPopupNotAllowed : function(url)
     {
         $('<div class="toInit"></div>')
-        .appendTo('body')
-        .html(
-                '<div><p>Please disable your browser popup blocker in order to continue and try it again. You may also <a target="_blank" href="' + url + '">click here to open the login window.</a></p></div>')
-        .dialog(
-        {
-            modal : true,
-            title : "The login popup was blocked!",
-            zIndex : 10000,
-            autoOpen : true,
-            width : 'auto',
-            resizable : false,
-            buttons :
-            {
-                Cancel : function()
+                .appendTo('body')
+                .html(
+                        '<div><p>Please disable your browser popup blocker in order to continue and try it again. You may also <a target="_blank" href="'
+                                + url + '">click here to open the login window.</a></p></div>').dialog(
                 {
-                    $(this).dialog("close");
-                }
-            },
-            close : function(event, ui)
-            {
-                $(this).remove();
-            }
-        });
+                    modal : true,
+                    title : "The login popup was blocked!",
+                    zIndex : 10000,
+                    autoOpen : true,
+                    width : 'auto',
+                    resizable : false,
+                    buttons :
+                    {
+                        Cancel : function()
+                        {
+                            $(this).dialog("close");
+                        }
+                    },
+                    close : function(event, ui)
+                    {
+                        $(this).remove();
+                    }
+                });
         ImpactUI.init();
     },
 
     createCookie : function(name, value, days)
     {
-        var expires; 
+        var expires;
         if (days)
         {
             var date = new Date();
@@ -579,7 +641,7 @@ var ImpactToolbox =
         }
         else
             expires = "";
-        
+
         document.cookie = name + "=" + value + expires + "; path=/";
     },
 
@@ -601,6 +663,32 @@ var ImpactToolbox =
     removeCookie : function(name)
     {
         ImpactToolbox.createCookie(name, "", -1);
+    },
+    
+    showOrHideAdminTool : function()
+    {
+        if (toolboxState.userLoggedIn && (toolboxState.username == "Daniel Kersting" 
+		|| toolboxState.username == "Silke Lotterbach"
+		|| toolboxState.username == "Steffen Albrecht"
+                || toolboxState.username == "Adam Wyner"
+	))
+        {
+            $("#admintool").fadeIn('fast');
+        }
+        else
+        {
+            $("#admintool").fadeOut('fast');
+        }
+        if (toolboxState.userLoggedIn)
+        {
+            $("#usernameh1").html("Dear " + toolboxState.username + ", ");
+        }
+        else
+        {
+            $("#usernameh1").html("Dear Guest, ");
+        }
+
+
     }
 };
 
@@ -637,4 +725,5 @@ function dynamicallyLoadJSFile(url, callback)
     // We handle everything using the script element injection
     return undefined;
 };
+
 

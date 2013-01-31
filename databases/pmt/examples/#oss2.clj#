@@ -1,0 +1,21 @@
+;;; Copyright © 2010 Fraunhofer Gesellschaft 
+;;; Licensed under the EUPL V.1.1
+
+(ns carneades.examples.oss2
+  (:use clojure.pprint
+        carneades.engine.statement
+        carneades.engine.argument
+        carneades.engine.lkif.import
+        carneades.mapcomponent.export
+        carneades.ui.diagram.graphvizviewer))
+
+(defn -main []
+  (let [lkif (import-lkif "/home/pal/open_source_licensing_good/impact-full.xml" )
+        ag (second (:ags lkif))]
+    (prn "main =")
+    (pprint (:main-issue ag))
+    (spit "/tmp/impact.dot" (gen-graphvizcontent ag statement-formatted))
+    (export-ag ag statement-formatted "/tmp/impact.svg" :layout :hierarchical
+               ;; :depth 2
+               :radius 300
+               :treeify false)))

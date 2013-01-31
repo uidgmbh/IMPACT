@@ -1,19 +1,14 @@
+;;; Copyright (c) 2012 Fraunhofer Gesellschaft
+;;; Licensed under the EUPL V.1.1
+
 (ns impact.web.logic.askengine
   (:use clojure.pprint
         impact.web.core
         (carneades.engine aspic argument-evaluation argument-graph ask statement scheme
                           argument argument-graph shell unify dialog)
-        (impact.web.logic questions))
+        (impact.web.logic questions)
+        [clojure.tools.logging :only (info debug error)])
   (:import java.io.File))
-
-(defn askable?
-  [theory p]
-  (let [predicate (get-in theory [:language (literal-predicate p)])]
-    (and (or (:askable predicate) (:widgets predicate))
-         (or (predicate? predicate)
-             (concept? predicate)
-             (and (role? predicate)
-                  (ground? (first (term-args p))))))))
 
 (defn get-remaining-questions
   [ag session]
@@ -22,16 +17,16 @@
         statements (filter (fn [stmt]
                              (and
                               (askable? askables stmt)
-                              (empty? (get-answers dialog stmt))))
+                              (empty? (get-answers dialog theory stmt))))
                            (atomic-statements ag))]
-    (prn "statements =")
-    (prn statements)
-    (prn "dialog =")
-    (pprint dialog)
+    ;; (prn "statements =")
+    ;; (prn statements)
+    ;; (prn "dialog =")
+    ;; (pprint dialog)
     (reduce (fn [[questions id] stmt]
               (let [[new-questions id] (get-structured-questions stmt lang id theory)
                     new-questions (filter (fn [q]
-                                            (nil? (get-answers dialog (:statement q))))
+                                            (nil? (get-answers dialog theory (:statement q))))
                                           new-questions)]
                 ;; we use a set to avoid duplicate questions
                 [(merge questions (apply hash-map
@@ -56,11 +51,17 @@
   (prn "[on-questions-answered]")
   (let [ag (:ag session)
         ag (set-main-issues ag (:query session))
-        _ (prn "main issue?")
-        _ (prn (:query session))
-        ;; _ (pprint ag)
-         ;; accept all answers from the user!
-        ag (accept ag (apply concat (vals (get-in session [:dialog :answers]))))
+        answers (get-in session [:dialog :answers])
+        answers-statements (keys answers)
+        _ (prn "answers =")
+        _ (prn answers)
+        _ (prn "lazy-answers=")
+        _ (prn (filter (fn [a] (instance? clojure.lang.LazySeq a))
+                       (keys answers)))
+        ;; accepts answers with a weight of 1.0
+        ag (accept ag (filter (fn [s] (= (answers s) 1.0)) answers-statements))
+        ;; rejects answers with a weight of 0.0
+        ag (reject ag (filter (fn [s] (= (answers s) 0.0)) answers-statements))
         ag (enter-language ag (-> session :theory :language))
         ag (evaluate aspic-grounded ag)
         dbname (store-ag ag)
@@ -114,7 +115,7 @@
                     :substitutions substitutions
                     :last-question lastquestion
                     :questions questions)]
-      (if-let [answers (get-answers (:dialog session) lastquestion)]
+      (if-let [answers (get-answers (:dialog session) (:theory session) lastquestion)]
         (continue-engine session answers)
         (ask-user session)))
     ;; else no more question == construction finished
@@ -131,8 +132,9 @@
                 (prn "[askengine] waiting for the question...")
                 (on-question session))))
 
-(defn- start-engine
+(defn start-engine
   [session]
+  (info "Starting the query process")
   (let [theory (:theory session)
         query (:query session)
         ag (make-argument-graph)
@@ -145,7 +147,8 @@
                   :future-ag future-ag
                   :questions questions
                   :send-answer send-answer
-                  :engine-runs true)]
+                  :dialog (make-dialog)
+                  :last-id 0)]
     (get-ag-or-next-question session)))
 
 (defn- continue-engine
@@ -156,15 +159,10 @@
                                answers))
     (get-ag-or-next-question session)))
 
-(defn ask-engine
+(defn send-answers-to-engine
   "Returns the modified session."
   [session]
   {:pre [(not (nil? session))]}
-  (if (:engine-runs session)
-    (let [answers (get-answers (:dialog session) (:last-question session))]
-      (continue-engine session answers))
-    ;; else
-    (do
-      (prn "[ask-engine]")
-      (prn "query =" (:query session))
-      (start-engine session))))
+  (info "Sending answers back to the engine")
+  (let [answers (get-answers (:dialog session) (:theory session) (:last-question session))]
+    (continue-engine session answers)))

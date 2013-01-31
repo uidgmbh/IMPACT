@@ -6,7 +6,7 @@ body{
 
 
 .survey{
-	margin: 40px 0px 0px 0px;
+	margin: 0;
 	color: #58595B;
 	width: 590px;
 }
@@ -22,6 +22,14 @@ body{
 	display:block;
 	float: right;
 	white-space: nowrap;
+}
+
+div button.back_home
+{
+        display:block;
+        float: left;
+        white-space: nowrap;
+	margin-top: 15px;
 }
 
 .back{
@@ -132,4 +140,29 @@ td + td, th + th {
 	height: 24px;
 	background: url(images/marker.png);
 }	
+
+
+#sct ul.warning
+{
+	margin: 15px 0 10px 0;
+}
+
+#sct ul.warning li
+{
+	margin: 15px 0 0 0;
+	padding-top: 4px;
+	height: 26px;
+}
+
+
+#sct .navigation
+{
+	margin-top: 2px;
+}
+
+#sct .navigation a:HOVER
+{
+	cursor:default;
+}
+
 

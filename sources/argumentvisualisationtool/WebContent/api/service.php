@@ -36,7 +36,8 @@ global $USER,$CFG;
 
 //send the header info
 set_service_header();
-header('Access-Control-Allow-Origin: *');
+
+header('Access-Control-Allow-Origin: *'); //XXX
 
 $method = optional_param("method","",PARAM_ALPHA);
 
@@ -814,7 +815,10 @@ switch($method){
 				$response = getResponsesToIssue($nodeid);
         break;
     case 'artimport':
-      $data = required_param('data', PARAM_TEXT);
+      $data = (get_magic_quotes_gpc()) ?
+        required_param('data', PARAM_TEXT) :
+        $_POST['data'];
+
       $user = required_param('user', PARAM_TEXT);
       $response = artImport($data, $user);
       break;

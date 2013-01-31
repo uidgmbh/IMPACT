@@ -459,7 +459,7 @@ class CNode {
      * @param string $comments
      * @return Node object (this) (or Error object)
      */
-    function addURL($urlid,$comments){
+    function addURL($urlid,$comments=""){
         global $DB,$CFG,$USER;
         //check user can edit the Node
         try {

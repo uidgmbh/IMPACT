@@ -279,7 +279,9 @@ var AVT = AVT || {};
 
 								var nodeCallback = function(n) {
 										nodeSource.apply(this, [n]);
-										nodeVotes.apply(this, [n]);
+										if (toolbox_state.avt.consultation_arg) {
+												nodeVotes.apply(this, [n]);
+										}
 								};
 
                 var config = {
@@ -317,15 +319,21 @@ var AVT = AVT || {};
 
 								var processCohereOutput = function (cohere_json) {
 										var outcome_obj = cohere_json.result[0].outcome[0];
-										var consultation_arg = {
-												id: outcome_obj.stdclass.argument_id,
-												premises: []
-										};
+										var consultation_arg;
 
-										outcome_obj.stdclass.premises
-												.forEach(function(p) {
-																		 consultation_arg.premises.push(p.stdclass);
-																 });
+										if (! outcome_obj.stdclass.argument_id) {
+												consultation_arg = null;
+										} else {
+												consultation_arg = {
+														id: outcome_obj.stdclass.argument_id,
+														premises: []
+												};
+
+												outcome_obj.stdclass.premises
+														.forEach(function(p) {
+																				 consultation_arg.premises.push(p.stdclass);
+																		 });
+										}
 
 										toolbox_state.avt.consultation_arg = consultation_arg;
 										callback();
@@ -375,6 +383,7 @@ var AVT = AVT || {};
 
         })(debate_issues, function(){ importSctData(callback); });
 
+				jQuery('#'+div_id).html('Loading...Please wait');
         return toolbox_state;
     };
 

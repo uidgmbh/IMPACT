@@ -1,3 +1,6 @@
+// Copyright (c) 2012 Fraunhofer Gesellschaft
+// Licensed under the EUPL V.1.1
+
 // This object contains the global variables for the app
 var IMPACT = {
     user: "root",
@@ -10,12 +13,10 @@ var IMPACT = {
     simulation_url: "/policymodellingtool/PolicySimulation",
     current_policy: "copyright-policies",
     debate_db: "copyright",
-    rootpath: null
+    rootpath: null,
 };
 
 // This object contains the functions and acts as a kind of namespace.
-// We don't put variables in it since mixing data and functions with objects
-// is too often a bad idea
 var PM = {
 };
 
@@ -40,7 +41,7 @@ PM.url_changed = function(url) {
          return;
     }
 
-    var url_regex = /\/([^ \/]+)(?:\/([^ \/]+))?(?:\/([^ \/]+))?(?:\/([^ \/]+))?/;
+    var url_regex = /\/([^ \/]+)(?:\/([^ \/]+))?(?:\/([^ ?\/]+))?(?:\/([^ \/]+))?/;
     var result = url_regex.exec(url.value);
     if(result != null) {
         PM.dispatch_url(result);
@@ -51,7 +52,7 @@ PM.dispatch_url = function(sections) {
     if(sections[1] == "issues") {
         PM.display_issues();
     } else if(sections[1] == "facts") {
-        PM.display_facts();
+        PM.dispatch_facts_url(sections[2]);
     } else if(sections[1] == "arguments") {
         PM.display_arguments(sections[3], sections[2], sections[4]); 
     } else if(sections[1] == "policies") {
@@ -66,19 +67,29 @@ PM.dispatch_url = function(sections) {
         PM.dispatch_sct_url(sections[2]);
     } else if(sections[1] == "repl") {
         catb.repl.connect();
+    } else if(sections[1] == "report") {
+        catb.views.pmt.report.display();
     }
 };
 
-PM.dispatch_sct_url = function(section_name) {
-    if(section_name == "intro") {
+PM.dispatch_facts_url = function(section) {
+    if(section == "modify") {
+        catb.views.pmt.submitted_facts.display_facts();
+    } else {
+        PM.display_facts();
+    }
+};
+
+PM.dispatch_sct_url = function(section) {
+    if(section == "intro") {
         PM.display_sct_intro();
-    } else if(section_name == "issues") {
+    } else if(section == "issues") {
         PM.display_sct_issues();
-    } else if(section_name == "question") {
+    } else if(section == "question") {
         PM.display_sct_question();
-    } else if(section_name == "summary") {
+    } else if(section == "summary") {
         PM.display_sct_summary();
-    } else if(section_name == "comparison") {
+    } else if(section == "comparison") {
         PM.display_sct_comparison();
     }
 };
@@ -133,7 +144,18 @@ PM.init = function(toolboxState) {
     } else {
         PM.load_scripts(rootpath, false, PM.post_load);
     }
+
+ 
 };
+
+// attachs a listener to the 'select' language
+// and sets the value of the 'select' to the one of IMPACT.lang
+PM.attach_lang_listener = function() {
+    $('#pm-select-lang').val(IMPACT.lang);
+    $('#pm-select-lang').change(function(event) {
+        PM.languageChanged(event.target.value);
+    });
+}
 
 PM.start = function(toolboxState) {
     PM.set_introduction_url();
@@ -146,7 +168,27 @@ PM.stop = function(toolboxState) {
 };
 
 PM.languageChanged = function(lang) {
+    // reloads page
 
+    IMPACT.lang = lang;
+    PM.init_i18n(function() {
+        PM.ajax_post(IMPACT.simulation_url, {lang: IMPACT.lang},
+                     function() {
+                         if(!_.isNil($.address.parameter('lang'))) {
+                             // if the page has a lang parameter we change it
+                             $.address.parameter('lang', IMPACT.lang);
+                         } else {
+                             // otherwise we just reload the page
+                             // since the IMPACT.lang variable has change
+                             // the language display to the user will also
+                             // change
+                             $.address.update();
+                         }
+                     },
+                     IMPACT.user,
+                     IMPACT.password,
+                     PM.on_error);
+    });
 };
 
 PM.canBeStopped = function() {
@@ -181,6 +223,22 @@ PM.post_load = function() {
 
 };
 
+PM.init_i18n = function(callbackfn) {
+    var site_path = PM.in_uid_toolbox() ? '/policymodellingtool/site/' : 'site/';
+
+    jQuery.i18n.properties(
+        {name:'Messages',
+         path: site_path,
+         mode:'both',
+         language: IMPACT.lang, 
+         callback: function() {
+                 if(_.isFunction(callbackfn)) {
+                     callbackfn();
+                 }
+         }
+        });
+};
+
 PM.common_post_load = function() {
     $.ajaxSetup({beforeSend: PM.simple_auth});
     
@@ -195,16 +253,8 @@ PM.common_post_load = function() {
     
     PM.policies = new PM.Policies;
     PM.policies.fetch();
-
-    jQuery.i18n.properties(
-        {name:'Messages',
-         path:'site/',
-         mode:'both',
-         language: IMPACT.lang, 
-         callback: function() {
-             // alert(jQuery.i18n.prop('msg_hello'));
-         }
-        });
+    
+    PM.init_i18n();
     
     PM.debate_arguments = new PM.Arguments({db: IMPACT.debate_db});
     PM.debate_statements = new PM.Statements({db: IMPACT.debate_db});
@@ -285,7 +335,6 @@ PM.load_scripts = function(rootpath, is_in_toolbox, callback) {
                    'js/app/metadata.js',
                    'js/app/admin.js',
                    'js/app/ajax.js',
-                   'js/app/questions.js',
                    'js/app/agb/agb-utils.js',
                    'js/app/agb/login.js',
                    'js/app/agb/metadata.js',
@@ -328,6 +377,7 @@ PM.load_scripts = function(rootpath, is_in_toolbox, callback) {
                    'js/app/models/premise-candidate.js',
                    'js/app/models/conclusion-candidate.js',
                    'js/app/models/metadata-candidate.js',
+                   'js/app/models/debate-poll.js',
                    'js/app/collections/argument-polls.js',
                    'js/app/collections/statement-polls.js',
                    'js/app/collections/statements.js',
@@ -371,9 +421,7 @@ PM.load_templates = function(toolboxState) {
             {name: 'metadata', url: 'site/metadata.html'},
             {name: 'argumentlink', url: 'site/argumentlink.html'},
             {name: 'statementlink', url: 'site/statementlink.html'},
-            {name: 'premise', url: 'site/premise.html'},
-            {name: 'premiseeditorpartial', url: 'site/premiseeditorpartial.html'},
-            {name: 'ageditormenu', url: 'site/ag-editor-menu.html'}],
+            {name: 'premise', url: 'site/premise.html'}],
            function(template) {
                var url = toolboxState == undefined ?
                    template.url : toolboxState.pmt.path + '/' + template.url;
@@ -409,10 +457,7 @@ PM.load_templates = function(toolboxState) {
             'exceptionscandidates',
             'theory',
             'metadataeditor2',
-            'premiseeditor',
-            'premiseeditorwithoutscheme',
             'addmore',
-            'newstatementlink',
             'premisecandidate',
             'conclusioncandidate',
             'schemecandidate',
@@ -425,7 +470,13 @@ PM.load_templates = function(toolboxState) {
             'sct-argument',
             'sct_summary',
             'sct_claim_editor',
-            'sct_comparison'
+            'sct_comparison',
+            'vote',
+            'after_vote',
+            'vote_results',
+            'report',
+            'submitted_facts',
+            'ask_modify_facts'
            ],
            function(name) {
                var url = toolboxState == undefined ?
@@ -442,8 +493,11 @@ PM.load_templates = function(toolboxState) {
 // Loads some generic styles when the app is used
 // outside of the UID toolbox
 PM.load_carneades_styles = function() {
-    PM.load_style(undefined, 'green-theme.css');
-    PM.load_style(undefined, 'smoothness/jquery-ui-1.8.23.custom.css');
+    PM.load_style(undefined, 'impact-ui/jquery-ui-1.8.11.custom.css', 'toolbox/css');
+    PM.load_style(undefined, 'impact-ui/impact-green.css', 'toolbox/css');
+    PM.load_style(undefined, 'main.css', 'toolbox/css');
+    PM.load_style(undefined, 'policymodelling/style.css', 'toolbox/css');
+    PM.load_style(undefined, 'local-app.css');
 };
 
 // Loads some specific styles to the app
@@ -471,23 +525,60 @@ PM.load_style = function(rootpath, style, cssdir) {
 
 // Called when an AJAX error occurs
 PM.on_error = function(textstatus) {
-    $('#pm').prepend('<div style="background-color:  #FFCC33" class="error">Error: {0}</div>'.format(textstatus));
+    PM.busy_cursor_off();
+    $('#pm').prepend('<ul class="warning pm-warning" ><li class="notification">Error: {0}</li></ul>'.format(textstatus));
     setTimeout(function() {
-                   $('#pm .error').remove();
+                   $('#pm .warning').remove();
                }, 3000);
+    PM.scroll_to_top();
 };
 
 PM.notify = function(text) {
-    $('#pm').prepend('<div style="background-color:  #99CCCC" class="notification">{0}</div>'.format(text));
+     $('#pm').prepend('<ul class="thankyou pm-thankyou"><li class="notification">{0}</li></ul>'.format(text));
     setTimeout(function() {
-                   $('#pm .notification').remove();
+                   $('#pm .thankyou').remove();
                }, 3000);
+    PM.scroll_to_top();
 };
 
 // Called when an AJAX error occurs for backbone
 PM.on_model_error = function(collection, response) {
+    PM.busy_cursor_off();
     $('#pm').prepend('<div style="background-color:  #FFCC33" class="error">Error: {0}</div>'.format(response.statusText));
     setTimeout(function() {
                    $('#pm .error').remove();
                }, 3000);
+};
+
+
+PM.scroll_to_bottom = function() {
+    if(PM.in_uid_toolbox()) {
+        $("#stage").animate({ scrollTop: 2000 }, "fast");
+     } else {
+         $('body').animate({ scrollTop: 2000 }, "fast");
+     }
+}
+
+PM.scroll_to_top = function() {
+    if(PM.in_uid_toolbox()) {
+        $("#stage").animate({ scrollTop: 0 }, "fast");
+     } else {
+         $('body').animate({ scrollTop: 0 }, "fast");
+     }
+}
+
+PM.scroll_to = function(selector) {
+    if(PM.in_uid_toolbox()) {
+        $("#stage").scrollTo(selector);
+     } else {
+         $.scrollTo(selector);
+     }
+}
+
+PM.busy_cursor_on = function() {
+    $("*").css("cursor", "progress");
+};
+
+PM.busy_cursor_off = function() {
+    $("*").css("cursor", "default");
 };

@@ -69,7 +69,7 @@ switch($submitid){
 			$user_name = $_POST['user_name'];
 				
 		}else{
-			Print "error with name";
+			Print "<ul class='warning'><li>error with name</li></ul>";
 		}
 		
 		// a session variable to contain all the information about the user's consultation.

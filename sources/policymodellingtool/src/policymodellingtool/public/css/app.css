@@ -1,3 +1,4 @@
+
 #menu {
     float: left;
 }
@@ -236,6 +237,10 @@
     cursor: pointer;
 }
 
+.clickable {
+    cursor: pointer;
+}
+
 .sct-claim-editor {
     border-color: purple;
 }
@@ -246,4 +251,23 @@
 
 .rule-body ul {
     margin-bottom: 0px;
+}
+
+.menuleft {
+    float: left;
+}
+
+.menuright select {
+    margin-left: 220px;
+    margin-top: -2px;
+}
+
+
+.vote-table {
+    width: 40%
+}
+
+.vote-table tr {
+        border-bottom: 1px solid #7AB817;
+	width: 300px;
 }

@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('../support/database_connect_admin.php');
+include ('admin_header.php');
 
 if(isset($_SESSION['conjPorporties']))
 
@@ -37,7 +38,7 @@ function createOptions($information, $value1, $value2){
 	return $optionsReturn;
 }
 ?>
-
+<h2>Intermediates</h2>
 <?php 
 if (!isset($_POST['mode'])) {
 	$_POST['mode'] = "undefined";

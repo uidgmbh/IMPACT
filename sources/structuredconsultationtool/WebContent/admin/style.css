@@ -1,25 +1,19 @@
-body,
-html {
-margin:0;
-padding:0;
-color:#000;
+body,html {
+	margin: 0;
+	padding: 0;
+	color: #000;
 }
 
 ul {
 	margin: 0;
+	padding: 0;
 }
 
 #contentWrap {
-	width: 1700px;
+	/*width: 1700px;*/
 	margin: 0 auto;
 	height: auto;
 	overflow: hidden;
-}
-
-#contentTop {
-	width: 1700px;
-	padding: 10px;
-	margin-left: 30px;
 }
 
 #contentMiddle {
@@ -27,33 +21,209 @@ ul {
 	width: 800px;
 }
 
-
 #contentRight {
-	float: Right;
-	width: 800px;
+	float: right;
+	width: 35%;
+	/*width: 800px;*/
 }
 
 #contentRight Ri {
 	list-style: none;
 	margin: 0 0 4px 0;
 	padding: 10px;
-	background-color:#00CCCC;
+	background-color: #00CCCC;
 	border: #CCCCCC solid 1px;
-	color:#fff;
+	color: #fff;
 }
-
 
 #contentLeft {
 	float: Left;
-	width: 800px;
-	padding:10px;
-	background-color:#336600;
-	color:#FFFFFF;
+	width: 62%;
+	padding: 10px;
+	background-color: #E0E8CE;
+	color: #000;
 }
 
 #contentLeftNoColour {
 	float: Left;
-	width: 800px;
-	padding:6px;
-	color:#FFFFFF;
+	width: 62%;
+	padding: 6px;
+	color: #FFFFFF;
 }
+
+body {
+	font-family: Calibri;
+	font-size: 14px;
+	color: #000000;
+	background-color: transparent;
+	vertical-align: middle;
+	padding: 0 30px;
+}
+
+#contentRight h4,h2 {
+	color: #7AB817;
+	font-size: 1.8em;
+	font-weight: bold;
+	line-height: 1.2em;
+	margin-bottom: 15px;
+	margin-top: 30px;
+}
+
+h3,#contentRight h5 {
+	font-size: 1.2em;
+	font-weight: bold;
+	margin-top: 30px;
+}
+
+fieldset>legend>h2 {
+	margin-left: -7px;
+	width: auto;
+	padding: 0 5px;
+	font-size: 16pt;
+}
+
+#contentLeft legend h2 {
+	position: relative;
+	top: 11px;
+	font-size: 16pt;
+	display: inline; left : 12px;
+	background: #E0E8CE;
+	width: auto;
+	left: 12px;
+}
+
+table {
+	border-collapse: collapse;
+	border: 1px solid #615D5D;
+	color: #58595B;
+	margin: 0 0 20px 0;
+}
+
+caption {
+	text-align: left;
+	background: transparent;
+}
+
+td,th {
+	border: 1px solid #615D5D;
+	padding: .8em;
+}
+
+thead th,tfoot th {
+	border: 1px solid #615D5D;;
+	text-align: left;
+	padding-top: 6px;
+}
+
+tbody th,tbody td {
+	vertical-align: top;
+	text-align: left;
+}
+
+th {
+	background: #605C5C;
+	color: #FFFFFF;
+}
+
+input[type=button],input[type=submit],button {
+	outline-offset: 0px;
+	border-radius: 1px;
+	border: 1px solid #97999A;
+	box-shadow: 0px 1px 1px 0px #D5D5D5 inset, 1px 0px 1px 0px #D5D5D5 inset,
+		1px 0px 1px 0px #DDDDDD;
+	outline-style: none;
+	margin-bottom: 2px;
+	margin-top: 2px;
+	height: 22px;
+	padding: 0px 7px;
+	background: #F4F3F3;
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#F4F3F3),
+		to(#DADADB) );
+	background: -webkit-linear-gradient(#F4F3F3, #DADADB);
+	background: -moz-linear-gradient(#F4F3F3, #DADADB);
+	background: -ms-linear-gradient(#F4F3F3, #DADADB);
+	background: -o-linear-gradient(#F4F3F3, #DADADB);
+	background: linear-gradient(#F4F3F3, #DADADB);
+	/* IE fix for borders an gradients*/
+	-pie-background: linear-gradient(#F4F3F3, #DADADB);
+	behavior: url(toolbox/css/PIE.htc);
+	/* old way but with the round corner bug
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F9F9F9',
+		endColorstr='#ECECED' );*/
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+input[type=button]:hover,input[type=submit]:hover,button:hover {
+	background: #ECF5E1;
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#ECF5E1),
+		to(#D4DDCA) );
+	background: -webkit-linear-gradient(#ECF5E1, #D4DDCA);
+	background: -moz-linear-gradient(#ECF5E1, #D4DDCA);
+	background: -ms-linear-gradient(#ECF5E1, #D4DDCA);
+	background: -o-linear-gradient(#ECF5E1, #D4DDCA);
+	background: linear-gradient(#ECF5E1, #D4DDCA);
+	/* IE fix for borders an gradients*/
+	-pie-background: linear-gradient(#ECF5E1, #D4DDCA);
+	behavior: url(toolbox/css/PIE.htc);
+}
+
+input[type=button]:active,input[type=submit]:active,button:active {
+	background: #D4DDCA;
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#D4DDCA),
+		to(#ECF5E1) );
+	background: -webkit-linear-gradient(#D4DDCA, #ECF5E1);
+	background: -moz-linear-gradient(#D4DDCA, #ECF5E1);
+	background: -ms-linear-gradient(#D4DDCA, #ECF5E1);
+	background: -o-linear-gradient(#D4DDCA, #ECF5E1);
+	background: linear-gradient(#D4DDCA, #ECF5E1);
+	/* IE fix for borders and gradients*/
+	-pie-background: linear-gradient(#D4DDCA, #ECF5E1);
+	behavior: url(toolbox/css/PIE.htc);
+}
+
+input[type=button]:focus,input[type=submit]:focus,button:focus {
+	box-shadow: 0px 0px 1px 1px #7AB817 inset, 1px 0px 1px 0px #DDDDDD;
+}
+
+input[type=button][disabled=disabled],input[type=submit][disabled=disabled],button[disabled=disabled]
+	{
+	border: 1px solid #BCBCBC;
+	box-shadow: 0px 1px 1px 0px #D5D5D5 inset, 1px 0px 1px 0px #D5D5D5 inset,
+		1px 0px 1px 0px #DDDDDD;
+	background: #F9F9F9;
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#F9F9F9),
+		to(#ECECED) );
+	background: -webkit-linear-gradient(#F9F9F9, #ECECED);
+	background: -moz-linear-gradient(#F9F9F9, #ECECED);
+	background: -ms-linear-gradient(#F9F9F9, #ECECED);
+	background: -o-linear-gradient(#F9F9F9, #ECECED);
+	background: linear-gradient(#F9F9F9, #ECECED);
+	/* IE fix for borders an gradients*/
+	-pie-background: linear-gradient(#F9F9F9, #ECECED);
+	behavior: url(toolbox/css/PIE.htc);
+}
+
+input[type=button][disabled=disabled]:focus,input[type=submit][disabled=disabled]:focus,button[disabled=disabled]:focus
+	{
+	box-shadow: 0px 1px 1px 0px #D5D5D5 inset, 1px 0px 1px 0px #D5D5D5 inset,
+		1px 0px 1px 0px #DDDDDD;
+}
+
+select {
+	max-width: 800px;
+}
+
+#contentRight li {
+	display: block;
+}
+
+#contentRight {
+	font-size: 14px
+}
+
+
+

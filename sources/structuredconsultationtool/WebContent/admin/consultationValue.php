@@ -1,6 +1,9 @@
 
 <?php
 include('../support/database_connect.php');
+include ('admin_header.php');
+
+
 session_start();
 if(isset($_SESSION['conjPorporties']))
 	unset($_SESSION['conjPorporties']);

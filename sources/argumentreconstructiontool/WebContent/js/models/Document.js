@@ -1,3 +1,28 @@
+/* ----------------------------------------------------------------------------
+ * Copyright (c) 2012 Leibniz Center for Law, University of Amsterdam, the 
+ * Netherlands
+ *
+ * This program and the accompanying materials are licensed and made available
+ * under the terms and conditions of the European Union Public Licence (EUPL 
+ * v.1.1).
+ *
+ * You should have received a copy of the  European Union Public Licence (EUPL 
+ * v.1.1) along with this program as the file license.txt; if not, please see
+ * http://joinup.ec.europa.eu/software/page/eupl/licence-eupl.
+ *
+ * This software is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+ * or FITNESS FOR A PARTICULAR PURPOSE.
+ * ----------------------------------------------------------------------------
+ * Project:      IMPACT
+ * Created:      2011-2012
+ * Last Change:  14.12.2012 (final release date)
+ * ----------------------------------------------------------------------------
+ * Created by the Leibniz Center for Law, University of Amsterdam, The 
+ * Netherlands, 2012
+ * Authors: Jochem Douw (http://jochemdouw.nl), Sander Latour
+ * ----------------------------------------------------------------------------
+ */
 /**
 	@param {string} url - The URL of the retrieved document. When it is a free text entry, the URL will be null and in the database the URL will be set to the database ID, in order to make the url-timestamp-pair still unique and in order to be able to make URI's e.g. of the form impact.eu/discussion/ID or something. (Note that the variable "document" is a predefined class in JavaScript.)
 	@param {string} title
@@ -7,24 +32,24 @@
 	@since 22 November 2011
 */
 function Document(id, url, title, text, first_id, version, annotated, newest_version){
-	this.parent = DbItem;
-	this.parent();
-	this.parent = new DbItem();
-	
-	this.setDataItem("id",id);
-	this.setDataItem("url",url);
-	this.setDataItem("title",title);
-	this.setDataItem("text", text);
-	this.setDataItem("first_id", first_id);
-	this.setDataItem("version", version);
-	this.setDataItem("annotated", annotated);
-	this.setDataItem("newest_version", newest_version);
+  this.parent = DbItem;
+  this.parent();
+  this.parent = new DbItem();
 
-	this._timestamp = undefined;
-	this.getTimestamp = function(){ return this._timestamp; };
-	this.setTimestamp = function(timestamp){
-		this._timestamp = timestamp;
-	};
+  this.setDataItem("id",id);
+  this.setDataItem("url",url);
+  this.setDataItem("title",title);
+  this.setDataItem("text", text);
+  this.setDataItem("first_id", first_id);
+  this.setDataItem("version", version);
+  this.setDataItem("annotated", annotated);
+  this.setDataItem("newest_version", newest_version);
+
+  this._timestamp = undefined;
+  this.getTimestamp = function(){ return this._timestamp; };
+  this.setTimestamp = function(timestamp){
+    this._timestamp = timestamp;
+  };
 
 	//we might want to add a distincion between user_added and user_deleted
 	this._user = undefined;
@@ -38,6 +63,8 @@ function Document(id, url, title, text, first_id, version, annotated, newest_ver
 	this.create = function(referer){
 		var ref = (typeof(referer)=="undefined"?this:referer);
 		this.parent.create("/documents/", undefined, undefined, undefined, ref);
+    //this.setDataItem('id', ref.getDataItem('id'));
+    //return ref.getData('id');
 	}
 	
 	/**
@@ -47,6 +74,8 @@ function Document(id, url, title, text, first_id, version, annotated, newest_ver
 	this.createVersion = function(referer){
 		var ref = (typeof(referer)=="undefined"?this:referer);
 		this.parent.create("/documents/version/"+ref.getDataItem("first_id"), undefined, undefined, undefined, ref);
+    //this.setDataItem('id', ref.getDataItem('id'));
+    //return ref.getData('id');
 	}
 
 	/**

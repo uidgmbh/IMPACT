@@ -1,10 +1,14 @@
+;;; Copyright (c) 2012 Fraunhofer Gesellschaft
+;;; Licensed under the EUPL V.1.1
+
  (ns carneades.web.walton-schemes
   (:use (carneades.engine statement argument scheme dublin-core)))
 
 (def walton-schemes
   (make-theory
    :header
-   (make-metadata :title "Basic Argumentation Schemes")
+   (make-metadata :title "Basic Argumentation Schemes"
+                  :description {:en ""})
 
    :language
    (make-language
@@ -24,6 +28,14 @@
                   :positive "%s asserts that %s is true."
                   :negative "%s does not assert that %s is true."
                   :question "Does %s assert that %s is true?")})
+
+    (make-predicate
+     :symbol 'bad
+     :arity 1
+     :forms {:en (make-form
+                  :positive "%s is bad."
+                  :negative "%s is not bad."
+                  :question "Is %s bad?")})
     
 
     (make-predicate
@@ -50,6 +62,14 @@
                   :positive "Witness %s is biased."
                   :negative "Witness %s is not biased."
                   :question "Is witness  %s biased?")})
+
+    (make-predicate
+     :symbol 'brings-about
+     :arity 2
+     :forms {:en (make-form
+                  :positive "Action %s brings about %s."  
+                  :negative "Action %s does not bring about %s"
+                  :question "Does action %s bring about %s?")})
 
     (make-predicate
      :symbol 'bring-about-more-effectively
@@ -154,6 +174,14 @@
                   :positive "It is feasible to perform the action %s."
                   :negative "It is not feasible to perform the action %s."
                   :question "Is it feasible to perform the action %s?")})
+
+    (make-predicate
+     :symbol 'good
+     :arity 1
+     :forms {:en (make-form
+                  :positive "%s is good."
+                  :negative "%s is not good."
+                  :question "Is %s good?")})
 
      (make-predicate
      :symbol 'has-conclusion
@@ -329,7 +357,7 @@
                   :question "Would performing action %s have negative consequences?")})
 
     (make-predicate
-     :symbol 'observation
+     :symbol 'observed
      :arity 1
      :forms {:en (make-form
                   :positive "%s has been observed."
@@ -812,7 +840,10 @@ Douglas Walton, Scare Tactics, Kluwer Academic Publishers, Dordrecht, 2000, p.12
      :conclusion '(should-be-performed ?A)
      :premises [(make-premise
                  :role "major"
-                 :statement '(positive-consequences ?A))])
+                 :statement '(brings-about ?A ?G))
+                (make-premise
+                 :role "minor"
+                 :statement '(good ?G))])
     
     (make-scheme
      :id 'negative-consequences
@@ -823,7 +854,10 @@ Douglas Walton, Scare Tactics, Kluwer Academic Publishers, Dordrecht, 2000, p.12
      :conclusion '(not (should-be-performed ?A))
      :premises [(make-premise
                  :role "major"
-                 :statement '(negative-consequences ?A))])
+                 :statement '(brings-about ?A ?G))
+                (make-premise
+                 :role "minor"
+                 :statement '(bad ?G))])
 
     (make-scheme
      :id 'practical-reasoning
@@ -858,7 +892,7 @@ based alternating transition systems. Artificial Intelligence 171,
 
      :exceptions [(make-premise
                    :role "CQ4"
-                   :statement '(bring-about-more-effectively ?S1 ?A))
+                   :statement '(bring-about-more-effectively ?S2 ?A))
                   (make-premise
                    :role "CQ5"
                    :statement '(realize-more-effectively ?G ?A))

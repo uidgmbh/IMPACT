@@ -1,4 +1,4 @@
 Manifest-Version: 1.0
-Built-By: tomcat6
+Built-By: pal
 Created-By: Leiningen Ring Plugin
 

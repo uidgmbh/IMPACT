@@ -1,3 +1,6 @@
+// Copyright (c) 2012 Fraunhofer Gesellschaft
+// Licensed under the EUPL V.1.1
+
 "use strict";
 
 AGB.statement_url = function(db, stmtid)
@@ -64,6 +67,38 @@ AGB.statement_html = function(db, info, lang)
     info.hascon = info.con && info.con.length > 0;
     info.haspremiseof = info.premise_of && info.premise_of.length > 0;
 
+    info.pmt_key = $.i18n.prop('pmt_key');
+    info.pmt_coverage = $.i18n.prop('pmt_coverage');
+    info.pmt_creator = $.i18n.prop('pmt_creator');
+    info.pmt_date = $.i18n.prop('pmt_date');
+    info.pmt_date = $.i18n.prop('pmt_date');
+    info.pmt_format = $.i18n.prop('pmt_format');
+    info.pmt_identifier = $.i18n.prop('pmt_identifier');
+    info.pmt_language = $.i18n.prop('pmt_language');
+    info.pmt_publisher = $.i18n.prop('pmt_publisher');
+    info.pmt_relation = $.i18n.prop('pmt_relation');
+    info.pmt_rights = $.i18n.prop('pmt_rights');
+    info.pmt_source = $.i18n.prop('pmt_source');
+    info.pmt_subject = $.i18n.prop('pmt_subject');
+    info.pmt_title = $.i18n.prop('pmt_title');
+    info.pmt_type = $.i18n.prop('pmt_type');
+
+    info.pmt_id = $.i18n.prop('pmt_id');
+    info.pmt_header = $.i18n.prop('pmt_header');
+    info.pmt_atom = $.i18n.prop('pmt_atom');
+    info.pmt_main_issue = $.i18n.prop('pmt_main_issue');
+    info.pmt_header = $.i18n.prop('pmt_header');
+    info.pmt_standard = $.i18n.prop('pmt_standard');
+    info.pmt_weight = $.i18n.prop('pmt_weight');
+    info.pmt_value = $.i18n.prop('pmt_value');
+    info.pmt_text = $.i18n.prop('pmt_text');
+    info.pmt_pro_arguments = $.i18n.prop('pmt_pro_arguments');
+    info.pmt_con_arguments = $.i18n.prop('pmt_con_arguments');
+    info.pmt_premise_of = $.i18n.prop('pmt_premise_of');
+    
+    info = PM.merge_menu_props(info);
+    info = PM.merge_ag_menu_props(info); 
+
     var statement_html = ich.statement(info);
     return statement_html.filter('#statement');
 };
@@ -84,7 +119,7 @@ AGB.display_statement = function(db, stmtid)
 
 AGB.set_statement_title_text = function(info)
 {
-    var default_text = "Statement";
+    var default_text = $.i18n.prop('pmt_statement');
     if(info.header) {
         info.statement_title_text = info.header.title ? info.header.title['en'] : default_text;
     } else {
@@ -220,7 +255,12 @@ AGB.statement_out = function(statement)
 };
 
 AGB.enable_statement_edition = function(db, info) {
-    $('#menus').append(ich.statementeditormenu());
+    $('#menus').append(ich.statementeditormenu({
+        pmt_new_statement: $.i18n.prop('pmt_new_statement'),
+        pmt_menu_edit: $.i18n.prop('pmt_menu_edit'),
+        pmt_menu_delete: $.i18n.prop('pmt_menu_delete'),
+        pmt_new_argument: $.i18n.prop('pmt_new_argument'),    
+    }));
     $('#delete-statement').click(_.bind(AGB.delete_statement, AGB, db, info.id));
     $('#edit-statement').click(_.bind(AGB.edit_statement, AGB, db, info));
     $('.evaluate').click(_.bind(AGB.evaluate, AGB, _.bind(AGB.display_statement, AGB, db, info.id)));
